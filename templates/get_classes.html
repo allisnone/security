@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for row in portlists %}
+            <tr>
+                <td>{{ row.IPs }}</td>
+                <td>{{ row.ports }}</td>
+                <td>
+                    <a href="/edit_classes.html?id={{ row.id }}">编辑</a>|
+                    <a href="/del_classes.html?id={{ row.id }}">删除</a>
+ 
+</br>
+                </td>
+            </tr>
+        {% endfor %}
+</body>
+</html>

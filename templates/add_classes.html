@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="add_classes.html" method="POST">
+    {% csrf_token %}
+    IP<input type="text" class="form-control" name="ips" placeholder="IP"></br>
+端口<input type="text" class="form-control" name="ports" placeholder="端口"></br>
+    联系人<input type="text" class="form-control" name="contacts" placeholder="联系人邮件"></br>
+ 
+    <input type="submit" value="提交" />
+</form>
+</body>
+</html>
