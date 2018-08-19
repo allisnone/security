@@ -1,0 +1,587 @@
+
+<!-- ---------------------------------------------------------------------------------------------------- -->
+<!-- Real time dashboard -->
+<div class = "row">
+    <div id = "errors" style="color:red;font-size:25px;text-align: center;"></div>
+</div>
+<div id='gauge_chart' class="row">
+	<!-- AREA CHART -->
+	<div class="col-md-3">
+		<div class="box box-primary">
+			<div class="box-header">
+				<h4 class="box-title-dashboard">Power Usage Effectiveness</h4>
+			</div>
+			<div class="box-body addhover" value="Power Usage Effectiveness">
+				<div id="gaugePUE" class="gauge_style"></div>
+			</div>
+			<a id="moreInfoPUE" class="accordion-toggle" data-toggle="collapse" href="#detailPUE" > 
+				<small id="moreInfoPUEText">More info </small>
+				<i id="moreInfoPUEI" class="fa fa-arrow-circle-right"></i>
+			</a>
+		</div>
+		<!-- /.box -->
+	</div>
+	<!-- /.col -->
+
+	<!-- AREA CHART -->
+	<div class="col-md-3">
+		<div class="box box-primary">
+			<div class="box-header">
+				<h4 class="box-title-dashboard">CO2 Emission</h4>
+			</div>
+			<div class="box-body" value="co2" id ="co2body">
+				<div id="gaugeCo2" class="gauge_style"></div>
+				<small> &nbsp</small>
+			</div>
+		</div>
+		<!-- /.box -->
+	</div>
+	<!-- /.col -->
+
+	<div class="col-md-3">
+		<!-- Primary box -->
+		<div class="box box-primary">
+			<div class="box-header">
+				<h4 class="box-title-dashboard">Active Device Efficiency</h4>
+			</div>
+			<div class="box-body addhover" value="Active Device Efficiency">
+				<div id="gaugeEfficiency" class="gauge_style"></div>
+			</div>
+			<a id="moreInfo1" class="accordion-toggle" data-toggle="collapse" href="#detailEfficiency"> 
+				<small id="moreInfo1Text">More info </small>
+				<i id="moreInfo1I" class="fa fa-arrow-circle-right"></i>
+			</a>
+		</div>
+		<!-- /.box -->
+	</div>
+	<!-- /.col -->
+
+	<div class="col-md-3">
+		<!-- Primary box -->
+		<div class="box box-primary">
+			<div class="box-header">
+				<h4 class="box-title-dashboard">Power Load</h4>
+			</div>
+			<div class="box-body addhover" value="Total Energy Consumption">
+				<div id="gaugeLoad" class="gauge_style"></div>
+
+			</div>
+			<a id="moreInfo2" class="accordion-toggle" data-toggle="collapse" href="#detailPowerLoad" > 
+				<small id="moreInfo2Text">More info </small>
+				<i id="moreInfo2I" class="fa fa-arrow-circle-right"></i>
+			</a>
+		</div>
+		<!-- /.box -->
+	</div>
+	<!-- /.col -->
+</div>
+<!-- ---------------------------------------------------------------------------------------------------- -->
+<!-- /Real time dashboard -->
+
+<!-- Box (with bar chart) -->
+<div id="detailPUE" class="box box-danger collapse out">
+	<div class="box-header">
+
+		<i class="fa fa-leaf"></i>
+
+		<h3 class="box-title">Instant Energy Distribution</h3>
+	</div>
+	<!-- /.box-header -->
+
+	<div class="box-body table-responsive no-padding">
+		<table id="tbPUE" class="table table-hover">
+			<tr class="active">
+				<th style = "width:10%">#</th>
+				<th style = "width:30%">Consumption Areas</th>
+				<th style = "width:30%">% of Total Power</th>
+                <th style = "width:30%"></th>				
+			</tr>
+			<tr id="PUE1">
+				<td>1.</td>
+				<td>Loading....</td>
+				<td>Loading....</td>
+			</tr>
+		</table>
+	</div>
+	<!-- /.box-body -->
+</div>
+<!-- /.box -->
+
+<!-- Box (with bar chart) -->
+<div id="detailEfficiency" class="box box-danger collapse out">
+	<div class="box-header">
+
+		<i class="fa fa-flash"></i>
+
+		<h3 class="box-title">Detail Efficiency</h3>
+	</div>
+	<!-- /.box-header -->
+
+	<div class="box-body table-responsive no-padding">
+		<table id="tbEfficiency" class="table table-hover">
+			<tr class="active">
+				<th style = "width:10%">#</th>
+				<th style = "width:30%">Equipment</th>
+				<th style = "width:30%">Actual Efficiency</th>
+				<th style = "width:30%">Normal Range</th>
+			</tr>
+			<tr id="ups1Efficiency">
+				<td>1.</td>
+				<td>Loading....</td>
+				<td>Loading....</td>
+			</tr>
+		</table>
+	</div>
+	<!-- /.box-body -->
+</div>
+<!-- /.box -->
+
+<!-- Box (with bar chart) -->
+<div id="detailPowerLoad" class="box box-danger collapse out">
+	<div class="box-header">
+		<i class="fa fa-gears"></i>
+		<h3 class="box-title">Detail Power Load</h3>
+	</div>
+	<!-- /.box-header -->
+	<div class="box-body table-responsive no-padding">
+		<table id="tbLoad" class="table table-hover">
+			<tr class="active">
+				<th style = "width:10%">#</th>
+				<th style = "width:30%">Equipment</th>
+				<th style = "width:30%">Actual Loads</th>
+				<th style = "width:30%">% of Capacity</th>
+
+			</tr>
+			<tr id="ups1Load">
+				<td>1.</td>
+				<td>Loading....</td>
+				<td>Loading....</td>
+				<td><span class="badge bg-green">Loading....</span></td>
+			</tr>
+		</table>
+	</div>
+	<!-- /.box-body -->
+</div>
+<!-- /.box -->
+
+
+<script type="text/javascript">
+
+$("#gauge_chart .box-body[value!='co2']").bind("click", function(){
+	var reportType = $(this).attr("value");
+	var transUrl = getReportUrl(reportType);
+	location.href = transUrl;
+});
+
+$("#moreInfo1").bind("click", function(){
+    if ($("#moreInfo1Text").text() == "More info "){
+        $("#moreInfo1Text").text("Hide info ");
+        $("#moreInfo1I").removeClass("fa-arrow-circle-right").addClass("fa-arrow-circle-down");
+        
+    }
+    else {
+        $("#moreInfo1Text").text("More info ");
+        $("#moreInfo1I").removeClass("fa-arrow-circle-down").addClass("fa fa-arrow-circle-right");
+    }
+    
+});
+
+$("#moreInfo2").click(function(){
+    if ($("#moreInfo2Text").text() == "More info "){
+        $("#moreInfo2Text").text("Hide info ");
+        $("#moreInfo2I").removeClass("fa-arrow-circle-right").addClass("fa-arrow-circle-down");
+        
+    }
+    else {
+        $("#moreInfo2Text").text("More info ");
+        $("#moreInfo2I").removeClass("fa-arrow-circle-down").addClass("fa fa-arrow-circle-right");
+    }
+});
+
+$("#moreInfoPUE").click(function(){
+    if ($("#moreInfoPUEText").text() == "More info "){
+        $("#moreInfoPUEText").text("Hide info ");
+        $("#moreInfoPUEI").removeClass("fa-arrow-circle-right").addClass("fa-arrow-circle-down");
+        
+    }
+    else {
+        $("#moreInfoPUEText").text("More info ");
+        $("#moreInfoPUEI").removeClass("fa-arrow-circle-down").addClass("fa fa-arrow-circle-right");
+    }
+});
+
+function changeSize(){
+    if ($(window).width() <= 1024) {
+        $(".col-md-3").addClass("col-md-6");
+        $(".col-md-6").removeClass("col-md-3");
+    }
+    else{
+        $(".col-md-6").addClass("col-md-3");
+        $(".col-md-3").removeClass("col-md-6");
+    }
+}
+	//just for a test
+	$(document).ready(function() {
+		//alert("page loaded!");
+		changeSize();
+		setTimeout(intervalrefresh, 5000);
+		setInterval(intervalrefresh, 60000);//1 min
+	});
+
+	DURATION_TIME = 2000
+  
+	function setGagueChartOption(Option) {
+		Option = {
+	        tooltip : {
+	            formatter: "{a} <br/>{c} : {b}"
+	                },
+			toolbox : {
+				show : false,
+				feature : {
+					mark : {
+						show : true
+					},
+					restore : {
+						show : true
+					},
+					saveAsImage : {
+						show : true
+					}
+				}
+			},
+			series : [ {
+				type : 'gauge',
+                splitNumber: 10, 
+				radius : [ 0, '95%' ],
+
+				axisLine : {
+					show : true,
+					lineStyle : {
+						width : 8
+					}
+				},
+				axisTick : {
+					show : true,
+					splitNumber : 5,
+					length : 12,
+					lineStyle : {
+						color : 'auto',
+					}
+				},
+				axisLabel : {
+					textStyle : {
+						color : 'auto',
+						fontSize : 12
+					}
+				},
+				splitLine : {
+					show : true,
+					length : 13,
+					lineStyle : {
+						color : 'auto',
+						width : 2,
+						type : 'solid'
+					}
+				},
+				pointer : {
+					width : 5,
+					color : 'auto'
+				},
+				title : {
+					show : true,
+					offsetCenter : [ 0, '-40%' ],
+					textStyle : {
+						color : '#333',
+						fontWeight : 'bolder',
+						fontSize : 14
+					}
+				},
+				detail : {
+					show : true,
+					formatter:'{data.value}',
+					backgroundColor : 'rgba(0,0,0,0)',
+					offsetCenter : [ 0, '45%' ],
+					borderWidth : 0,
+					borderColor : '#ccc',
+					textStyle : {
+						color : 'auto',
+						fontWeight : 'bolder',
+						fontSize : 12,
+					}
+				},
+				data : [ {
+					value : 1.5,
+				} ]
+			} ],
+			animationDuration : DURATION_TIME,
+		};
+		return Option
+	}
+    function initialPUEChart(){
+        var pueGaugeChart = echarts.init(document.getElementById('gaugePUE'));
+        var gaugePueOption = {}; 
+        gaugePueOption = setGagueChartOption(gaugePueOption);
+        gaugePueOption.tooltip.formatter = "{a} <br/>{b} : {c}";
+        gaugePueOption.series[0].name = 'PUE';
+        gaugePueOption.series[0].min = 1;
+        gaugePueOption.series[0].max = 3;
+        gaugePueOption.series[0].axisLine.lineStyle.color = [[0.5, '#5CB85C'],[0.667, '#F8BE53'],[1, '#D9534F']];
+        gaugePueOption.series[0].detail.formatter = '{value}';
+        gaugePueOption.series[0].data[0].name = 'PUE';
+        gaugePueOption.series[0].data[0].value = 'Loading...?'; 
+        pueGaugeChart.setOption(gaugePueOption,true);
+        return [gaugePueOption, pueGaugeChart];
+    }
+    
+    function initialCO2Chart(){
+        var co2GaugeChart = echarts.init(document.getElementById('gaugeCo2'));
+        var gaugeCo2Option = {}; 
+        gaugeCo2Option = setGagueChartOption(gaugeCo2Option);
+        gaugeCo2Option.tooltip.formatter = "{a} <br/>{b} : {c}";
+        gaugeCo2Option.series[0].name = 'CO2';
+        gaugeCo2Option.series[0].min = 300;
+        gaugeCo2Option.series[0].max = 600;
+        gaugeCo2Option.series[0].axisLine.lineStyle.color = [[0.8, '#5CB85C'],[1, '#D9534F']];
+        gaugeCo2Option.series[0].detail.formatter = '{value}';
+        gaugeCo2Option.series[0].data[0].name = 'CO2\nkg/hour';
+        gaugeCo2Option.series[0].data[0].value = 'Loading...?'; 
+        co2GaugeChart.setOption(gaugeCo2Option,true);
+        return [gaugeCo2Option, co2GaugeChart];
+    }   
+    function initialEfficiencyChart(){
+        var efficiencyGaugeChart = echarts.init(document.getElementById('gaugeEfficiency'));
+        var gaugeEfficiencyOption = {}; 
+        gaugeEfficiencyOption = setGagueChartOption(gaugeEfficiencyOption);
+        gaugeEfficiencyOption.tooltip.formatter = "{a} <br/>{b} : {c}%";
+        gaugeEfficiencyOption.series[0].name = 'Efficiency';
+        gaugeEfficiencyOption.series[0].min = 0;
+        gaugeEfficiencyOption.series[0].max = 100;
+        gaugeEfficiencyOption.series[0].axisLine.lineStyle.color = [[0.7, '#D9534F'],[0.85, '#F8BE53'],[1, '#5CB85C']]; 
+        gaugeEfficiencyOption.series[0].detail.formatter = '{value}';
+        gaugeEfficiencyOption.series[0].data[0].name = 'Efficiency\n%';
+        gaugeEfficiencyOption.series[0].data[0].value = 'Loading...?'; 
+        efficiencyGaugeChart.setOption(gaugeEfficiencyOption,true);
+        return [gaugeEfficiencyOption, efficiencyGaugeChart];
+    }
+    function initialLoadChart(){
+        var loadGaugeChart = echarts.init(document.getElementById('gaugeLoad'));
+        var gaugeLoadOption = {}; 
+        gaugeLoadOption = setGagueChartOption(gaugeLoadOption);
+        gaugeLoadOption.tooltip.formatter = "{a} <br/>{b} : {c}kW";
+        gaugeLoadOption.series[0].name = 'Power';
+        gaugeLoadOption.series[0].min = 0;
+        gaugeLoadOption.series[0].max = 1600;
+        gaugeLoadOption.series[0].axisLine.lineStyle.color = [[0.4, '#F8BE53'],[0.9, '#5CB85C'],[1, '#D9534F']];
+        gaugeLoadOption.series[0].detail.formatter = '{value}';
+        gaugeLoadOption.series[0].data[0].name = 'Power\nkW';
+        gaugeLoadOption.series[0].data[0].value = 'Loading...?'; 
+        loadGaugeChart.setOption(gaugeLoadOption,true);
+        return [gaugeLoadOption, loadGaugeChart];
+    }  	
+    var temp = []
+    temp = initialPUEChart();
+    var gaugePueOption = temp[0];
+    var pueGaugeChart = temp[1];
+    temp = initialCO2Chart();
+    var gaugeCo2Option = temp[0];
+    var co2GaugeChart = temp[1];   
+    temp = initialEfficiencyChart();
+    var gaugeEfficiencyOption = temp[0];
+    var efficiencyGaugeChart = temp[1];
+    temp = initialLoadChart();
+    var gaugeLoadOption = temp[0];
+    var loadGaugeChart = temp[1];
+	// -------------------------------------------
+	var intervalTime = 60000; //1 mimutes
+
+	function generateTable(tableID, dataArray) {
+		var row = dataArray.length;
+		var column = dataArray[0].length;
+
+		for (var i = 0; i < row; i++) {
+			var tr = $("<tr></tr>");
+			tr.appendTo(tableID);
+			// generate each Row
+			for (var j = 0; j < column; j++) {
+				var td = $("<td>" + dataArray[i][j] + "</td>");
+				td.appendTo(tr);
+			}
+		}
+	}
+
+	function intervalrefresh() {
+		var myDate1 = new Date();
+
+	    $.ajax({
+					type : "POST",
+					url : "/intervalrefresh/",
+					data : {
+						"siteUrl" : location.href
+					},
+					dataType : "json",
+					success : function(json) {
+						if (json.deltaMinutes > 5) {
+							gaugePueOption.series[0].min = 0;
+							gaugeCo2Option.series[0].min = 0;
+							$("#errors").text("Lost EMS for " + json.deltaMinutes + " minutes!");
+							$("#errors").show();
+						} else {
+							$("#errors").hide();
+							gaugePueOption.series[0].min = 1;
+							gaugeCo2Option.series[0].min = 200;
+						}
+
+						//for PUE meter
+						gaugePueOption.series[0].detail.textStyle.fontSize = 18;
+						gaugePueOption.series[0].data[0].value = json.realTimePUE;
+						pueGaugeChart.setOption(gaugePueOption, true);
+
+						//for Efficiency meter
+						gaugeEfficiencyOption.series[0].detail.textStyle.fontSize = 18;
+						gaugeEfficiencyOption.series[0].data[0].value = json.realTimeEfficiency;
+						efficiencyGaugeChart.setOption(gaugeEfficiencyOption,true);
+						
+						//for CO2 meter
+						gaugeCo2Option.series[0].detail.textStyle.fontSize = 18;
+						gaugeCo2Option.series[0].data[0].value = json.realTimeCO2;
+						co2GaugeChart.setOption(gaugeCo2Option, true);
+
+						//for Load meter
+						gaugeLoadOption.series[0].detail.textStyle.fontSize = 18;
+						gaugeLoadOption.series[0].data[0].value = json.siteAbsoluteLoad;
+						var loadGaugeData = json.realTimeLoad;
+						loadGaugeChart.setOption(gaugeLoadOption, true);
+
+						//for the PUE table
+						if (json.PUETable!=''){
+		                     $("#tbPUE tr:not(:first)").remove();
+		                     generateTable(tbPUE, json.PUETable);
+						}
+
+						//for the Efficiency table
+						if (json.efficiencyTable!=''){
+							$("#tbEfficiency tr:not(:first)").remove();
+							generateTable(tbEfficiency, json.efficiencyTable);
+						}					
+						//for the Load table
+                        if (json.loadTable!=''){						
+							$("#tbLoad tr:not(:first)").remove();
+							generateTable(tbLoad, json.loadTable);
+                        }
+						// ----------- Start of alarm part -------------
+
+			            var status_flag = json.status_flag;
+			            var tabalarm_details = json.alarm_details;
+			            var tabalarm_color = json.alarm_color;
+			            if (status_flag[0] != 0 || status_flag[1] != 0 || status_flag[2] != 0 || status_flag[3] != 0) {
+			                $("#all_alarm").show();
+			                var tabalarm=document.getElementById('tab_all_alarm');
+			                var rowno = tabalarm.rows.length;
+			                for(var i=0; i<rowno; i++) {
+			                    tabalarm.deleteRow(0);
+			                }       
+			                for (var i=0; i<4; i++){
+			                    var row_alarm = tabalarm_details[i].length;
+			                    for (var j=0; j<row_alarm; j++) {
+			                        obj1 = tabalarm.insertRow(0);
+			                        obj2 = obj1.insertCell(0);
+			                        if (tabalarm_color[i][j] == 1) {
+			                            obj2.innerHTML="<i style=\"color:orange\" class=\"fa fa-exclamation-circle\" ></i>&nbsp&nbsp&nbsp" + tabalarm_details[i][j];
+			                        }
+			                        if (tabalarm_color[i][j] == 2) {
+			                            obj2.innerHTML="<i style=\"color:red\" class=\"fa fa-exclamation-circle\"></i>&nbsp&nbsp&nbsp" + tabalarm_details[i][j];
+			                        }
+			                    }   
+			                }
+			                
+			            }
+			            else {
+			                $("#all_alarm").hide();
+			            }
+						if (status_flag[0] == 0) {
+							document.getElementById('city').src = "../../static/images/icons/alarm_green.png";
+							document.getElementById('city').alt = "Normal";
+						}
+						if (status_flag[0] == 1) {
+							document.getElementById('city').src = "../../static/images/icons/alarm_yellow.png";
+							document.getElementById('city').alt = "Alarm";
+						}
+						if (status_flag[0] == 2) {
+							document.getElementById('city').src = "../../static/images/icons/alarm_red.png";
+							document.getElementById('city').alt = "Alert";
+						}
+						if (status_flag[0] == 3) {
+							document.getElementById('city').src = "../../static/images/icons/alarm_grey.png";
+							document.getElementById('city').alt = "Disable";
+						}
+						if (status_flag[1] == 0) {
+							document.getElementById('ups').src = "../../static/images/icons/alarm_green.png";
+							document.getElementById('ups').alt = "Normal";
+						}
+						if (status_flag[1] == 1) {
+							document.getElementById('ups').src = "../../static/images/icons/alarm_yellow.png";
+							document.getElementById('ups').alt = "Alarm";
+						}
+						if (status_flag[1] == 2) {
+							document.getElementById('ups').src = "../../static/images/icons/alarm_red.png";
+							document.getElementById('ups').alt = "Alert";
+						}
+						if (status_flag[1] == 3) {
+							document.getElementById('ups').src = "../../static/images/icons/alarm_grey.png";
+							document.getElementById('ups').alt = "Disable";
+						}
+						if (status_flag[2] == 0) {
+							document.getElementById('dc').src = "../../static/images/icons/alarm_green.png";
+							document.getElementById('dc').alt = "Normal";
+						}
+						if (status_flag[2] == 1) {
+							document.getElementById('dc').src = "../../static/images/icons/alarm_yellow.png";
+							document.getElementById('dc').alt = "Alarm";
+						}
+						if (status_flag[2] == 2) {
+							document.getElementById('dc').src = "../../static/images/icons/alarm_red.png";
+							document.getElementById('dc').alt = "Alert";
+						}
+						if (status_flag[2] == 3) {
+							document.getElementById('dc').src = "../../static/images/icons/alarm_grey.png";
+							document.getElementById('dc').alt = "Disable";
+						}
+						if (status_flag[3] == 0) {
+							document.getElementById('cooling').src = "../../static/images/icons/alarm_green.png";
+							document.getElementById('cooling').alt = "Normal";
+						}
+						if (status_flag[3] == 1) {
+							document.getElementById('cooling').src = "../../static/images/icons/alarm_yellow.png";
+							document.getElementById('cooling').alt = "Alarm";
+						}
+						if (status_flag[3] == 2) {
+							document.getElementById('cooling').src = "../../static/images/icons/alarm_red.png";
+							document.getElementById('cooling').alt = "Alert";
+						}
+						if (status_flag[3] == 3) {
+							document.getElementById('cooling').src = "../../static/images/icons/alarm_grey.png";
+							document.getElementById('cooling').alt = "Disable";
+						}
+						document.getElementById('temp').src = "../../static/images/icons/alarm_grey.png";
+						document.getElementById('temp').alt = "Disable";
+
+						tablogs = document.getElementById('logs');
+						rowno = tablogs.rows.length;
+						for (var i = 0; i < rowno; i++) {
+							tablogs.deleteRow(0);
+						}
+						logs = json.alarm_logs;
+						row_logs = logs.length;
+						for (var i = row_logs - 1; i >= 0; i--) {
+							obj1 = tablogs.insertRow(0);
+							obj2 = obj1.insertCell(0);
+							obj2.innerHTML = logs[i];
+						}
+						// ----------- End of alarm part ---------------
+					}// return Jason end here.	
+					
+				})
+	}
+    setInterval(intervalrefresh(), intervalTime);
+</script>
+<!-- End he PUE Gauge Chart ------------------------------------------------------------------------------------- -->

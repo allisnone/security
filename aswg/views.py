@@ -2,6 +2,11 @@ from django.shortcuts import render,redirect
 from . import models
 from aiohttp.client import request
 # Create your views here.
+
+def base(request):
+    
+    return render(request,'zscaler.html')
+
 def get_classes(request):
     portlists=models.chkportinfo.objects.all()
     return render(request,'get_classes.html',{'portlists':portlists})
@@ -36,7 +41,10 @@ def edit_classes(request):
         return redirect('/get_classes.html')
 
 def login(request):
-    return redirect('/login.html')
+    return redirect('login.html')
+
+def logout(request):
+    return redirect('logout.html')
 
 def index(request):
     return redirect('/index.html')

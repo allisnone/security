@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name = "viewport" content = "user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+
+  <title>Free, Instant Security Scan - It's 100% Safe | Zscaler</title>
+  <meta name="description" content="Receive an instant risk assessment to see how effectively you are stopping threats, protecting your users and safeguarding your company's intellectual property. "/>
+
+  <meta charset="utf-8">
+	<link rel="icon" href="versions/zscaler/favicon.ico">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <noscript>
+      <meta http-equiv="refresh" content="0; url=error.php?err=1">
+  </noscript>
+  <script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/cookie.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <script src="js/check.js" type="text/javascript"></script>
+  <script src="js/init.js" type="text/javascript"></script>
+
+  <script type="text/javascript">
+
+    window.onerror = function(msg, url, line)
+    {
+    	var _post={"msg":msg,"url":url,"line":line};
+      $.ajax({
+
+        	 type: 'POST',
+        	 url: 'log.php',
+       	 cache: false,
+       	 data: _post,
+        	 success: function(data, textStatus, jqXHR) {
+  		},
+       	 error: function(jqXHR, textStatus, errorThrown){
+  			},
+        	 complete: function(jqXHR, textStatus){
+
+        	 }
+
+      	});
+      return true;
+    }
+
+  </script><style>.securitysprite, .compliancesprite, .dataprotectionsprite {background-image: url("versions/zscaler/testIcon220px.png"); }.xss, .botnet, .zipped, .cookie, .exe, .malicious, .phishing, .virus, .security-icon-lock, .ano, .reg, .ssn, .cc, .source, .ip, .eicar, .adult {
+	  background-image: url("versions/zscaler/resultIcon120px.png");}</style>
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+
+<!--[if ie]>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.2/jquery.xdomainrequest.min.js" type="text/javascript"></script>
+<![endif]-->
+
+<body >
+
+  <!-- Google Tag Manager -->
+  <noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5SLZFK"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(), event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5SLZFK');</script>
+  <!-- End Google Tag Manager -->
+
+  <!--[if lte IE 7]> <div class="ie" id="zest"><div> <![endif]-->
+
+
+  <div id="test-loader" >
+    <img style="z-index: 10; position: absolute; width: 160px;" src="images/modal-loader.gif">
+  </div>
+
+<div id="header"><!-- Navbar -->
+<nav id="navbarHeader" class="navbar navbar-default nav-down" role="navigation" style="height:60px; width: 100%; z-index: 10; position: fixed; top: 0; transition: top 0.2s ease-in-out; background-color: #ffffff; box-shadow: 0 5px 6px -6px rgb(226, 226, 226);">
+  <div class="container" style="padding:5px 0;">
+<div class="navbar-header">
+	      <div style="font-size: 18px;font-weight: 500; display: inline-flex;">
+	      <a class="navbar-brand" href="/" style="padding: 10px 10px; cursor:pointer;">
+	        <img alt="Zscaler-logo"  src="versions/zscaler/logo.png" class="vertical-align">
+
+	      </a>
+	      <span style="font-size:20px; padding: 13px 0; color: #2A2C30">Security Preview</span>
+	      </div>
+	    </div>
+			<div class="btn-group" role="group" style="float:right; margin:7px;">
+				<button id="reportNavbarButton" type="button" class="btn" style="color:#ffffff; background-color:#009CDA;padding:6px 10px; font-size: 16px; margin-right:110px; display:none;" onclick="openEmailModal('report','zscaler','Request the Complete Report','We hope this preview is helpful. To get additional details, provide us the following information. We will email you the full assessment, along with actions you can take to improve your security posture.')">Get Recommendation Report</button>
+			</div>
+  </div>
+</nav></div>
+<div id="main" style=""><!-- First Container -->
+<div class=" bg-1 text-center vertical-center" style="background-image: url(images/landingpageBackgroundImages.png); background-size: cover; min-height:71vh">
+  <div class="container">
+    <div class="row">
+      <div style="padding-top:50px; padding-bottom:50px" class="col-sm-12 text-center" >
+        <h2 style="padding:20px; font-size:32px; font-weight:500;">How good is your internet security?</h2>
+        <p style="width:65%;padding-bottom:40px; font-weight:400; font-size:18px;">Get a quick assessment of the strength of your Internet security. You will see how well your security infrastructure can stop threats, protect your users, and safeguard your company data. It will also provide recommendations on how to close any gaps that are found.</p>
+        <div class="btn-group" role="group">
+          <button id="runTest" type="button" class="btn" style="color:#ffffff; background-color:#009CDA;padding:8px 0; font-size: 16px; width:233px;" autofocus>Check Your Security Now</button>
+        </div>
+        <p style="font-weight:400; text-align: center; font-size: 16px; padding:20px">It's free, confidential, and safe.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Second Container -->
+<div class="bg-2 text-center">
+  <div class="container">
+    <h4 style="color: #2A2C30">Why take the test?</h4>
+    <p style="width:100%; color: #2A2C30; padding-top:15px; padding-bottom:15px;">Despite costly on-premises security appliances (such as Cisco, Symantec/Blue Coat, Websense/Forecepoint, McAfee, Check Point, FireEye, Fortinet, Palo Alto Networks) many enterprise networks still remain vulnerable due to functionality, performance, or misconfiguration issues. With a global security cloud that processes billions of security requests every day, Zscaler instantly scans and pinpoints security gaps other security solutions often miss and can help you take corrective action today.<br/><br/><div style="font-style:italic; font-size:14px;">Security preview runs in your browser, and won't access your data, change any settings, or introduce malware. You might see alerts in your security system.</div></p>
+
+  </div>
+</div>
+
+</div>
+<div id="loadResult" style="background-color:#EFEFF0; display:none; min-height:85vh;">
+<div class="container" style="display:flex; padding: 35px 0px 15px 0px;">
+  <div  style="width:33%; text-align:left; font-size: 18px; color: #2A2C30; font-weight:500;">
+    Summary
+  </div>
+  <div style="width:34%; text-align:center;font-size: 13px; color:#2A2C30"><span>
+    Aug 19, 2018  04:43 am UTC
+  </span>
+  </div>
+  <div id="showTestFilter" style="width:33%; text-align:right;  margin-top:-8px; display:none;" >
+  <button id="showAllTest" type="button" class="btn btn-link" style="font-size: 13px; color: #2A2C30; text-decoration: none" disabled>Show All Tests</button> |
+  <button id="showFailTest" type="button" class="btn btn-link" style="font-size: 13px; color: #009CDA; text-decoration: none" disabled>Show Failed Tests</button>
+  </div>
+</div>
+
+<!--  Testresult -->
+<div class="container" style="padding:0; box-shadow: 0 0px 6px -1px rgb(226, 226, 226); border-radius: 5px;">
+  <div id="row"><div class="test-result-div col-xs-12 col-sm-12 col-md-4 col-lg-4" style="display:flex; background-color:#ffffff;"><div class="horizontal-align" style="width:255px;">
+    <div style="width:100%; text-align:center;">
+      <span style="font-size:16px; color: #2A2C30; font-weight:400;">
+        Security Assessment
+      </span>
+      <div class="horizontal-align" style="margin: 10px 12px;">
+      <div style="display:flex;">
+        <img id="securityGradeLoader" src="images/loader.png" style="width:60px; height:60px; margin:12px 0;">
+        <div style="margin: 0 0 0 8%; width: 35%;">
+          <img src="images/fail.png" style="height:16px; width:16px; margin: 26px 6px 8px 0px;">
+          <p id="FailCountSecurity" style="color:#D82D24; font-size:20px; display:inline; top:13px; position:relative;">0</p>
+          <span style="display:block; color: #4C4F54; word-wrap: break-word;">Failed</span>
+        </div>
+        <div style="margin: 0 8% 0 0%; width:25%;">
+          <img src="images/pass.png" style="height:16px; width:16px; margin: 26px 6px 8px 0px;">
+          <p id="PassCountSecurity" style="color:#399C1D; font-size:20px; display:inline; top:13px; position:relative;">0</p>
+          <span style="display:block; color: #4C4F54;">Passed</span>
+        </div>
+      </div>
+      </div>
+      <span style="display:block;">
+        <p style="font-size: 11px; color:#77797C;" class="text-center">Apply to Threat Prevention and Access Control test</p>
+      </span>
+    </div>
+
+
+    </div>
+  </div><div class="test-result-div col-xs-12 col-sm-12 col-md-4 col-lg-4" style="background-color:#ffffff;">
+  <div class="horizontal-align" style="width:255px;">
+    <div style="width:100%; text-align:center;">
+      <span style="font-size:16px; color: #2A2C30; font-weight:400;">
+        Data Protection
+      </span>
+      <div class="horizontal-align" style="margin: 10px 12px;">
+      <div style="display:flex;">
+        <img id="dataProtectionLoader" src="images/loader.png" style="width:60px; height:60px; margin:12px 0;">
+        <div style="margin: 0 0 0 8%; width: 35%;">
+          <img src="images/fail.png" style="height:16px; width:16px; margin: 26px 6px 8px 0px;">
+          <p id="FailCountData" style="color:#D82D24; font-size:20px; display:inline; top:13px; position:relative;">0</p>
+          <span style="display:block; color: #4C4F54; word-wrap: break-word;">Failed</span>
+        </div>
+        <div style="margin: 0 8% 0 0%; width:25%;">
+          <img src="images/pass.png" style="height:16px; width:16px; margin: 26px 6px 8px 0px;">
+          <p id="PassCountData" style="color:#399C1D; font-size:20px; display:inline; top:13px; position:relative;">0</p>
+          <span style="display:block; color: #4C4F54;">Passed</span>
+        </div>
+      </div>
+      </div>
+      <span style="display:block;">
+        <p style="font-size: 11px; color:#77797C;" class="text-center">Apply to Data Protection test</p>
+      </span>
+    </div>
+
+
+  </div>
+
+
+
+  </div><div id="loadingBlock" class="test-result-div col-xs-12 col-sm-12 col-md-4 col-lg-4" style="border-left: 24px solid #EFEFF0; background-color:#ffffff;"><p id="loading" style="margin: 10px 7%; font-size:13px; color:#4C4F54;">Loading...</p>
+    <div style="margin: 0 7%; top:50%; position:absolute; width:100%; display:flex;">
+      <div id="progress">
+
+        <div id="loader-bar" style="width:0%;background-color: #009CDA; height:5px"></div>
+
+      </div>
+      <div id="loader-info" style="margin: -12px 20px; font-size:20px; color:#009CDA;">0%</div>
+    </div>
+  </div><div id="emailBlock" class="test-result-div  col-xs-12 col-sm-12 col-md-4 col-lg-4" style="border-left: 24px solid #EFEFF0; display:none; background-color:#ffffff;"><div style="display:flex; margin: 0 auto; width:360px; margin-bottom:10px; font-size:13px; margin-top:3px;">
+      <img src="images/thumbnail_report.png" style="height:92px; width:70px; margin-left:56px; margin-right:16px">
+      <div style="text-align: left; margin-top:3px">
+        <div style="height:22px;"><i class="fa fa-check" aria-hidden="true" style="color:#399C1D; margin-right:8px;"></i>Full test results</div>
+        <div style="height:22px;"><i class="fa fa-check" aria-hidden="true" style="color:#399C1D; margin-right:8px;"></i>Assessment details</div>
+        <div style="height:22px;"><i class="fa fa-check" aria-hidden="true" style="color:#399C1D; margin-right:8px;"></i>Security recommendations</div>
+        <div style="height:22px;"><button id="sampleReport" type="button" class="btn btn-link" style="font-size:13px; padding:0; margin-left:20px; color:#009CDA; text-decoration: none" data-toggle="modal" data-target="#sampleReportModal">See Sample Report</button></div>
+      </div>
+
+    </div>
+
+    <input type="button" class="btn" style="font-weight:300; color:#ffffff; background-color:#009CDA; height: 36px; font-size:16px;" value="Get Recommendation Report" onclick="openEmailModal('report','zscaler','Request the Complete Report','We hope this preview is helpful. To get additional details, provide us the following information. We will email you the full assessment, along with actions you can take to improve your security posture.')">
+    <div id="emailInfo" style="display:none; padding:7px; font-size:11px;">Your report has been sent to <span id="emailSentTo" rel="comments" data-content='<div style="font-size:11px;min-width:120px"><div><span style="color: #939393; display:inline-block; width:65px;">First Name:</span><span id="fnamePopover" style="color:#2A2C30"></span></div><div><span style="color: #939393; display:inline-block; width:65px;">Last Name:</span><span id="lnamePopover" style="color:#2A2C30"></span></div><div><span style="color: #939393; display:inline-block; width:65px;">Country:</span><span id="countryPopover" style="color:#2A2C30"></span></div><div><span style="color: #939393; display:inline-block; width:65px;">Company:</span><span id="companyPopover" style="color:#2A2C30"></span></div></div>' style="color:#009CDA"></span></div>
+
+  </div>
+  </div>
+
+
+</div>
+
+<div class="clearfloat" style="min-height:28px"></div>
+
+<div id="loadResultDiv" class="container" style="padding:0;">
+  <div id="threatPrevention" class="container" style="display:none;padding:0;">
+    <div style="font-size: 21px; font-weight:500; margin-bottom:10px;">Security Assessment</div>
+    <div style="display:flex;">
+    <div id="threatPreventionClick" style="display:flex; cursor:pointer; width:32%; color:#009CDA;">
+      <div id="threatPreventionGlyphicon" class="fa fa-chevron-down" style="padding:4px; padding-right: 8px;"></div>
+      <div  style="font-size: 17px; font-weight:500;">Threat Prevention</div>
+    </div>
+
+    <div id="threatPreventionResult" style="display:none; width:50%; ">
+      <div style="display:flex;">
+        <img src="images/fail.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="threatPreventionFailCount">0</span> Failed Tests
+        </p>
+      </div>
+      <div style="display:flex; margin-left:3%;">
+        <img src="images/pass.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="threatPreventionPassCount">0</span> Passed Tests
+        </p>
+      </div>
+    </div>
+    </div>
+
+  </div>
+  <div id="threatPreventionDivider" class="container" style="border-bottom: 1px solid #ccc; margin:15px auto; display:none;"></div>
+
+  <div id="threatPreventionBlock">
+    <div id="threatPreventionLabels" style="display:none; padding: 16px 12px 8px 12px; color: #939393">
+      <div style="width:6%" class="text-center">
+        <p style="font-size:11px;" class="vertical-align">STATUS</p>
+      </div>
+      <div style="width:25%; text-align:left" >
+        <p style="font-size:11px;" class="vertical-align">TEST NAME</p>
+      </div>
+      <div style="width:10%" class="text-center" >
+      </div>
+      <div style="width:40%; text-align:left">
+        <p style="font-size:11px;" class="vertical-align">TEST DETAILS</p>
+      </div>
+    </div>
+    <div id="threatAll"></div>
+    <div id="threatFail"></div>
+    <div id="threatPass"></div>
+
+  </div>
+  <div id="threatPreventionClearfloat" style="min-height:18px"></div>
+
+  <div id="accessControl" class="container" style="display:none;padding:0;">
+    <div style="display:flex;">
+
+    <div id="accessControlClick" style="display:flex; cursor:pointer; width:32%; color:#009CDA;">
+      <div id="accessControlGlyphicon" class="fa fa-chevron-down" style="padding:4px; padding-right: 8px;"></div>
+      <div style="font-size: 17px; font-weight:500;">Access Control</div>
+    </div>
+
+
+
+    <div id="accessControlResult" style="display:none; width:48%;">
+      <div style="display:flex;">
+        <img src="images/fail.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="accessControlFailCount">0</span> Failed Tests
+        </p>
+      </div>
+      <div style="display:flex; margin-left:3%;">
+        <img src="images/pass.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="accessControlPassCount">0</span> Passed Tests
+        </p>
+      </div>
+    </div>
+    </div>
+
+  </div>
+  <div id="accessControlDivider" class="container" style="border-bottom: 1px solid #ccc; margin:15px auto; display:none;"></div>
+
+  <div id="accessControlBlock">
+  <div id="accessControlLabels" style="display:none; padding: 16px 12px 8px 12px; color: #939393">
+    <div style="width:6%" class="text-center">
+      <p style="font-size:11px;" class="vertical-align">STATUS</p>
+    </div>
+    <div style="width:25%; text-align:left" >
+      <p style="font-size:11px;" class="vertical-align">TEST NAME</p>
+    </div>
+    <div style="width:10%" class="text-center" >
+    </div>
+    <div style="width:40%; text-align:left">
+      <p style="font-size:11px;" class="vertical-align">TEST DETAILS</p>
+    </div>
+  </div>
+  <div id="accessAll"></div>
+  <div id="accessFail"></div>
+  <div id="accessPass"></div>
+  </div>
+
+  <div id="accessControlClearfloat" style="min-height:18px"></div>
+
+
+  <div id="dataProtection" class="container" style="display:none;padding:0;">
+    <div style="font-size: 21px; font-weight:500; margin-bottom:10px;">Data Protection Assessment</div>
+    <div style="display:flex;">
+    <div id="dataProtectionClick" style="display:flex; cursor:pointer; width:32%; color:#009CDA;">
+      <div id="dataProtectionGlyphicon" class="fa fa-chevron-down" style="padding:4px; padding-right: 8px;"></div>
+      <div style="font-size: 17px; font-weight:500;">Data Protection</div>
+    </div>
+
+    <div id="dataProtectionResult" style="display:none; width:48%;">
+      <div style="display:flex;">
+        <img src="images/fail.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="dataProtectionFailCount">0</span> Failed Tests
+        </p>
+      </div>
+      <div style="display:flex; margin-left:3%;">
+        <img src="images/pass.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="dataProtectionPassCount">0</span> Passed Tests
+        </p>
+      </div>
+    </div>
+    </div>
+
+  </div>
+
+  <div id="dataprotectionBlock">
+  <div id="dataprotectionLabels" style="display:none; padding: 16px 12px 8px 12px; color: #939393">
+    <div style="width:6%" class="text-center">
+      <p style="font-size:11px;" class="vertical-align">STATUS</p>
+    </div>
+    <div style="width:25%; text-align:left" >
+      <p style="font-size:11px;" class="vertical-align">TEST NAME</p>
+    </div>
+    <div style="width:10%" class="text-center" >
+    </div>
+    <div style="width:40%; text-align:left">
+      <p style="font-size:11px;" class="vertical-align">TEST DETAILS</p>
+    </div>
+  </div>
+  <div id="dataAll"></div>
+  <div id="dataFail"></div>
+  <div id="dataPass"></div>
+  </div>
+</div>
+<div id="URLTest" style="opacity:0.1; overflow:hidden; display:none"></div>
+
+<div class="clearfloat" style="min-height:55px"></div></div>
+
+
+
+<div class="modal fade" id="emailModal" role="dialog" tabindex='-1' style="overflow:auto;">
+    <div class="modal-dialog" style="width:420px; margin: auto; padding-top:60px;">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+      <div id="emailBodyModal">
+      <button type="button" class="close" data-dismiss="modal" style="margin:8px; height:30px; width:30px; opacity:1;"><i class="fa fa-close" style="font-size: xx-large; color:#009CDA; -webkit-text-stroke: 4px white;"></i></button>
+
+        <div class="text-center" style="padding: 20px 40px;">
+          <h3 id="emailTitle" class="modal-title" style="padding-top: 15px; font-weight:500;">Request the Complete Report</h3>
+        </div>
+        <div class="modal-body" style="padding: 0px 60px 15px 60px; display:block;">
+          <div style="padding-bottom:20px;" class="text-center"><img id="emailLogo" src="versions/zscaler/Requestfullreport.png"></div>
+          <p id="emailText" style="font-size:13px;">We hope this preview is helpful. In order to get additional details, please provide us the following information. We will email you the full assessment, along with actions you can take to improve your security posture.</p>
+          <br>
+          <form id="emailForm">
+          <label style="font-size:16px; margin:0; font-weight:500;">First Name</label>
+          <input id="fname" type="text" style="border:0; border-bottom:1px solid #009CDA; width:100%; padding:6px 0; font-size: 16px; font-weight: 300;" maxlength="40" placeholder="Enter your first name"/>
+          <div id="fnameerror" style="color:#ee4b33; font-weight:300; text-align:left; padding-top:6px;"></div>
+          <div class="clearfloat" style="min-height:15px"></div>
+          <label style="font-size:16px; margin:0; font-weight:500;">Last Name</label>
+          <input id="lname" type="text" style="border:0; border-bottom:1px solid #009CDA; width:100%; padding:6px 0; font-size: 16px; font-weight: 300;" maxlength="40" placeholder="Enter your last name"/>
+          <div id="lnameerror" style="color:#ee4b33; font-weight:300; text-align:left; padding-top:6px;"></div>
+          <div class="clearfloat" style="min-height:15px"></div>
+          <label style="font-size:16px; margin:0; font-weight:500;">Email</label>
+          <input id="email" type="text" style="border:0; border-bottom:1px solid #009CDA; width:100%; padding:6px 0; font-size: 16px; font-weight: 300;" maxlength="100" placeholder="Enter your email"/>
+          <div id="emailerror" style="color:#ee4b33; font-weight:300; text-align:left; padding-top:6px;"></div>
+          <div class="clearfloat" style="min-height:15px"></div>
+          <label style="font-size:16px; margin:0; font-weight:500; padding-bottom:6px;">Country</label>
+          <div id="country" class="dropdown" style="border-bottom:1px solid #009CDA; width:100%;">
+            <button id="countryButton" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false" style="color:#009CDA; width:100%; padding:6px 0; font-size: 16px; font-weight: 300;">
+              <div style="float:left;" id="countryValue">Select Country</div>
+              <span class="caret" style="position:relative; top:10px; float:right;"></span>
+            </button>
+            <ul id="countryDropdown" class="dropdown-menu" style="width:100%; overflow:auto; height:120px; padding:2px 6px;">
+            <!--<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()" style="width:100%;">-->
+            </ul>
+          </div>
+          <div id="countryerror" style="color:#ee4b33; font-weight:300; text-align:left; padding-top:6px;"></div>
+          <div class="clearfloat" style="min-height:15px"></div>
+          <label style="font-size:16px; margin:0; font-weight:500;">Company (optional)</label>
+          <input id="company" type="text" style="border:0; border-bottom:1px solid #009CDA; width:100%; padding:6px 0; font-size: 16px; font-weight: 300;" maxlength="80" placeholder="Enter your company name"/>
+          <div id="companyerror" style="color:#ee4b33; font-weight:300; text-align:left; padding-top:6px;"></div>
+          <div class="clearfloat" style="min-height:15px"></div>          <div id="listResults" style="font-size:13px;">
+            <div class="checkbox vendorCheckbox" style="background-color: white; float:left; margin: 3px 0; height:14px;">
+              <input id="checkboxCountry" type="checkbox" style="margin:0;">
+              <label style="background-color: white;"></label>
+            </div>
+            <span>
+            Yes, please keep me updated on Zscaler news, events, webcast and special offers.
+            </span>
+
+          </div>
+          <div class="clearfloat" style="min-height:15px"></div>          <span>By clicking the "Email Me The Report" button below, you agree to our 
+            <a style="color:#009CDA; word-break:break-all;" href="https://www.zscaler.com/company/privacy-policy">privacy policy.</a>
+          </span>
+          <div style=" text-align: center; padding: 16px 0">
+
+            <button id="submitMail" type="button" class="btn btn-default" style="width:100%; color:#ffffff; background-color:#009CDA; padding:8px; font-weight:300; font-size:16px;" onclick='submitMailForm([])'>Email Me The Report</button>
+          </div>
+          </form>
+          <div class="text-center" style="font-size:13px">
+        </div>
+      </div>
+      </div>
+
+      <div id="emailSuccessModal" style="display:none">
+        <img id="linkedinCode" height="1" width="1" style="display:none;" alt="" src="none.gif" />
+        <div class="text-center" style="padding: 15px 15px;">
+          <button type="button" class="close" data-dismiss="modal" style="margin:-8px; height:30px; width:30px; opacity:1;"><i class="fa fa-close" style="font-size: xx-large; color:#009CDA; -webkit-text-stroke: 4px white;"></i></button>
+        </div>
+        <div class="modal-body" style="padding: 37px 60px 15px 60px; display:block;">
+          <div class="text-center"><img src="versions/zscaler/SuccessfullyEmail.png"></div>
+          <div style="font-size:20px; text-align: center; padding: 0px 15px; font-weight: 500;"><br/>Your Zscaler Security Preview is on its way! <br/><br/>          </div>
+          <span style="font-size:16px;">
+            If you do not receive it, check your spam folder or contact us at <a href="mailto:securitypreview@zscaler.com" style="text-decoration:none; color:#009CDA;" >securitypreview@zscaler.com</a>..
+
+            <br/>
+          </span>
+          <div style=" text-align: center; padding: 16px 0">
+            <button id="successDone" type="button" class="btn btn-default" style="width:100%; color:#ffffff; background-color:#009CDA; padding:8px; font-weight:300; font-size:16px; margin: 10px 0;">Done</button>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <div id="errorEmailModal" style="display:none;">
+        <div class="text-center" style="padding: 15px 15px;">
+        <button type="button" class="close" data-dismiss="modal" style="margin:-8px; height:30px; width:30px; opacity:1;"><i class="fa fa-close" style="font-size: xx-large; color:#009CDA; -webkit-text-stroke: 4px white;"></i></button>
+        </div>
+        <div class="modal-body" style="padding: 37px 60px 15px 60px; display:block;">
+          <div class="text-center"><img src="versions/zscaler/SomethingWentWrong.png"></div>
+          <div style="font-size:20px; text-align: center; padding: 0px 15px; font-weight: 500;">
+          <br/>Sorry, something went wrong.<br/><br/>
+          </div>
+          <span style="font-size:16px;">
+            Please contact us at <a href="mailto:securitypreview@zscaler.com" style="text-decoration:none; color:#009CDA;" >securitypreview@zscaler.com</a>.
+
+            <br/>
+          </span>
+          <div style=" text-align: center; padding: 16px 0">
+            <button id="tryAgain" type="button" class="btn btn-default" style="width:100%; color:#ffffff; background-color:#009CDA; padding:8px; font-weight:300; font-size:16px; margin: 10px 0;" onclick="location.href=/">Try Again</button>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+</div></div>
+  <div class="modal fade" id="sampleReportModal" role="dialog" tabindex='-1'>
+      <div class=" modal-dialog" style="width:612px; margin: auto; margin-top:80px;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+
+          <div class="sp" style="background-color:#009CDA; height:48px;width:612px;">
+          <button type="button" class="close" data-dismiss="modal" style="margin:8px; height:30px; width:30px; opacity:1;"><span class="fa fa-close" style="font-size: xx-large; color:white; -webkit-text-stroke: 4px #009CDA;"></span></button>
+
+          <div style="text-align:center; padding:10px">
+            <button id="getReportSampleButton" type="button" class="btn" data-dismiss="modal" style="margin-right: 4px;color:#009CDA; background-color:white;padding:0px 10px; font-size: 16px; height:28px;" onclick="openEmailModal('report','zscaler','Request the Complete Report','We hope this preview is helpful. To get additional details, provide us the following information. We will email you the full assessment, along with actions you can take to improve your security posture.')">Get</button>
+            <span style="color:white; font-size:16px;">the Recommendation Report</span>
+
+          </div>
+
+          </div>
+          <div style="display: inline-flex; ">
+            <img src="localiseFiles/english/sampleTestReport.png" style="height:792px; width:612px;">
+
+
+
+          </div>
+        </div>
+      </div>
+  </div></div>
+
+<div id="testInfo"></div>
+
+<div id="footer"><!-- Footer -->
+<footer class="bg-4 text-center navbar-fixed-bottom" >
+<div class="container" >
+
+  <div class="" style="text-align:left; float:left;"><span>Copyright <span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span>2007-2018 Zscaler Inc. All rights reserved.</span><span style="border: 1px solid #77797C; margin: 0 8px;"></span><a href="https://www.zscaler.com/company/privacy-policy" target="_blank" style="color:#009CDA">Privacy Policy</a>
+
+
+
+
+  </div>
+
+
+
+<div class="" style="margin-left:auto;">
+  <div style="float: right; border-radius:5px 5px 0 0; box-shadow: 0px -2px 6px 0px rgba(42,44,48,0.2);">
+    <div id="feedbackHeader" style="float:right; background-color:#2A2C30; position:relative; bottom: 0px; z-index:1; height:28px; width:264px; padding:4px 2px; border-radius:5px 5px 0 0;">
+      <div style="font-size:13px; color:#fff; padding:0 7px; font-weight:300;">
+        What do you think of our test?
+        <i id="feedbackPositive" class="fa fa-thumbs-up" aria-hidden="true" style="padding:0 12px; cursor: pointer;" onclick="feedbackPositive('Thank You. Your opinion is important to us. Any additional feedback?')"></i>
+        <i id="feedbackNegative" class="fa fa-thumbs-down" aria-hidden="true" style="cursor: pointer;" onclick="feedbackNegative('We are really sorry. Tell us what went wrong.')"></i>
+      </div>
+    </div>
+    <div id="feedbackForm" style=" width: 264px; bottom:0; position:fixed; text-align:left; background-color: white; border-radius: 5px 5px 0 0; padding:0 12px; display:none;">
+      <div id="displayMsg" style="padding:12px 0 8px 0; line-height:1.2; font-size:13px; height:50px">
+      </div>
+      <textarea id="feedbackText" class="form-control" rows="5" placeholder="How can we do better?" style="padding:8px;"></textarea>
+      <div style="padding:9px 0">
+        <input id="feedbackSubmit" type="button" class="btn" style="padding:0 16px; color:#ffffff; background-color:#009CDA; height: 28px; font-size:13px;" value="Submit" onclick="feedbackSubmit('zscaler')">
+        <button id="feedbackClose" type="button" class="btn btn-link" style="font-size:13px; padding:0; margin-left:12px; color:#009CDA; text-decoration: none" >Close</button>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+</div>
+</div>
+</footer></div>
+
+
+<!-- mkto munchkin code-->
+<script type="text/javascript">
+(function() {
+  var didInit = false;
+  function initMunchkin() {
+    if(didInit === false) {
+      didInit = true;
+      Munchkin.init('306-ZEJ-256');
+    }
+  }
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//munchkin.marketo.net/munchkin.js';
+  s.onreadystatechange = function() {
+    if (this.readyState == 'complete' || this.readyState == 'loaded') {
+      initMunchkin();
+    }
+  };
+  s.onload = initMunchkin;
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();
+</script>
+
+<!-- optimizely start -->
+<script src="//cdn.optimizely.com/js/3877582128.js"></script>
+<!-- optimizely end -->
+
+</body>
+</html>

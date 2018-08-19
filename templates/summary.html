@@ -1,0 +1,102 @@
+<div class="container" style="display:flex; padding: 35px 0px 15px 0px;">
+  <div  style="width:33%; text-align:left; font-size: 18px; color: #2A2C30; font-weight:500;">
+    Summary
+  </div>
+  <div style="width:34%; text-align:center;font-size: 13px; color:#2A2C30"><span>
+    Aug 19, 2018  04:43 am UTC
+  </span>
+  </div>
+  <div id="showTestFilter" style="width:33%; text-align:right;  margin-top:-8px; display:none;" >
+  <button id="showAllTest" type="button" class="btn btn-link" style="font-size: 13px; color: #2A2C30; text-decoration: none" disabled>Show All Tests</button> |
+  <button id="showFailTest" type="button" class="btn btn-link" style="font-size: 13px; color: #009CDA; text-decoration: none" disabled>Show Failed Tests</button>
+  </div>
+</div>
+
+<!--  Testresult -->
+<div class="container" style="padding:0; box-shadow: 0 0px 6px -1px rgb(226, 226, 226); border-radius: 5px;">
+  <div id="row"><div class="test-result-div col-xs-12 col-sm-12 col-md-4 col-lg-4" style="display:flex; background-color:#ffffff;"><div class="horizontal-align" style="width:255px;">
+    <div style="width:100%; text-align:center;">
+      <span style="font-size:16px; color: #2A2C30; font-weight:400;">
+        Security Assessment
+      </span>
+      <div class="horizontal-align" style="margin: 10px 12px;">
+      <div style="display:flex;">
+        <img id="securityGradeLoader" src="images/loader.png" style="width:60px; height:60px; margin:12px 0;">
+        <div style="margin: 0 0 0 8%; width: 35%;">
+          <img src="images/fail.png" style="height:16px; width:16px; margin: 26px 6px 8px 0px;">
+          <p id="FailCountSecurity" style="color:#D82D24; font-size:20px; display:inline; top:13px; position:relative;">0</p>
+          <span style="display:block; color: #4C4F54; word-wrap: break-word;">Failed</span>
+        </div>
+        <div style="margin: 0 8% 0 0%; width:25%;">
+          <img src="images/pass.png" style="height:16px; width:16px; margin: 26px 6px 8px 0px;">
+          <p id="PassCountSecurity" style="color:#399C1D; font-size:20px; display:inline; top:13px; position:relative;">0</p>
+          <span style="display:block; color: #4C4F54;">Passed</span>
+        </div>
+      </div>
+      </div>
+      <span style="display:block;">
+        <p style="font-size: 11px; color:#77797C;" class="text-center">Apply to Threat Prevention and Access Control test</p>
+      </span>
+    </div>
+
+
+    </div>
+  </div><div class="test-result-div col-xs-12 col-sm-12 col-md-4 col-lg-4" style="background-color:#ffffff;">
+  <div class="horizontal-align" style="width:255px;">
+    <div style="width:100%; text-align:center;">
+      <span style="font-size:16px; color: #2A2C30; font-weight:400;">
+        Data Protection
+      </span>
+      <div class="horizontal-align" style="margin: 10px 12px;">
+      <div style="display:flex;">
+        <img id="dataProtectionLoader" src="images/loader.png" style="width:60px; height:60px; margin:12px 0;">
+        <div style="margin: 0 0 0 8%; width: 35%;">
+          <img src="images/fail.png" style="height:16px; width:16px; margin: 26px 6px 8px 0px;">
+          <p id="FailCountData" style="color:#D82D24; font-size:20px; display:inline; top:13px; position:relative;">0</p>
+          <span style="display:block; color: #4C4F54; word-wrap: break-word;">Failed</span>
+        </div>
+        <div style="margin: 0 8% 0 0%; width:25%;">
+          <img src="images/pass.png" style="height:16px; width:16px; margin: 26px 6px 8px 0px;">
+          <p id="PassCountData" style="color:#399C1D; font-size:20px; display:inline; top:13px; position:relative;">0</p>
+          <span style="display:block; color: #4C4F54;">Passed</span>
+        </div>
+      </div>
+      </div>
+      <span style="display:block;">
+        <p style="font-size: 11px; color:#77797C;" class="text-center">Apply to Data Protection test</p>
+      </span>
+    </div>
+
+
+  </div>
+
+
+
+  </div><div id="loadingBlock" class="test-result-div col-xs-12 col-sm-12 col-md-4 col-lg-4" style="border-left: 24px solid #EFEFF0; background-color:#ffffff;"><p id="loading" style="margin: 10px 7%; font-size:13px; color:#4C4F54;">Loading...</p>
+    <div style="margin: 0 7%; top:50%; position:absolute; width:100%; display:flex;">
+      <div id="progress">
+
+        <div id="loader-bar" style="width:0%;background-color: #009CDA; height:5px"></div>
+
+      </div>
+      <div id="loader-info" style="margin: -12px 20px; font-size:20px; color:#009CDA;">0%</div>
+    </div>
+  </div><div id="emailBlock" class="test-result-div  col-xs-12 col-sm-12 col-md-4 col-lg-4" style="border-left: 24px solid #EFEFF0; display:none; background-color:#ffffff;"><div style="display:flex; margin: 0 auto; width:360px; margin-bottom:10px; font-size:13px; margin-top:3px;">
+      <img src="images/thumbnail_report.png" style="height:92px; width:70px; margin-left:56px; margin-right:16px">
+      <div style="text-align: left; margin-top:3px">
+        <div style="height:22px;"><i class="fa fa-check" aria-hidden="true" style="color:#399C1D; margin-right:8px;"></i>Full test results</div>
+        <div style="height:22px;"><i class="fa fa-check" aria-hidden="true" style="color:#399C1D; margin-right:8px;"></i>Assessment details</div>
+        <div style="height:22px;"><i class="fa fa-check" aria-hidden="true" style="color:#399C1D; margin-right:8px;"></i>Security recommendations</div>
+        <div style="height:22px;"><button id="sampleReport" type="button" class="btn btn-link" style="font-size:13px; padding:0; margin-left:20px; color:#009CDA; text-decoration: none" data-toggle="modal" data-target="#sampleReportModal">See Sample Report</button></div>
+      </div>
+
+    </div>
+
+    <input type="button" class="btn" style="font-weight:300; color:#ffffff; background-color:#009CDA; height: 36px; font-size:16px;" value="Get Recommendation Report" onclick="openEmailModal('report','zscaler','Request the Complete Report','We hope this preview is helpful. To get additional details, provide us the following information. We will email you the full assessment, along with actions you can take to improve your security posture.')">
+    <div id="emailInfo" style="display:none; padding:7px; font-size:11px;">Your report has been sent to <span id="emailSentTo" rel="comments" data-content='<div style="font-size:11px;min-width:120px"><div><span style="color: #939393; display:inline-block; width:65px;">First Name:</span><span id="fnamePopover" style="color:#2A2C30"></span></div><div><span style="color: #939393; display:inline-block; width:65px;">Last Name:</span><span id="lnamePopover" style="color:#2A2C30"></span></div><div><span style="color: #939393; display:inline-block; width:65px;">Country:</span><span id="countryPopover" style="color:#2A2C30"></span></div><div><span style="color: #939393; display:inline-block; width:65px;">Company:</span><span id="companyPopover" style="color:#2A2C30"></span></div></div>' style="color:#009CDA"></span></div>
+
+  </div>
+  </div>
+
+
+</div>

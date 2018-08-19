@@ -1,0 +1,100 @@
+{% extends "content.html" %}
+
+{% block title %}Report{% endblock %}
+
+{% block content %}
+<div id = "reportdiv" class = "row">
+	
+	{% include "components/selector.html" %}
+	{% include "components/total_consumption_report.html" %}
+	{% include "components/active_device_efficiency_report.html" %}
+	{% include "components/pue_report.html" %}
+	{% include "components/energy_distribution.html" %}
+	{% include "components/alarm.html" %}
+	{% include "components/dc_load_rate_report.html" %}
+	{% include "components/dc_efficiency_report.html" %}
+	{% include "components/ups_load_rate_report.html" %}			
+	{% include "components/ups_efficiency_report.html" %}
+		
+</div>
+<div id= "reporttest">
+</div>
+
+<script type="text/javascript">
+	$(".btn-flat").css("color","#FFF");
+	
+	var site_data = []
+	var menuUrl = "{% url 'report' %}";
+	SetMenuActive(menuUrl);
+	
+	HideAllCharts();
+	
+	//Query submit event
+	$("#buttonDatePicker").bind("click",function(){
+		$.ajax({
+			type : "POST",
+            url: "/getreportdata/",
+			dataType : "json",
+			data : {
+				"siteUrl" : location.href,
+				"date":$("#datetext").val(),
+				"testright": $("#testright").val(),
+				"sitename": $("#sitename_store").val()
+				},
+			beforeSend: function(){
+				ShowLoading();
+			},
+            success: function (data) {
+            	site_data = data;
+            	HideAllCharts();
+				setDataAndShow(data);
+				setHref();
+            },
+            complete: function(){
+				HideLoading();
+            },
+            error: function(){
+				alert("error");
+            }
+		});	
+	});
+
+	//Initial load page event
+	$(function() {
+
+		$.ajax({
+			type : "POST",
+            url: "/getreportdata/",
+			dataType : "json",
+			data : { "siteUrl" : location.href },
+			beforeSend: function(){
+				ShowLoading();
+			},
+            success: function (data) {
+				//initialize datepicker
+				$('#sandbox-container .input-daterange').datepicker({
+					todayBtn: false,
+					forceParse: true,
+					autoclose: true,
+					todayHighlight: true
+				});
+				$("#datetext").val(data.fromdate + ' - ' + data.todate);
+				site_data = data;
+				select_data(data);
+				setDataAndShow(data);
+				setHref();
+            },
+            complete: function(){
+				HideLoading();
+            },
+            error: function(){
+            	alert("error");
+            }
+		});
+	});
+
+
+</script>
+{% endblock %}
+
+

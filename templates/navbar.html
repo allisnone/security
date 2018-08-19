@@ -1,0 +1,60 @@
+<div class="nav-tabs-custom">
+	<ul class="nav nav-tabs" id="menu">
+		<li value = "{% url 'dashboard' %}"><a href = "#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		<li id ="report" value = "{% url 'report' %}"><a href = "#"><i class="fa fa-bar-chart-o"></i> Report</a></li>
+		<li value = "{% url 'about' %}" class="pull-right"><a href = "#"><i class="fa fa-info-circle"></i> About</a></li>
+		<li value = "{% url 'config' %}" class="pull-right"><a href = "#"><i class="fa fa-cog "></i> Config</a></li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+
+$("#menu li").bind("click", function(){
+	var menuUrl = $(this).attr("value");
+	var siteId = $('#treeview').jstree().get_selected();
+	var url = getUrl(menuUrl,siteId);
+	location.href = url;
+})
+
+/*
+ * MENU
+ * ------------
+ * This is a custom plugin for the sidebar menu. It provides a tree view.
+ */
+//  (function($) {
+// 	    "use strict";
+
+// 	    $.fn.menulist = function() {
+
+// 	        return this.each(function() {
+// 	            var btn = $(this).children("a").first();
+// 	            var isActive = $(this).hasClass('active');
+	            
+// 	            btn.click(function(e) {
+// 	                e.preventDefault();
+
+// 	                $(".nav-tabs-custom li").each(function () {
+// 	                	 	$(this).removeClass('active');
+// 	                	 	isActive = false;
+// 	                	 });
+// 	                if (!isActive) {
+// 	                    isActive = true;
+// 	                    btn.parent("li").addClass("active");
+// 	                    var menuhref = btn.attr("href");
+// 	                    location.href = getUrl(menuhref);
+// 	                }
+// 	            });
+// 	        });
+// 	    };
+// 	}(jQuery));
+ 
+// var t = $("#menu li").menulist();
+
+
+
+//$("#report").bind("click",function(){loading();});
+
+// This function is called to show the loading image
+
+</script>
+

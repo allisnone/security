@@ -32,4 +32,6 @@ urlpatterns = [
     url(r'add_classes', views.add_classes),
     url(r'del_classes', views.del_classes),
     url(r'edit_classes', views.edit_classes),
+    url(r'base', views.base),
+    url(r'logout', views.logout),
 ]

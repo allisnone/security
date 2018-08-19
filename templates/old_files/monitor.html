@@ -1,0 +1,89 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]><html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Auto EMS RealTime</title>
+
+<!-- main JS libs -->
+<script src="../../static/js/libs/modernizr.min.js"></script>
+<script src="../../static/js/libs/jquery-1.10.2.js"></script>
+<script src="../../static/js/libs/jquery-ui.min.js"></script>
+<script src="../../static/js/libs/bootstrap.min.js"></script>
+<script src="../../static/js/libs/bootstrap-datepicker.js"></script>
+
+<!-- Style CSS -->
+<link href="../../static/css/bootstrap.css" media="screen" rel="stylesheet">
+<link href="../../static/css/datepicker3.css" media="screen" rel="stylesheet">
+<link href="../../static/css/style.css" media="screen" rel="stylesheet">
+<link href="../../static/css/hidediv.css" media="screen" rel="stylesheet">
+
+<!-- scripts -->
+<script src="../../static/js/general.js"></script>
+<!-- styled select -->
+<link rel="stylesheet" href="../../static/css/cusel.css">
+<script src="../../static/js/cusel-min.js"></script>
+<!-- custom input -->
+<script src="../../static/js/jquery.customInput.js"></script>
+<script type="text/javascript" src="../../static/js/custom.js"></script>
+<!-- Placeholders -->
+<script type="text/javascript" src="../../static/js/jquery.powerful-placeholder.min.js"></script>
+
+<script type="text/javascript" src="../../static/js/echarts-all.js"></script>
+
+
+</head>
+
+<body>
+<div class="body_wrap">
+<div class="container">
+    <!-- content -->
+    <div class="content " role="main">
+    
+
+        <!-- row -->
+        <div class="row">
+          
+		<!-- Website Menu -->
+		<!-- ---------------------------------------------------------------------------------------------------- -->
+			<div class="col-sm-12">
+                <div class="dropdown-wrap">
+                    <ul class="dropdown clearfix">
+                        <li class="menu-level-0"><a href="{% url 'dashboard' %}"><span>Dashboard</span></a></li>
+                        <li class="menu-level-0"><a href="{% url 'monitor' %}"><span>Monitor</span></a></li>
+                        <li class="menu-level-0"><a href="{% url 'report' %}"><span>Report</span></a></li>
+						<li class="menu-level-0"><a href="{% url 'config' %}"><span>Config</span></a></li>
+                        <li class="menu-level-0"><a href="{% url 'about' %}"><span>About</span></a></li>
+                        <li class="menu-level-0" style="float:right;"><a href="{% url 'logout' %}"><span>Logout</span></a></li>
+                    </ul>
+                </div>
+				<!-- ---------------------------------------------------------------------------------------------------- -->
+                <!--/ Website Menu -->
+            </div>
+        </div>
+        <!--/ row -->
+		<div class="row">
+		<!--Place the Picture Here -->
+        <img src="../../static/images/monitor_picture.fw.png" alt="report" width="934" height="476"> </div>
+		
+    </div>
+
+		
+		
+ 
+</div>
+    <!--/ content -->
+	
+	
+</div>
+<!--/ container -->
+
+
+
+</body>
+</html>
+

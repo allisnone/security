@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Auto EMS | Dashboard</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <!-- bootstrap 3.0.2 -->
+        <link href="../../static/newstyle/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- font Awesome -->
+        <link href="../../static/newstyle/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- Ionicons -->
+        <link href="../../static/newstyle/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <!-- Theme style -->
+        <link href="../../static/newstyle/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+		<!-- SCO COLLAPSE -->
+		
+		
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="../../static/newstyle/js/html5shiv.js"></script>
+          <script src="../../static/newstyle/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body class="skin-blue">
+        <!-- header logo: style can be found in header.less -->
+        <header class="header">
+            <a href="#" class="logo">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+                <img src="../../static/newstyle/img/elogo_s.fw.png" />Auto EMS
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        <!-- Messages: style can be found in dropdown.less  # the message is deleted by Kenny-->
+
+                        <!-- Notifications: style can be found in dropdown.less -->
+                        <!-- Tasks: style can be found in dropdown.less -->
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span>Administrator <i class="caret"></i></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header bg-light-blue">
+                                    <img src="../../static/newstyle/img/avatar5.png" class="img-circle" alt="User Image" />
+                                    <p>
+                                        Administrator
+                                        <small>Member since Nov. 2012</small>
+                                    </p>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+		
+		
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="left-side sidebar-offcanvas">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="../../static/newstyle/img/avatar5.png" class="img-circle" alt="User Image" />
+                        </div>
+                        <div class="pull-left info">
+                            <p>Hello, Admin</p>
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+
+					
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <li>
+                            <a href="{% url 'dashboard' %}">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            </a>
+                        </li>
+						
+                        <li>
+                            <a href="{% url 'report' %}">
+                                <i class="fa fa-bar-chart-o"></i> <span>Report</span>
+                            </a>
+                        </li>					
+
+
+
+                        <li>
+                            <a href="{% url 'inline' %}">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+								<small class="badge pull-right bg-red">new</small>
+                            </a>
+                        </li>
+
+						
+                        <li class="treeview active">
+                            <a href="#">
+                                <i class="fa fa-bar-chart-o"></i>
+                                <span>Tree</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> subMenu</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> subMenu</a></li>
+                                <li  class="active"><a href="#"><i class="fa fa-angle-double-right"></i> subMenu</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-calendar"></i> <span>Calendar</span>
+                                <small class="badge pull-right bg-red">3</small>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+			
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Realtime Dashboard
+                        <small>multiple types of charts</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active">Dashborad</li>
+                    </ol>
+                </section>
+
+	
+				
+				
+				
+				
+				
+				
+                <!-- Main content -->
+                <section class="content">
+					<div class="row">
+
+
+                    
+
+                    
+
+						<!-- callout -->
+						<div class='callout callout-info'>
+							<h4>The following was created using data tags</h4>
+							<p>The following three inline (sparkline) chart have been initialized to read and interpret data tags</p>
+						</div>
+						<!-- /.callout -->
+					
+
+                    
+					
+
+
+					
+						<!-- AREA CHART -->
+						<div class="col-md-3">
+							<div class="box box-primary">
+								<div class="box-header">
+									<h3 class="box-title">PUE</h3>
+								</div>
+
+								<div class="box-body chart-responsive">
+									<div id ="gaugePUE" style="height:245px;"></div>
+									<small id = "pueText">data </small>
+								</div><!-- /.box-body -->
+							</div><!-- /.box -->
+						</div><!-- /.col -->		
+						
+						<!-- AREA CHART -->
+						<div class="col-md-3">
+							<div class="box box-primary">
+								<div class="box-header">
+									<h3 class="box-title">CO2 Emissions  <small>ton/hour</small> </h3>
+								</div>
+
+								<div class="box-body chart-responsive">
+									<div id ="gaugeCo2" style="height:245px;"></div>
+									<small id = "co2Text">data </small>
+								</div><!-- /.box-body -->
+							</div><!-- /.box -->
+						</div><!-- /.col -->	
+						
+
+
+                        <div class="col-md-3">
+                            <!-- Primary box -->
+                            <div class="box box-solid box-primary">
+                                <div class="box-header">
+                                    <h3 class="box-title">Efficiency</h3>
+                                </div>
+                                <div class="box-body chart-responsive">
+									<div id ="gaugeEfficiency" style="height:255px;"></div>
+									<small id = "efficiencyText">data</small> 									
+									<small> more detail </small>
+									<a href="#"><span data-toggle="collapse" data-target="#demo" class="caret"></span></a>
+		
+	                            </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div><!-- /.col -->
+
+                        <div class="col-md-3">
+                            <!-- Primary box -->
+                            <div class="box box-solid box-primary">
+                                <div class="box-header">
+                                    <h3 class="box-title">Power Load</h3>
+                                </div>
+                                <div class="box-body chart-responsive">
+									<div id ="gaugeLoad" style="height:255px;"></div>
+									<small  id = "loadText">data</small>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->	
+						</div><!-- /.col -->	
+						
+	
+	
+				        <div id="demo" class="col-md-12 collapse out">
+                            <!-- jQuery Knob -->
+                            <div class="box box-solid">
+                                <div class="box-header">
+                                    
+                                    <h3 class="box-title">Efficiency detail</h3>
+                                </div><!-- /.box-header -->
+								
+										
+										<h3>test</h3>
+
+                            </div><!-- /.box -->
+                        </div><!-- /.col -->		
+						
+						
+						
+						
+						
+						
+						
+						
+                    </div><!-- /.row -->						
+
+
+
+
+
+
+
+
+					
+					
+					
+					
+		
+
+
+                </section><!-- /.content -->
+	<!-- Content 2 ------------------------------------------------------------------------------------------------------------------------ -->            
+			
+			    <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Realtime Alarm
+                        <small>multiple types of charts</small>
+                    </h1>
+                </section>
+				
+
+			
+			
+			
+			</aside><!-- /.right-side -->
+        </div><!-- ./wrapper -->
+
+
+        <!-- jQuery 2.0.2 -->
+        <script src="../../static/newstyle/js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="../../static/newstyle/js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- AdminLTE App -->
+        
+
+        <!-- jQuery Knob 
+        <script src="../../static/newstyle/js/plugins/jqueryKnob/jquery.knob.js" type="text/javascript"></script>
+		-->
+		<!-- Echart.js -->
+        <script src="../../static/newstyle/js/echarts-all.js" type="text/javascript"></script>
+        <!-- Sparkline -->
+        <script src="../../static/newstyle/js/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+		<script src="../../static/newstyle/js/sco.collapse.js"></script>
+		
+
+    </body>
+		<!-- page script -->
+		<script type="text/javascript">
+		<!-- For the PUE Gauge Chart ------------------------------------------------------------------------------------- -->
+        var pueGaugeChart = echarts.init(document.getElementById('gaugePUE'));
+		var guePueOption = {
+			tooltip : {
+			formatter: "{a} <br/>{c} : {b}"
+			},
+			toolbox: {
+				show : false,
+				feature : {
+					mark : {show: true},
+					restore : {show: true},
+					saveAsImage : {show: true}
+				}
+			},
+			series : [
+			{
+				name:'PUE',
+				type:'gauge',           
+				splitNumber: 10, 
+				radius : [0, '95%'],
+				min: 1,
+				max: 3,
+
+				
+				axisLine: {           
+					show: true,        
+					lineStyle: {
+							color: [[0.4, '#9CCB2F'],[0.5, '#C3E43D'],[0.67, '#F8BE53'],[0.83, '#F6772A'],[1, '#FA3B71']], 
+							width: 14
+						}
+				},
+				axisTick: {           
+					show: true,        
+					splitNumber: 5,    
+					length :20,        
+					lineStyle: {      
+						color: 'auto',		
+			
+					}
+				},
+				axisLabel: {          
+					textStyle: {       
+						color: 'auto'
+					}
+				},
+				splitLine: {           
+					show: true,       
+					length :15,        
+					lineStyle: {       
+						color: 'auto',
+						width: 2,
+						type: 'solid'
+						}
+					},
+				pointer : {
+					width : 5,
+					color : 'auto'
+					},
+				title : {
+					show : true,
+					offsetCenter: [0,'-40%'],      
+					textStyle: {     
+						color: '#333',
+						fontWeight:'bolder',
+						fontSize : 22
+						}
+					},
+				detail : {
+					show : true,
+					formatter:'{value}',
+					backgroundColor: 'rgba(0,0,0,0)',
+					borderWidth: 0,
+					borderColor: '#ccc',				
+					textStyle: {     
+						color: 'auto',
+						fontWeight:'bolder'
+						}
+					},
+				data:[{value: 1.5, name:'PUE'}]
+			}
+		]
+	};
+
+
+
+		<!-- For the Power Efficiency Chart ------------------------------------------------------------------------------------- -->
+        var efficiencyGaugeChart = echarts.init(document.getElementById('gaugeEfficiency'));
+		var gaugeEfficiencyOption = {
+			tooltip : {
+			formatter: "{a} <br/>{c} : {b}%"
+			},
+			toolbox: {
+				show : false,
+				feature : {
+					mark : {show: true},
+					restore : {show: true},
+					saveAsImage : {show: true}
+				}
+			},
+			series : [
+			{
+				name:'Efficiency',
+				type:'gauge',           
+				splitNumber: 10, 
+				radius : [0, '95%'],
+				min: 0,
+				max: 100,
+
+				
+				axisLine: {           
+					show: true,        
+					lineStyle: {
+							color: [[0.2, '#FA3B71'],[0.5, '#F8BE53'],[0.8, '#C3E43D'],[1, '#9CCB2F']], 
+							width: 14
+						}
+				},
+				axisTick: {           
+					show: true,        
+					splitNumber: 5,    
+					length :20,        
+					lineStyle: {      
+						color: 'auto',		
+			
+					}
+				},
+				axisLabel: {          
+					textStyle: {       
+						color: 'auto'
+					}
+				},
+				splitLine: {           
+					show: true,       
+					length :15,        
+					lineStyle: {       
+						color: 'auto',
+						width: 2,
+						type: 'solid'
+						}
+					},
+				pointer : {
+					width : 5,
+					color : 'auto'
+					},
+				title : {
+					show : true,
+					offsetCenter: [0,'-40%'],      
+					textStyle: {     
+						color: '#333',
+						fontWeight:'bolder',
+						fontSize : 22
+						}
+					},
+				detail : {
+					show : true,
+					formatter:'{value}%',
+					backgroundColor: 'rgba(0,0,0,0)',
+					borderWidth: 0,
+					borderColor: '#ccc',				
+					textStyle: {     
+						color: 'auto',
+						fontWeight:'bolder',
+						
+						}
+					},
+				data:[{value: 1.5, name:'Efficiency'}]
+			}
+		]
+	};
+
+
+
+		<!-- For the CO2 Chart ------------------------------------------------------------------------------------- -->
+        var co2GaugeChart = echarts.init(document.getElementById('gaugeCo2'));
+		var gaugeCo2Option = {
+			tooltip : {
+			formatter: "{a} <br/>{c} : {b}"
+			},
+			toolbox: {
+				show : false,
+				feature : {
+					mark : {show: true},
+					restore : {show: true},
+					saveAsImage : {show: true}
+				}
+			},
+			series : [
+			{
+				name:'CO2',
+				type:'gauge',           
+				splitNumber: 10, 
+				radius : [0, '95%'],
+				min: 0,
+				max: 2,
+
+				
+				axisLine: {           
+					show: true,        
+					lineStyle: {
+							color: [[0.4, '#9CCB2F'],[0.5, '#C3E43D'],[0.67, '#F8BE53'],[0.83, '#F6772A'],[1, '#FA3B71']], 
+							width: 14
+						}
+				},
+				axisTick: {           
+					show: true,        
+					splitNumber: 5,    
+					length :20,        
+					lineStyle: {      
+						color: 'auto',		
+			
+					}
+				},
+				axisLabel: {          
+					textStyle: {       
+						color: 'auto'
+					}
+				},
+				splitLine: {           
+					show: true,       
+					length :15,        
+					lineStyle: {       
+						color: 'auto',
+						width: 2,
+						type: 'solid'
+						}
+					},
+				pointer : {
+					width : 5,
+					color : 'auto'
+					},
+				title : {
+					show : true,
+					offsetCenter: [0,'-40%'],      
+					textStyle: {     
+						color: '#333',
+						fontWeight:'bolder',
+						fontSize : 22
+						}
+					},
+				detail : {
+					show : true,
+					formatter:'{value}',
+					backgroundColor: 'rgba(0,0,0,0)',
+					borderWidth: 0,
+					borderColor: '#ccc',				
+					textStyle: {     
+						color: 'auto',
+						fontWeight:'bolder'
+						}
+					},
+				data:[{value: 1.5, name:'CO2'}]
+			}
+		]
+	};
+
+		<!-- For the Power Load Chart ------------------------------------------------------------------------------------- -->
+        var loadGaugeChart = echarts.init(document.getElementById('gaugeLoad'));
+		var gaugeLoadOption = {
+			tooltip : {
+			formatter: "{a} <br/>{c} : {b}%"
+			},
+			toolbox: {
+				show : false,
+				feature : {
+					mark : {show: true},
+					restore : {show: true},
+					saveAsImage : {show: true}
+				}
+			},
+			series : [
+			{
+				name:'Load',
+				type:'gauge',           
+				splitNumber: 10, 
+				radius : [0, '95%'],
+				min: 0,
+				max: 100,
+
+				
+				axisLine: {           
+					show: true,        
+					lineStyle: {
+							color: [[0.2, '#9CCB2F'],[0.5, '#C3E43D'],[0.8, '#F8BE53'],[1, '#FA3B71']], 
+							width: 14
+						}
+				},
+				axisTick: {           
+					show: true,        
+					splitNumber: 5,    
+					length :20,        
+					lineStyle: {      
+						color: 'auto',		
+			
+					}
+				},
+				axisLabel: {          
+					textStyle: {       
+						color: 'auto'
+					}
+				},
+				splitLine: {           
+					show: true,       
+					length :15,        
+					lineStyle: {       
+						color: 'auto',
+						width: 2,
+						type: 'solid'
+						}
+					},
+				pointer : {
+					width : 5,
+					color : 'auto'
+					},
+				title : {
+					show : true,
+					offsetCenter: [0,'-40%'],      
+					textStyle: {     
+						color: '#333',
+						fontWeight:'bolder',
+						fontSize : 22
+						}
+					},
+				detail : {
+					show : true,
+					formatter:'{value}%',
+					backgroundColor: 'rgba(0,0,0,0)',
+					borderWidth: 0,
+					borderColor: '#ccc',				
+					textStyle: {     
+						color: 'auto',
+						fontWeight:'bolder',
+						
+						}
+					},
+				data:[{value: 1.5, name:'Load'}]
+			}
+		]
+	};
+	
+	
+
+
+
+
+		// -------------------------------------------
+		guePueOption.series[0].data[0].value = 1.8;
+		pueGaugeChart.setOption(guePueOption,true);  
+		
+		gaugeEfficiencyOption.series[0].data[0].value = 82;
+		efficiencyGaugeChart.setOption(gaugeEfficiencyOption,true);
+		
+		gaugeCo2Option.series[0].data[0].value = 1.0;
+		co2GaugeChart.setOption(gaugeCo2Option,true);
+
+		gaugeLoadOption.series[0].data[0].value = 70;
+		loadGaugeChart.setOption(gaugeLoadOption,true);
+		
+		// -------------------------------------------
+		var intervalTime = 3000; //millisecond
+				function intervalrefresh(){
+					
+					upLoadData=1
+					$.ajax({
+						type:"POST",
+						url:"/intervalrefresh/",
+						data:{upRequest:upLoadData},
+						dataType:"json",
+						success: function(json){
+							//for PUE
+							guePueOption.series[0].data[0].value = Math.round(json.pueData * 100) / 100;
+							pueGaugeChart.setOption(guePueOption,true);
+							$("#pueText").text(json.pueData);
+							
+							//for Efficiency
+							gaugeEfficiencyOption.series[0].data[0].value = Math.round(json.efficiencyData * 10) / 10;
+							efficiencyGaugeChart.setOption(gaugeEfficiencyOption,true);
+							$("#efficiencyText").text(json.efficiencyData);
+							
+							//for CO2
+							gaugeCo2Option.series[0].data[0].value = Math.round(json.co2Data * 100) / 100;
+							co2GaugeChart.setOption(gaugeCo2Option,true);
+							$("#co2Text").text(json.co2Data);
+						
+							//for Load
+							gaugeLoadOption.series[0].data[0].value = 50;
+							loadGaugeChart.setOption(gaugeLoadOption,true);
+							$("#loadText").text(json.loadData);
+							
+							//console.info($("#hide_test").className);
+							document.getElementById('hide_test').className="col-md-3 show"
+							
+							
+							
+				
+						}
+					})
+				//alert("Ready!");
+				}
+				setInterval(intervalrefresh, intervalTime);
+		
+
+        </script>
+</html>

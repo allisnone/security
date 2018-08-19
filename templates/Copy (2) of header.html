@@ -1,0 +1,202 @@
+<a id="ems_link" class="logo" style="font-size:28px;"> <!-- Add the class icon to your logo image or logo icon to add the margining -->
+	<img class="icon" src="../static/images/elogo_s.png" />EMS
+</a>
+<nav class="navbar navbar-static-top" role="navigation">
+	<!-- Sidebar toggle button-->
+	<a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas"
+		role="button"> <span class="sr-only">Toggle navigation</span> <span
+		class="icon-bar"></span> <span class="icon-bar"></span> <span
+		class="icon-bar"></span>
+	</a>
+	<div class="alphafont">Energy Management System</div>
+	<div id="sitename" class="alphafont"></div>
+<!--     <div id = "timer" class="alphafont" style = "font-size:15px;"></div> -->
+	<div class="navbar-right">
+		<ul class="nav navbar-nav">
+			<li class="dropdown notifications-menu">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" style = "height:50px;"> 
+					<span id = "comSuccess" class="label label-success" ><i class="fa fa-signal"></i></span>
+					<span id = "comWarning" class="label label-warning hide"><i class="fa fa-bell"></i></span>
+					<span id = "comDanger" class="label label-danger hide"><i class="fa fa-warning"></i></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<ul class="menu">
+							<li id="comDangerLi" class="hide"><a id="comDangerText"
+								href="#"> <i class="fa fa-warning danger"></i> Lost
+									communication
+							</a></li>
+							<li id="comWarningLi" class="hide"><a id="comWarningText"
+								href="#"> <i class="fa fa-bell warning"></i> Lost
+									communication
+							</a></li>
+							<li id="comSuccessLi" class="show"><a id="comSuccessText"
+								href="#"> <i class="fa fa-signal label-success"></i>
+									Communication is good!
+							</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<!-- User Account: style can be found in dropdown.less -->
+			<li class="dropdown user user-menu"><a href="#"
+				class="dropdown-toggle" data-toggle="dropdown"> <i
+					class="glyphicon glyphicon-user"></i> <span>
+					{{ user.username }}
+					<i class="caret"></i></span>
+			     </a>
+				<ul class="dropdown-menu">
+				    <!-- Menu Body -->
+                        <li class="user-body">
+                            <div class="text-center">
+                                <a id = "dc_demo" data-type = "demo" class="btn btn-sm" href="#"><div id = "dc_demo_div"><img alt="" src="../static/images/icons/alarm_grey.png" width=18px;> Demo 1 OFF</div></a>
+                                <a id = "cooling_demo" data-type = "demo" class="btn btn-sm" href="#"><div id = "cooling_demo_div"><img alt="" src="../static/images/icons/alarm_grey.png" width=18px;> Demo 2 OFF</div></a>
+                            </div>
+                         </li>
+					<!-- Menu Footer-->
+					<li class="user-footer">
+						<div class="text-center">
+							Sign out
+						</div>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<script type="text/javascript">
+
+//use to display clock on header
+// function getLocalTime(){
+// 	var mydate = new Date();
+// 	$("#timer").text(mydate.toTimeString());
+// }
+var demo_flag_cooling = 0;
+var demo_flag_dc = 0;
+
+$("#dc_demo").bind("click", function(){
+    var elemId = $(this).attr("id");	
+    if (demo_flag_dc == 0){
+    	DemoSwitch(elemId, demo_flag_dc);
+    	demo_flag_dc = 1;
+    }else{
+        DemoSwitch(elemId, demo_flag_dc);
+        demo_flag_dc = 0;
+    };
+});
+
+$("#cooling_demo").bind("click", function(){
+    var elemId = $(this).attr("id");    
+    if (demo_flag_cooling == 0){
+        DemoSwitch(elemId, demo_flag_cooling);
+        demo_flag_cooling = 1;
+    }else{
+        DemoSwitch(elemId, demo_flag_cooling);
+        demo_flag_cooling = 0;
+    };
+});
+
+function LoadDemoBtn(flag, elemId){
+    if (flag == 1){
+        $("#"+elemId+"_div").html("<img alt='' src='../static/images/icons/alarm_green.png' width=18px;>"+elemId+" ON");
+    }else{
+        $("#"+elemId+"_div").html("<img alt='' src='../static/images/icons/alarm_grey.png' width=18px;>"+elemId+" OFF");
+    }
+}
+
+function LoadDemoFlag(){
+    $.ajax({
+        type : "GET",
+        url : "/demo_getdata/",
+        dataType : "json",
+        data : {},
+        success : function(data) {
+            demo_flag_cooling = data[1].value;
+            LoadDemoBtn(demo_flag_cooling, data[1].name);
+            demo_flag_dc = data[0].value;
+            LoadDemoBtn(demo_flag_dc, data[0].name);
+            if (demo_flag_cooling == 1){
+            	alert("Cooling demo is ON!");
+            };
+            if (demo_flag_dc == 1){
+                alert("DC demo is ON!");
+            };
+        },
+        error: function(){
+            alert("error");
+        }
+    });
+}
+
+function DemoSwitch(id, demo_flag){
+    $.ajax({
+        type : "POST",
+        url : "/demo_switch/",
+        dataType : "json",
+        data : {
+        	"name": id,
+        	"switch" : demo_flag
+        	},
+        success : function(data) {	
+        	LoadDemoBtn(data.value, data.name);
+        	if (data.value == 1){
+        		alert(data.name + "is ON!");
+        	}
+        },
+        error: function(){
+            alert("error");
+        }
+    });
+}
+
+function HeartBeat(){
+	$.ajax({
+		type : "GET",
+		url : "/heartbeat/",
+		dataType : "json",
+		data : {},
+		success : function(data) {
+			//getLocalTime();
+			if (data.deltaMinutes <= 5){
+				document.getElementById('comDanger').className = "label label-danger hide";
+				document.getElementById('comWarning').className = "label label-warning hide";
+				document.getElementById('comSuccess').className = "label label-success show";
+				document.getElementById('comDangerLi').className = "hide";
+				document.getElementById('comWarningLi').className = "hide";
+				document.getElementById('comSuccessLi').className = "show";
+				
+				document.getElementById('comSuccessText').childNodes[2].data = 'Communication is good.';					
+			}
+			else if ((data.deltaMinutes > 5) && (data.deltaMinutes < 30)) {
+				
+				document.getElementById('comDanger').className = "label label-danger hide";
+				document.getElementById('comWarning').className = "label label-warning show";
+				document.getElementById('comSuccess').className = "label label-success hide";
+			
+				document.getElementById('comDangerLi').className = "hide";
+				document.getElementById('comWarningLi').className = "show";
+				document.getElementById('comSuccessLi').className = "hide";
+			
+				document.getElementById('comWarningText').childNodes[2].data = 'lost EMS ' + data.deltaMinutes + ' miutes!';					
+			}
+			else{
+
+				document.getElementById('comDanger').className = "label label-danger show";
+				document.getElementById('comWarning').className = "label label-warning hide";
+				document.getElementById('comSuccess').className = "label label-success hide";
+				
+				document.getElementById('comDangerLi').className = "show";
+				document.getElementById('comWarningLi').className = "hide";
+				document.getElementById('comSuccessLi').className = "hide";
+				document.getElementById('comDangerText').childNodes[2].data = 'lost EMS more than 30 minutes!';
+			}
+		}
+	});
+}
+	$(function() {
+		HeartBeat();
+		setInterval(HeartBeat, 60000);//1 min
+		LoadDemoFlag();
+	});
+</script>

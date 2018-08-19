@@ -1,0 +1,31 @@
+<div id = "dc_load_rate" style="display:none" class="col-md-6">
+	<!-- Primary box -->
+	<div class="box box-solid box-warning">
+		<div class="box-header">
+			<h3 class="box-title">DC Load Rate</h3>
+			<div class="box-tools pull-right">
+				<div id = "dc_load_div" class="btn-group" data-toggle="btn-toggle">
+					<button type="button" value = "day" class="btn btn-default btn-sm btn-flat" >Day</button>
+					<button type="button" value = "week" class="btn btn-default btn-sm btn-flat">Week</button>
+					<button type="button" value = "month" class="btn btn-default btn-sm btn-flat">Month</button>
+					<button type="button" value = "quarter" class="btn btn-default btn-sm btn-flat">Quarter</button>
+					<button type="button" value = "year" class="btn btn-default btn-sm btn-flat">Year</button>
+				</div>
+			</div>			
+		</div>
+		<div class="box-body">
+			{% if errors %} 
+				{% for error in errors %}
+					<p style="color: red;">{{error}}</p>
+				{% endfor %}
+			{% endif %}
+			<div id ="DCloadrate" style="height:225px;"></div>	
+		</div>
+		<!-- /.box-body -->
+	</div>
+	<!-- /.box -->
+</div>
+<!-- /.col -->
+
+
+<!-- End the DC Load Bar Chart ------------------------------------------------------------------------------------- -->

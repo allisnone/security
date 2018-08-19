@@ -1,0 +1,89 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]><html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Auto EMS {% block title %}Page{% endblock %}</title>
+
+<!-- main JS libs -->
+<script src="../../static/js/libs/modernizr.min.js"></script>
+<script src="../../static/js/libs/jquery-1.10.2.js"></script>
+<script src="../../static/js/libs/jquery-ui.min.js"></script>
+<script src="../../static/js/libs/bootstrap.min.js"></script>
+<script src="../../static/js/libs/bootstrap-datepicker.js"></script>
+
+<!-- Style CSS -->
+<link href="../../static/css/bootstrap.css" media="screen" rel="stylesheet">
+<link href="../../static/css/datepicker3.css" media="screen" rel="stylesheet">
+<link href="../../static/css/style.css" media="screen" rel="stylesheet">
+<link href="../../static/css/hidediv.css" media="screen" rel="stylesheet">
+<link href="../../static/css/docs.css" media="screen" rel="stylesheet">
+<link href="../../static/css/base_style.css" media="screen" rel="stylesheet">
+
+<!-- scripts -->
+<script src="../../static/js/general.js"></script>
+<!-- styled select -->
+<link rel="stylesheet" href="../../static/css/cusel.css">
+<script src="../../static/js/cusel-min.js"></script>
+<!-- custom input -->
+<script src="../../static/js/jquery.customInput.js"></script>
+<script type="text/javascript" src="../../static/js/custom.js"></script>
+<!-- Placeholders -->
+<script type="text/javascript" src="../../static/js/jquery.powerful-placeholder.min.js"></script>
+
+<script type="text/javascript" src="../../static/js/echarts-all.js"></script>
+
+
+</head>
+
+<body>
+<div class="body_wrap">
+
+<div class="container">
+	<!-- Title -->
+	<div class="toppart">
+        <div class="EMS-title">
+            EMS
+        </div>
+        <div class="logout">
+ 	       <a href="{% url 'logout' %}">Logout</a>
+        </div>
+        <div class="uname">
+            <label>Welcome, {{username}}</label> 
+        </div>
+
+    </div>
+    <!-- /Title -->
+    
+    <!-- content -->
+    <div class="content " role="main">
+
+		{% include "navigation_bar.html" %}
+
+		{% block content3 %}{% endblock %}  
+
+        <div class="componentsall">
+		{% block content %}{% endblock %}
+		{% block content2 %}{% endblock %}
+        </div>
+        {% block content4 %}{% endblock %}
+	</div>
+
+		
+
+</div>
+    <!--/ content -->
+	
+	
+</div>
+<!--/ container -->
+
+
+
+</body>
+</html>
+

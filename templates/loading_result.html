@@ -1,0 +1,145 @@
+<div id="loadResultDiv" class="container" style="padding:0;">
+  <div id="threatPrevention" class="container" style="display:none;padding:0;">
+    <div style="font-size: 21px; font-weight:500; margin-bottom:10px;">Security Assessment</div>
+    <div style="display:flex;">
+    <div id="threatPreventionClick" style="display:flex; cursor:pointer; width:32%; color:#009CDA;">
+      <div id="threatPreventionGlyphicon" class="fa fa-chevron-down" style="padding:4px; padding-right: 8px;"></div>
+      <div  style="font-size: 17px; font-weight:500;">Threat Prevention</div>
+    </div>
+
+    <div id="threatPreventionResult" style="display:none; width:50%; ">
+      <div style="display:flex;">
+        <img src="images/fail.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="threatPreventionFailCount">0</span> Failed Tests
+        </p>
+      </div>
+      <div style="display:flex; margin-left:3%;">
+        <img src="images/pass.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="threatPreventionPassCount">0</span> Passed Tests
+        </p>
+      </div>
+    </div>
+    </div>
+
+  </div>
+  <div id="threatPreventionDivider" class="container" style="border-bottom: 1px solid #ccc; margin:15px auto; display:none;"></div>
+
+  <div id="threatPreventionBlock">
+    <div id="threatPreventionLabels" style="display:none; padding: 16px 12px 8px 12px; color: #939393">
+      <div style="width:6%" class="text-center">
+        <p style="font-size:11px;" class="vertical-align">STATUS</p>
+      </div>
+      <div style="width:25%; text-align:left" >
+        <p style="font-size:11px;" class="vertical-align">TEST NAME</p>
+      </div>
+      <div style="width:10%" class="text-center" >
+      </div>
+      <div style="width:40%; text-align:left">
+        <p style="font-size:11px;" class="vertical-align">TEST DETAILS</p>
+      </div>
+    </div>
+    <div id="threatAll"></div>
+    <div id="threatFail"></div>
+    <div id="threatPass"></div>
+
+  </div>
+  <div id="threatPreventionClearfloat" style="min-height:18px"></div>
+
+  <div id="accessControl" class="container" style="display:none;padding:0;">
+    <div style="display:flex;">
+
+    <div id="accessControlClick" style="display:flex; cursor:pointer; width:32%; color:#009CDA;">
+      <div id="accessControlGlyphicon" class="fa fa-chevron-down" style="padding:4px; padding-right: 8px;"></div>
+      <div style="font-size: 17px; font-weight:500;">Access Control</div>
+    </div>
+
+
+
+    <div id="accessControlResult" style="display:none; width:48%;">
+      <div style="display:flex;">
+        <img src="images/fail.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="accessControlFailCount">0</span> Failed Tests
+        </p>
+      </div>
+      <div style="display:flex; margin-left:3%;">
+        <img src="images/pass.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="accessControlPassCount">0</span> Passed Tests
+        </p>
+      </div>
+    </div>
+    </div>
+
+  </div>
+  <div id="accessControlDivider" class="container" style="border-bottom: 1px solid #ccc; margin:15px auto; display:none;"></div>
+
+  <div id="accessControlBlock">
+  <div id="accessControlLabels" style="display:none; padding: 16px 12px 8px 12px; color: #939393">
+    <div style="width:6%" class="text-center">
+      <p style="font-size:11px;" class="vertical-align">STATUS</p>
+    </div>
+    <div style="width:25%; text-align:left" >
+      <p style="font-size:11px;" class="vertical-align">TEST NAME</p>
+    </div>
+    <div style="width:10%" class="text-center" >
+    </div>
+    <div style="width:40%; text-align:left">
+      <p style="font-size:11px;" class="vertical-align">TEST DETAILS</p>
+    </div>
+  </div>
+  <div id="accessAll"></div>
+  <div id="accessFail"></div>
+  <div id="accessPass"></div>
+  </div>
+
+  <div id="accessControlClearfloat" style="min-height:18px"></div>
+
+
+  <div id="dataProtection" class="container" style="display:none;padding:0;">
+    <div style="font-size: 21px; font-weight:500; margin-bottom:10px;">Data Protection Assessment</div>
+    <div style="display:flex;">
+    <div id="dataProtectionClick" style="display:flex; cursor:pointer; width:32%; color:#009CDA;">
+      <div id="dataProtectionGlyphicon" class="fa fa-chevron-down" style="padding:4px; padding-right: 8px;"></div>
+      <div style="font-size: 17px; font-weight:500;">Data Protection</div>
+    </div>
+
+    <div id="dataProtectionResult" style="display:none; width:48%;">
+      <div style="display:flex;">
+        <img src="images/fail.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="dataProtectionFailCount">0</span> Failed Tests
+        </p>
+      </div>
+      <div style="display:flex; margin-left:3%;">
+        <img src="images/pass.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="dataProtectionPassCount">0</span> Passed Tests
+        </p>
+      </div>
+    </div>
+    </div>
+
+  </div>
+
+  <div id="dataprotectionBlock">
+  <div id="dataprotectionLabels" style="display:none; padding: 16px 12px 8px 12px; color: #939393">
+    <div style="width:6%" class="text-center">
+      <p style="font-size:11px;" class="vertical-align">STATUS</p>
+    </div>
+    <div style="width:25%; text-align:left" >
+      <p style="font-size:11px;" class="vertical-align">TEST NAME</p>
+    </div>
+    <div style="width:10%" class="text-center" >
+    </div>
+    <div style="width:40%; text-align:left">
+      <p style="font-size:11px;" class="vertical-align">TEST DETAILS</p>
+    </div>
+  </div>
+  <div id="dataAll"></div>
+  <div id="dataFail"></div>
+  <div id="dataPass"></div>
+  </div>
+</div>

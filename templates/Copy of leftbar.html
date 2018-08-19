@@ -1,0 +1,102 @@
+<aside class="left-side sidebar-offcanvas">
+	<!-- sidebar: style can be found in sidebar.less -->
+	<section class="sidebar">
+
+		<!-- sidebar menu: : style can be found in sidebar.less -->
+		<ul class="sidebar-menu">
+			<div class="row">
+				<div class="col-sm-12">
+					<div id="treeview"></div>
+				</div>
+			</div>
+		</ul>
+	</section>
+	<!-- /.sidebar -->
+
+</aside>
+
+
+<link href="../static/css/jstree/style.css" media="screen" rel="stylesheet" />
+<script src="../static/js/plugins/jstree/jstree.js"></script>
+
+<script type="text/javascript">
+var default_site;
+	$(function() {
+		var sitename;
+		var click_flag;
+		var area = new Array();
+		
+		$.ajax({
+			type : "GET",
+			url : "/tree/",
+			dataType : "json",
+			data : {},
+			success : function(tdata) {
+		
+ 			var options ={
+ 					'core' : {'data':tdata}, 
+ 			//	    "state" : { "key" : "test" },
+ 			//	    "plugins" : [ "state" ]
+ 			};
+	        default_site = tdata[0].children[0].children[0].text;
+ 			$.jstree.defaults.core.themes.variant = "large";
+			$('#treeview').jstree(options);
+	        var Length = 0;
+            for (var item in tdata[0].children) {
+            	area.push(tdata[0].children[Length].text);
+                Length++;
+            }
+
+			}
+		});
+		
+		$('#treeview').on('ready.jstree', function (e, data) {
+			  if (location.href.indexOf("siteid=") > -1) {
+				  if (location.href.indexOf("&") > 1) {
+					  sitename = location.href.substring(location.href.indexOf("=")+1, location.href.indexOf("&"));
+				  }
+				  else {
+				      sitename = location.href.substring(location.href.indexOf("=")+1, location.href.length);
+				  }
+			  }
+	    	  else {  		
+	    		//set default site to Guangzhou
+				  sitename = default_site;
+			  }
+              document.getElementById("sitename").innerHTML="(" + sitename.replace("%20", " ") + ")";
+              //document.getElementById("ems_link").href="{% url 'dashboard' %}" + "?siteid=" + default_site;
+              if (location.href.indexOf("report") > -1){
+              	  document.getElementById("sitename_store").value=sitename.replace("%20", " ");
+              } 
+			  click_flag = -1;
+			  data.instance.select_node("#"+sitename.replace("%20", " "));
+			});
+
+//		$('#treeview').bind("changed.jstree", function (e, data) {
+//			alert($('#treeview').jstree().get_selected());
+//		});	
+ 		$('#treeview').bind("select_node.jstree",function(e,data){
+ 			var siteId = $('#treeview').jstree(true).get_selected();
+ 			var url = getUrl(menuUrl,siteId);
+ 			var i = 0;
+ 			sitename = siteId;
+ //			alert(siteId);
+ 			if (click_flag == 1){
+ 				if (siteId != "site"){
+ 					while (i < area.length){
+ 						if (siteId == area[i]) {
+ 							break;
+ 						}
+ 						i++;
+ 					}
+ 					if (siteId != area[i]) {
+ 						$('#treeview').jstree(true).select_node(this);
+ 	 	 				location.href = url;
+ 					}	
+ 				}
+ 			}
+ 			click_flag = 1;
+ 		}); 
+
+	});
+</script>

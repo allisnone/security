@@ -1,0 +1,33 @@
+{% extends "base.html" %} 
+
+{% block rightpart %}
+
+<aside class="right-side">
+	{% include "navbar.html" %} 
+	<!-- Content Header (Page header) -->
+
+	<section class="content">
+		<!-- <div class="row">  -->
+		<!-- Add a box as the content container so that the overlay and loading div can cover the whole content page -->
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="true">
+			<div class="modal-dialog">
+				<div class="box box-solid" style="width:800px;height:600px;background-color:transparent">
+					<!-- <div id="overlay" class="overlay"></div>  -->
+					<div id="loading" class="loading-img"></div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal -->
+		</div>
+
+		<div class="box-body">
+			{% block content %}{% endblock %}
+		</div>
+
+		<!-- </div>  -->	 
+	 </section><!-- /.content --> 
+</aside>	
+{% endblock %}
+
+
