@@ -4,8 +4,8 @@ from aiohttp.client import request
 # Create your views here.
 
 def base(request):
-    
-    return render(request,'zscaler.html')
+    return render(request,'index.html')
+    #return render(request,'zscaler.html')
 
 def get_classes(request):
     portlists=models.chkportinfo.objects.all()
