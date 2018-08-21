@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from . import models
 from aiohttp.client import request
+from aswg.config import SECURITY_CONFIG
 # Create your views here.
 
 def base(request):
@@ -42,6 +43,12 @@ def edit_classes(request):
 
 def login(request):
     return redirect('login.html')
+
+
+def loading(request):
+    data = SECURITY_CONFIG['Data Protection Assessment']
+    print('data=',data)
+    return  render(request,'index.html',{'data_protection':data})
 
 def logout(request):
     return redirect('logout.html')

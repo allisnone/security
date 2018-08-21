@@ -28,10 +28,12 @@ urlpatterns = [
     #url(r'^admin/', include(admin.site.urls)),
     url(r'aswg/login', views.login),
     url(r'aswg/index', views.index),
-    url(r'get_classes', views.get_classes),
-    url(r'add_classes', views.add_classes),
-    url(r'del_classes', views.del_classes),
-    url(r'edit_classes', views.edit_classes),
-    url(r'base', views.base),
+    url(r'get_classes$', views.get_classes),
+    url(r'add_classes$', views.add_classes),
+    url(r'del_classes$', views.del_classes),
+    url(r'edit_classes$', views.edit_classes),
+    url(r'base$', views.base),
+    url(r'load$', views.loading),
     url(r'logout', views.logout),
+    
 ]
