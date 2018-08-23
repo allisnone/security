@@ -1,7 +1,9 @@
+# -*- coding:utf-8 -*-
 from django.shortcuts import render,redirect
 from . import models
 from aiohttp.client import request
 from aswg.config import SECURITY_CONFIG
+import json
 # Create your views here.
 
 def base(request):
@@ -46,8 +48,8 @@ def login(request):
 
 
 def loading(request):
-    data = SECURITY_CONFIG['Data Protection Assessment']
-    print('data=',data)
+    data = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
+    #print('data=',data)
     return  render(request,'index.html',{'data_protection':data})
 
 def logout(request):

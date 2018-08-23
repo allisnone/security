@@ -13,17 +13,26 @@ SECURITY_CONFIG = {
             'Block an executable (.exe) download': {
                 'name':'Block an executable (.exe) download',
                 'urls':EXE_URLS,
-                'detail':'This tests if you can download .exe files from websites that use a content delivery network (CDN). A CDN makes you vulnerable to malware.',
-                'description':'This test tries to download an executable file from a website with a good reputation that uses a Content Distribution Network (CDN) like Akamai or AWS. It tests whether your security infrastructure can block the executable, limiting the possible introduction of malware and other threats.',
+                'detail':'This tests if you can download .exe \
+                files from websites that use a content delivery network \
+                (CDN). A CDN makes you vulnerable to malware.',
+                'description':'This test tries to download an executable \
+                file from a website with a good reputation that uses a Content \
+                Distribution Network (CDN) like Akamai or AWS. It tests whether \
+                your security infrastructure can block the executable, limiting \
+                the possible introduction of malware and other threats.',
                 'method': 'get',
                 },
                               
             'Block threats in known malicious websites': {
                 'name':'Block threats in known malicious websites',
                 'urls':MALICIOUS_WEBSITES,
-                'detail':'This tests if you can download a benign object from a known malicious site. It does not attempt to download actual malware.',
-                'description':'This test checks to see if a benign object hosted on a known malicious site is blocked by your security solution. It uses a \
-                compromised site from a list published by Google. The test does not attempt to download actual malware.',
+                'detail':'This tests if you can download a benign object from \
+                a known malicious site. It does not attempt to download actual malware.',
+                'description':'This test checks to see if a benign object hosted on \
+                a known malicious site is blocked by your security solution. It uses a \
+                compromised site from a list published by Google. The test does not \
+                attempt to download actual malware.',
                 'method': 'get',
                 },
                               
@@ -115,9 +124,8 @@ SECURITY_CONFIG = {
             }
         },
     'Data Protection Assessment': {
-        'Data Protection': [
-            #'Block credit card exfiltration': 
-                {
+        'Data Protection': {
+            'Block credit card exfiltration': {
                 'name':'Block credit card exfiltration',
                 'urls': CREDIT_CARD,
                 'method': 'get',
@@ -125,8 +133,7 @@ SECURITY_CONFIG = {
                 'description':'This test tries to exfiltrate numbers out of your network that match the format of credit card numbers. Your network security solution should easily identify this leakage.'
                 },
                             
-            #'Block Social Security number exfiltration': 
-                {
+            'Block Social Security number exfiltration': {
                 'name':'Block Social Security number exfiltration',
                 'urls': SOCIAL_SECURITY_NUMBER,
                 'method': 'get',
@@ -134,8 +141,7 @@ SECURITY_CONFIG = {
                 'description':'This test tries to exfiltrate numbers out of your network that match the format of U.S. Social Security numbers. Your network security solution should easily identify this leakage.'
                 },
         
-            #'Block source code exfiltration': 
-                {
+            'Block source code exfiltration': {
                 'name':'Block source code exfiltration',
                 'urls': SOURCE_CODE,
                 'method': 'get',
@@ -143,7 +149,7 @@ SECURITY_CONFIG = {
                 'description':'This test tries to exfiltrate typical patterns found in source code. Stealing your intellectual property is the goal of some of the world most dangerous hackers and state-sponsored actors seeking a competitive advantage. A leak of intellectual property can have profound consequences for your enterprise — from rewriting source code to re-issuing binaries.'
                 }
     
-            ]
+            }
         }
     }
 

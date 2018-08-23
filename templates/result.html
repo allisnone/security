@@ -81,7 +81,7 @@
    </div>
 
   <div id="accessControlBlock">
-  <div id="accessControlLabels" style="display:none; padding: 16px 12px 8px 12px; color: #939393">
+  <div id="accessControlLabels" style="display:block; padding: 16px 12px 8px 12px; color: #939393">
     <div style="width:6%" class="text-center">
       <p style="font-size:11px;" class="vertical-align">STATUS</p>
     </div>
@@ -129,23 +129,33 @@
   </div>
 
   <div id="dataprotectionBlock">
-  <div id="dataprotectionLabels" style="display:none; padding: 16px 12px 8px 12px; color: #939393">
-    <div style="width:6%" class="text-center">
-      <p style="font-size:11px;" class="vertical-align">STATUS</p>
+ <div id="dataprotectionLabels"  style="display:block; padding: 16px 12px 8px 12px; color: #939393;" >
+    <div style="width:5%;display:inline" class="text-center" >
+      <p style="font-size:11px;display:inline" class="vertical-align">STATUS</p>
     </div>
-    <div style="width:25%; text-align:left" >
-      <p style="font-size:11px;" class="vertical-align">TEST NAME</p>
+    <div style="width:25%;display:inline; text-lign:left" >
+      <p style="font-size:11px;display:inline" class="vertical-align">TEST NAME</p>
     </div>
-    <div style="width:10%" class="text-center" >
+    <div style="width:10%;display:inline" class="text-center" >
     </div>
-    <div style="width:40%; text-align:left">
-      <p style="font-size:11px;" class="vertical-align">TEST DETAILS</p>
+    <div style="width:40%;display:inline; text-align:left">
+      <p style="font-size:11px;display:inline" class="vertical-align">TEST DETAILS</p>
     </div>
   </div>
-  <div id="dataAll">
-  {{ data_protection }}
+    <div id="dataAll">
+    {% if data %}
+        <script type="text/javascript">$("#dataprotectionLabels").style("display","block")</script>
+    {% endif %}
+    {% for data in data_protection %}
+        <div class="horizontal-align" style="width:100%">
+	        <img src="../static/images/fail.png" style="width:15px; height:15px; margin:5px;">
+	        <div style="width:35%;display:inline">{{data.name}}</div>
+	        <div style="width:5%;display:inline"><img src="../static/images/pass.png" style="width:15px; height:15px; margin:5px;display:inline"></div>
+	        <div style="width:35%;display:inline"> {{data.detail}} </div>
+        </div>
+    {% endfor %}
   
-  </div>
+    </div>
   <div id="dataFail"></div>
   <div id="dataPass"></div>
   </div>
