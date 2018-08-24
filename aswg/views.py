@@ -48,9 +48,12 @@ def login(request):
 
 
 def loading(request):
-    data = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
+    data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
+    data_access = SECURITY_CONFIG['Security Assessment']['Access Control']
+    data_protection = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
     #print('data=',data)
-    return  render(request,'index.html',{'data_protection':data})
+    return  render(request,'index.html',{'data_threat':data_threat,
+                                         'data_access':data_access,'data_protection':data_protection})
 
 def logout(request):
     return redirect('logout.html')

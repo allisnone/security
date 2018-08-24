@@ -9,8 +9,9 @@ from aswg.source_urls import EXE_URLS, MALICIOUS_WEBSITES, PHISHING_ATTACK,\
 
 SECURITY_CONFIG = {
     'Security Assessment': {
-        'Threat Prevention': {
-            'Block an executable (.exe) download': {
+        'Threat Prevention': [
+            #'Block an executable (.exe) download': 
+                {
                 'name':'Block an executable (.exe) download',
                 'urls':EXE_URLS,
                 'detail':'This tests if you can download .exe files from websites that use a content delivery network (CDN). A CDN makes you vulnerable to malware.',
@@ -18,7 +19,8 @@ SECURITY_CONFIG = {
                 'method': 'get',
                 },
                               
-            'Block threats in known malicious websites': {
+            #'Block threats in known malicious websites': 
+                {
                 'name':'Block threats in known malicious websites',
                 'urls':MALICIOUS_WEBSITES,
                 'detail':'This tests if you can download a benign object from a known malicious site. It does not attempt to download actual malware.',
@@ -27,14 +29,16 @@ SECURITY_CONFIG = {
                 'method': 'get',
                 },
                               
-            'Detect a phishing attack': {
+            #'Detect a phishing attack': 
+            {
                 'name':'Detect a phishing attack',
                 'urls': PHISHING_ATTACK,
                 'detail':'This checks if you can access one of the latest validated phishing sites uncovered by Phishtank.com. ',
                 'description':'This test tries to access one of the latest validated phishing sites uncovered by Phishtank.com. The test covers all infection vectors, including mobile traffic. Criminals take advantage of mobile traffic as a key weakness in many security solutions. The test does not attempt to download actual malware.',
                 'method': 'get',
                 },
-            'Prevent cookie stealing or session hijacking': {
+            #'Prevent cookie stealing or session hijacking': 
+                {
                 'name':'Prevent cookie stealing or session hijacking',
                 'urls':SESSION_HIJACKING,
                 'detail':' ',
@@ -42,21 +46,24 @@ SECURITY_CONFIG = {
                 'method': 'get',
                 },
                               
-            'Stop a botnet callback': {
+            #'Stop a botnet callback': 
+                {
                 'name':'Stop a botnet callback',
                 'urls':BOTNET_CALLBACK,
                 'detail':' ',
                 'description':'',
                 'method': 'get',
                 },
-            'Prevent cross-site scripting': {
+            #'Prevent cross-site scripting': 
+                {
                 'name':'Prevent cross-site scripting',
                 'urls': CROSS_SITE_SCRIPTING,
                 'detail':' ',
                 'description':'',
                 'method': 'get',
                 },
-            'Stop older known viruses': {
+            #'Stop older known viruses': 
+                {
                 'name':'Stop older known viruses',
                 'urls':OLDER_KNOWN_VIRUSES,
                 'detail':' ',
@@ -64,7 +71,8 @@ SECURITY_CONFIG = {
                 'method': 'get',
                 },
                               
-            'Block a virus hidden in a zip file': {
+            #'Block a virus hidden in a zip file': 
+                {
                 'name':'Block a virus hidden in a zip file',
                 'urls':VIRUS_HIDDEN_IN_ZIP,
                 'detail':' ',
@@ -72,7 +80,8 @@ SECURITY_CONFIG = {
                 'method': 'get',
                 },
                               
-            'Prevent a common virus from a known malicious site': {
+            #'Prevent a common virus from a known malicious site': 
+                {
                 'name':'Prevent a common virus from a known malicious site',
                 'urls': COMMON_VIRUS_FROM_KNOWN_MALICIOUS_SITE,
                 'detail':' ',
@@ -86,9 +95,10 @@ SECURITY_CONFIG = {
             #    'description':''
             #    },
             
-            },
-        'Access Control':{
-            'Block websites in embargoed countrie': {
+            ],
+        'Access Control':[
+            #'Block websites in embargoed countrie': 
+                {
                 'name':'Block websites in embargoed countrie',
                 'urls': EMBARGOED_COUNTRIE,
                 'detail':'This tests your ability to access websites in countries that are embargoed by the United States and the European Union, such as North Korea.',
@@ -96,7 +106,8 @@ SECURITY_CONFIG = {
                 'method': 'get',
                 },
                           
-            'Block access to anonymizing websites ': {
+            #'Block access to anonymizing websites ': 
+                {
                 'name':'Block access to anonymizing websites ',
                 'urls': ANONYMIZING_WEBSITES,
                 'detail':'This test tries to connect to an anonymizing website. Failing this test means you can bypass company policy and access restricted content.',
@@ -104,7 +115,8 @@ SECURITY_CONFIG = {
                 'method': 'get',
                 },
                           
-            'Block access to adult websites': {
+            #'Block access to adult websites': 
+                {
                 'name':'Block access to adult websites',
                 'urls': ADULT_WEBSITES,
                 'method': 'get',
@@ -112,7 +124,7 @@ SECURITY_CONFIG = {
                 'description':'This test tries to visit a known adult website and download a benign icon. Employees often violate company policy and try to visit blacklisted websites and view pornography. These sites act as common watering holes to propagate malware, and they might expose your company to litigation risk and your data to untrusted third parties.'
                 },
             
-            }
+            ]
         },
     'Data Protection Assessment': {
         'Data Protection': [
