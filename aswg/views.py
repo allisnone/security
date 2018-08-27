@@ -51,6 +51,9 @@ def loading(request):
     data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
     data_access = SECURITY_CONFIG['Security Assessment']['Access Control']
     data_protection = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
+    
+    
+
     #print('data=',data)
     return  render(request,'index.html',{'data_threat':data_threat,
                                          'data_access':data_access,'data_protection':data_protection})
@@ -60,3 +63,14 @@ def logout(request):
 
 def index(request):
     return redirect('/index.html')
+
+
+def jstest(request):
+    data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
+    data_access = SECURITY_CONFIG['Security Assessment']['Access Control']
+    data_protection = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
+    
+    #print('data=',data)
+    return  render(request,'jstest.html',{'data_threat':data_threat,
+                                         'data_access':data_access,'data_protection':data_protection})
+

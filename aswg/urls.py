@@ -36,5 +36,5 @@ urlpatterns = [
     url(r'base$', views.base),
     url(r'load$', views.loading),
     url(r'logout', views.logout),
-    
+    url(r'jstest',views.jstest),
 ]

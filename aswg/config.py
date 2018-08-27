@@ -30,13 +30,14 @@ SECURITY_CONFIG = {
                 },
                               
             #'Detect a phishing attack': 
-            {
+                {
                 'name':'Detect a phishing attack',
                 'urls': PHISHING_ATTACK,
                 'detail':'This checks if you can access one of the latest validated phishing sites uncovered by Phishtank.com. ',
                 'description':'This test tries to access one of the latest validated phishing sites uncovered by Phishtank.com. The test covers all infection vectors, including mobile traffic. Criminals take advantage of mobile traffic as a key weakness in many security solutions. The test does not attempt to download actual malware.',
                 'method': 'get',
                 },
+            """
             #'Prevent cookie stealing or session hijacking': 
                 {
                 'name':'Prevent cookie stealing or session hijacking',
@@ -88,6 +89,7 @@ SECURITY_CONFIG = {
                 'description':'',
                 'method': 'get',
                 },
+            """
             #'D': {
             #    'name':'',
             #    'urls':[],
