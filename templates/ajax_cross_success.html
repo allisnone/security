@@ -7,7 +7,8 @@
      jQuery(document).ready(function(){
         $.ajax({
              type: "get",
-             async: false,
+             //async: false,
+             async: true,
              url: "https://api.douban.com/v2/book/search?q=javascript&count=1",
              dataType: "jsonp",
              jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
