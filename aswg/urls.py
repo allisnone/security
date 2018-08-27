@@ -37,4 +37,12 @@ urlpatterns = [
     url(r'load$', views.loading),
     url(r'logout', views.logout),
     url(r'jstest',views.jstest),
+    url(r'^search_form$', views.search_form),
+    url(r'^search$', views.search),
+    url(r'^search-post$', views.search_post),
+    url(r'upload$', views.upload_file),
+    url(r'^ajax_get$',views.ajax_get),
+    url(r'^ajax_post$',views.ajax_post),
+    url(r'jsonp$',views.ajax_jsonp),
+    
 ]

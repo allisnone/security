@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试ajax的GET方法</title>
+    <script>
+        function loadXMLDoc()
+            {
+                var xmlhttp;  //定义局部变量xmlhttp
+                if (window.XMLHttpRequest) //XMLHttpRequet对象用于和服务器交互数据。
+                    {
+                        // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                        xmlhttp=new XMLHttpRequest();
+                    }
+                else{
+                        // IE6, IE5 浏览器执行代码
+                        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                //侦听
+                xmlhttp.onreadystatechange=function(){
+                        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                            document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+                        }
+                    }
+                //POST方法
+                 //xmlhttp.open("POST","./ajax_post",true);
+                //GET方法
+                  xmlhttp.open("GET","load",true);
+                //设置头部信息
+                xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                //POST method发送
+                //xmlhttp.send("name=xuequn");
+                //GET method发送
+                xmlhttp.send();
+            }
+</script>
+</head>
+<body>
+     <div id="myDiv"><h2>使用 AJAX 修改该文本内容</h2></div>
+    <button type="button" onclick="loadXMLDoc()">修改
+    {% csrf_token %}
+    </button>
+</body>
+</html>
