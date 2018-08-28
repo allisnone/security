@@ -5,24 +5,73 @@
       <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
       <script type="text/javascript">
      jQuery(document).ready(function(){
+    	 /*
         $.ajax({
              type: "get",
              //async: false,
              async: true,
-             url: "https://api.douban.com/v2/book/search?q=javascript&count=1",
+             //url: "https://api.douban.com/v2/book/search?q=javascript&count=1",
+             url: "http://jira.skyguardmis1.com/browse/EI-1055",
              dataType: "jsonp",
              jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
              jsonpCallback:"flightHandler",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
-             success: function(json){
+             success: function(json,textStatus){
                  alert(json.total);
+                 alert(textStatus);
              },
-             error: function(){
+             error: function(XMLHttpRequest, textStatus, errorThrown){
                  alert('fail');
+                 alert(XMLHttpRequest.status);
+                 if (XMLHttpRequest.status == 404) {
+                	 document.getElementById("p1").innerHTML= 'P1: '  + XMLHttpRequest.status;
+                 }
              }
          });
+    	 */
+        
+        var url1 = "http://jira.skyguardmis.com/browse/EI-1055";
+    	var url2 = "https://api.douban.com/v2/book/search?q=javascript&count=1";
+        var para1 = "a";
+        var para2 = "b";
+        var div1 = 'p1';
+        var div2 = 'p2';
+        $.ajax(cross_site_request(div1,url1,para1,para1));
+        $.ajax(cross_site_request(div2,url2,para2,para2));
+        
      });
+     function cross_site_request(id,myurl,para1,para2){
+    	 return {
+             type: "get",
+             //async: false,
+             async: true,
+             url: myurl,
+             //url: "http://jira.skyguardmis1.com/browse/EI-1055",
+             dataType: "jsonp",
+             jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+             jsonpCallback:"flightHandler",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+             success: function(json,textStatus){
+                 //alert(XMLHttpRequest.status);
+                 alert('success state:'+textStatus);
+                 if (textStatus == "success") {
+                   	 document.getElementById(id).innerHTML= id + ' URL: ' + myurl + " :" + 'success' + para1 + para1;
+                    }
+             },
+             error: function(XMLHttpRequest, textStatus, errorThrown){
+                 //alert('fail');
+                 alert('fail http code: ' + XMLHttpRequest.status);
+                 if (XMLHttpRequest.status == 404) {
+                	 document.getElementById(id).innerHTML=id + ' URL: ' + myurl + " :" + XMLHttpRequest.status + para2 + para2;
+                 }
+             }
+         };
+     }
+
      </script>
      </head>
   <body>
+  
+  <div><p id='p1'></p></div>
+  <div><p id='p2'></p></div>
+  <div id='div10'> </div>
   </body>
  </html>
