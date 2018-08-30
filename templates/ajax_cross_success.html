@@ -29,14 +29,20 @@
          });
     	 */
         
-        var url1 = "http://jira.skyguardmis.com/browse/EI-1055";
+        //var url1 = "http://jira.skyguardmis.com/browse/EI-10555";
+    	var url1 = "get_classes.html"; 
     	var url2 = "https://api.douban.com/v2/book/search?q=javascript&count=1";
         var para1 = "a";
         var para2 = "b";
-        var div1 = 'p1';
-        var div2 = 'p2';
-        $.ajax(cross_site_request(div1,url1,para1,para1));
+        var div1 = "p1";
+        var div2 = "p2";
+        $.ajax(internal_request(div1,url1,para1,para1));
+        //$.ajax(cross_site_request(div1,url1,para1,para1));
         $.ajax(cross_site_request(div2,url2,para2,para2));
+        var url3 = "add_classes.html";
+        var data = {ips:"192.168.7.1",ports:"100",contacts:"xiaoxie"};
+        var div3 = "p3";
+        $.ajax(internal_request_post(div3,url3,data,para1));
         
      });
      function cross_site_request(id,myurl,para1,para2){
@@ -55,6 +61,7 @@
                  if (textStatus == "success") {
                    	 document.getElementById(id).innerHTML= id + ' URL: ' + myurl + " :" + 'success' + para1 + para1;
                     }
+                 return 1;
              },
              error: function(XMLHttpRequest, textStatus, errorThrown){
                  //alert('fail');
@@ -62,8 +69,73 @@
                  if (XMLHttpRequest.status == 404) {
                 	 document.getElementById(id).innerHTML=id + ' URL: ' + myurl + " :" + XMLHttpRequest.status + para2 + para2;
                  }
-             }
+                 return 0;
+             },
          };
+     }
+     function internal_request(id,myurl,para1,para2){
+    	 return {
+    		 type:"GET",
+    		 url: myurl,
+    		 //async: false,
+    		 //data:,
+    		 //timeout:30000,//30秒
+    		 dataType: "html",
+    		 success: function(data){
+                 //alert(data.status);
+                 alert(data);
+                 alert('success state:'+myurl);
+                 document.getElementById(id).innerHTML= id + ' URL: ' + myurl + " :" + 'success' + para1 + para1;
+                 return 1;
+             },
+             error: function(XMLHttpRequest){
+                 //alert('fail');
+                 alert('fail http code: ' + XMLHttpRequest.status);
+                 if (XMLHttpRequest.status == 404) {
+                	 document.getElementById(id).innerHTML=id + ' URL: ' + myurl + " :" + XMLHttpRequest.status + para2 + para2;
+                 }
+                 return 0;
+              },
+    		 
+    		 
+    	 };
+     }
+     
+     function internal_request_post(id,myurl,para1,para2){
+    	 return {
+    		 type:"POST",
+    		 url: myurl,
+    		 //async: false,
+    		 data: para1,
+    		 //timeout:30000,//30秒
+    		 dataType: "html",
+    		 success: function(data){
+                 //alert(data.status);
+                 alert(data);
+                 alert('success state:'+myurl);
+                 document.getElementById(id).innerHTML= id + ' URL: ' + myurl + " :" + 'success' + para1 + para1;
+                 return 1;
+             },
+             error: function(XMLHttpRequest){
+                 //alert('fail');
+                 alert('fail http code: ' + XMLHttpRequest.status);
+                 if (XMLHttpRequest.status == 404) {
+                	 document.getElementById(id).innerHTML=id + ' URL: ' + myurl + " :" + XMLHttpRequest.status + para2 + para2;
+                 }
+                 return 0;
+              },
+    		 
+    		 
+    	 };
+     }
+     
+     function add_content_head(){
+    	 var a = 1;
+     }
+     
+     function add_content_item(){
+    	 var b = '<div id="diva">' +
+    	 '</div>';
      }
 
      </script>
@@ -72,6 +144,7 @@
   
   <div><p id='p1'></p></div>
   <div><p id='p2'></p></div>
+  <div><p id='p3'></p></div>
   <div id='div10'> </div>
   </body>
  </html>
