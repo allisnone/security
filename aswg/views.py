@@ -4,6 +4,11 @@ from . import models
 from aiohttp.client import request
 from aswg.config import SECURITY_CONFIG
 import json
+
+from django.http import HttpResponse
+from django.shortcuts import render_to_response
+#from django.views.decorators import csrf
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 def base(request):
@@ -13,22 +18,32 @@ def base(request):
 def get_classes(request):
     portlists=models.chkportinfo.objects.all()
     return render(request,'get_classes.html',{'portlists':portlists})
- 
+
+@csrf_exempt 
 def add_classes(request):
     if request.method == "GET":
         return render(request, 'add_classes.html')
     elif request.method == 'POST':
+        print(request.POST)
         ips = request.POST.get('ips')
         ports=request.POST.get('ports')
         contacts=request.POST.get('contacts')
+        print(ips)
+        print(contacts)
         models.chkportinfo.objects.create(IPs=ips,ports=ports,contact=contacts)
-        return redirect('/get_classes.html')
- 
+        return redirect('get_classes.html')
+    
+def post_classes(request):
+    ips = request.POST.get('ips')
+    ports = request.POST.get('ports')
+    contacts = request.POST.get('contacts')
+    models.chkportinfo.objects.create(IPs=ips,ports=ports,contact=contacts)
+    return HttpResponse()
  
 def del_classes(request):
     id = request.GET.get('id')
     models.chkportinfo.objects.filter(id=id).delete()
-    return redirect('/get_classes.html')
+    return redirect('get_classes.html')
  
 def edit_classes(request):
     if request.method == 'GET':
@@ -41,7 +56,7 @@ def edit_classes(request):
         ports = request.POST.get('ports')
         contacts=request.POST.get('contacts')
         models.chkportinfo.objects.filter(id=id).update(IPs=ips,ports=ports,contact=contacts)
-        return redirect('/get_classes.html')
+        return redirect('get_classes.html')
 
 def login(request):
     return redirect('login.html')
@@ -76,9 +91,6 @@ def jstest(request):
 
 
 
-from django.http import HttpResponse
-from django.shortcuts import render_to_response
-from django.views.decorators import csrf
  
 # 表单
 def search_form(request):
@@ -125,7 +137,7 @@ def upload_file(request):
     
     
 #http://www.cnblogs.com/skyflask/p/9459309.html    
-from django.views.decorators.csrf import csrf_exempt
+
 
 def ajax_get(req):
     return render(req,'ajax_get.html')
