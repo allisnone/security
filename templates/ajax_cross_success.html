@@ -38,6 +38,7 @@
         var para2 = "b";
         var div1 = "p1";
         var div2 = "p2";
+        alert(div1);
         $.ajax(internal_request(div1,url1,para1,para1));
         //$.ajax(cross_site_request(div1,url1,para1,para1));
         //$.ajax(cross_site_request(div2,url2,para2,para2));
@@ -99,18 +100,18 @@
                          method: 'get',
                          };
             	 alert(data1);
-            	 head_html = form_head_items();
-            	 alert(head_html);
+            	 ///head_html = form_head_items();
+            	 ///alert(head_html);
             	 //document.getElementById(id).innerHTML = head_html;
-            	 html = add_content_item(data1,statusimg,iconimg);
+            	 ////html = add_content_item(data1,statusimg,iconimg);
             	 //document.getElementById(id).append(html);
-            	 document.getElementById(id).innerHTML = head_html + html;
-            	 //result_div = document.getElementById(id);
-            	 //alert(result_div);
-            	 //head_element = form_head_element();
-            	 //result_div.appendChild(head_element);
-            	 //item_element = add_content_element(data1,statusimg,iconimg);
-            	 //result_div.appendChild(item_element);
+            	 ///document.getElementById(id).innerHTML = head_html + html;
+            	 result_div = document.getElementById(id);
+            	 alert(result_div);
+            	 head_element = form_head_element();
+            	 result_div.appendChild(head_element);
+            	 item_element = add_content_element(data1,statusimg,iconimg);
+            	 result_div.appendChild(item_element);
             	 
                  return 1;
              },
@@ -182,40 +183,7 @@
 	    alert(html);
 	    return html;
      }
-     
-     function add_content_element(data,statusimg,iconimg){
-    	    var row_div = document.createElement("div");
-    	    row_div.setAttribute("class","row");
-    	    var html = '<div class="col-sm-1">' +
-    		'<div> <img src="' + statusimg + '" style="width:15px; height:15px; margin:5px;"> </div>' +
-    		'</div>' +
-    		'<div class="col-sm-3">' +
-    		'<p>' + data.name + '</p>' +
-    		'</div>' +
-    		'<div class="col-sm-1">' +
-    		'<div> <img src="' + iconimg + '" style="width:15px; height:15px; margin:5px;"> </div> ' +
-    		'</div>' +
-    		'<div class="col-sm-6">' +
-    		'<p>' +  data.detail + '</p>' +
-    		'</div>' +
-    		'<div class="col-sm-1">'
-    		'<p> </p>' +
-    		'</div>';
-    		row_div.innerHTML = html;
-    		return row_div;
-     }
-     
-     function form_head_element(){
-    	var row_div = document.createElement("div");
- 	    row_div.setAttribute("class","row");
-    	var h = '<div class="col-sm-1"> <p> STATUS </p></div>' +
- 		'<div class="col-sm-3"> <p> TEST NAME </p></div>' +
- 		'<div class="col-sm-1"> <p> ICON </p></div>' +
- 		'<div class="col-sm-6"> <p> TEST DETAILS </p></div>' +
- 		'<div class="col-sm-1"> <p> </p></div>' +
- 		row_div.innerHTML = h;
- 		return row_div;
-     }
+
      
      function form_head_items(){
      	var h = '<div class="row">' +
@@ -227,12 +195,46 @@
   		'</div>';
   		return h;
      }
+     function add_content_element(data,statusimg,iconimg){
+ 	    var row_div = document.createElement("div");
+ 	    row_div.setAttribute("class","row");
+ 	    var html = '<div class="col-sm-1">' +
+ 		'<div> <img src="' + statusimg + '" style="width:15px; height:15px; margin:5px;"> </div>' +
+ 		'</div>' +
+ 		'<div class="col-sm-3">' +
+ 		'<p>' + data.name + '</p>' +
+ 		'</div>' +
+ 		'<div class="col-sm-1">' +
+ 		'<div> <img src="' + iconimg + '" style="width:15px; height:15px; margin:5px;"> </div> ' +
+ 		'</div>' +
+ 		'<div class="col-sm-6">' +
+ 		'<p>' +  data.detail + '</p>' +
+ 		'</div>' +
+ 		'<div class="col-sm-1">'
+ 		'<p> </p>' +
+ 		'</div>';
+ 		row_div.innerHTML = html;
+ 		return row_div;
+  }
+  
+	  function form_head_element(){
+	 	var head_div = document.createElement("div");
+		    head_div.setAttribute("class","row");
+	 	var h = '<div class="col-sm-1"> <p> STATUS </p></div>' +
+			'<div class="col-sm-3"> <p> TEST NAME </p></div>' +
+			'<div class="col-sm-1"> <p> ICON </p></div>' +
+			'<div class="col-sm-6"> <p> TEST DETAILS </p></div>' +
+			'<div class="col-sm-1"> <p> </p></div>';
+			head_div.innerHTML = h;
+			return head_div;
+	  }
 
      </script>
      </head>
   <body>
   
   <div id="p1" class="container"> </div>
+  <div><p id='p4'></p></div>
   <div><p id='p2'></p></div>
   <div><p id='p3'></p></div>
   <div id="accessAll" class="container">
