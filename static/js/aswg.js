@@ -49,8 +49,8 @@ function aswgSecurityCheck(elementId,dataObj){
 		//myUrl = dataObj[i].urls;
 		//var patt = new RegExp("http|https");   //判断url是否含有http，https字样
 		//alert(patt.test(myUrl));
-		alert('cross site: ' + dataObj[i].cross);
-		alert(dataObj[i].urls);
+		//alert('cross site: ' + dataObj[i].cross);
+		//alert(dataObj[i].urls);
 		//if (patt.test(myUrl)) 
 		if (Number(dataObj[i].cross)==1)	//跨站访问
 		{
@@ -67,30 +67,30 @@ function aswgSecurityCheck(elementId,dataObj){
 	
 }
 
-function crossSiteRequest(id,data,statusImg){
+function crossSiteRequest(id,rawData,statusImg){
 	return {
-		type: data.method,
+		type: rawData.method,
         //async: false,
         async: true,
-        url: data.urls,
+        url: rawData.urls,
         //url: "http://jira.skyguardmis1.com/browse/EI-1055",
         dataType: "jsonp",
         jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
         jsonpCallback:"flightHandler",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
         success: function(json,textStatus){
 			//alert(XMLHttpRequest.status);
-            alert('success state cross-site:'+textStatus);
+            alert(rawData.name + ' success state cross-site:'+textStatus);
             //if (textStatus == "success") {  //200 ok
               	//document.getElementById(id).innerHTML= id + ' URL: ' + myurl + " :" + 'success' + para1 + para1;
-			//	addContentElement(data,statusImg)
+			//	addContentElement(rawData,statusImg)
 			//	}
-			divItem = addContentElement(data,statusImg.failed);
+			divItem = addContentElement(rawData,statusImg.failed);
 			document.getElementById(id).appendChild(divItem);
             return 1;
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
             //alert('fail');
-            alert('cross fail http code: ' + XMLHttpRequest.status);
+            alert(rawData.name + ' cross fail http code: ' + XMLHttpRequest.status);
             /*
             if (XMLHttpRequest.status == 403) {
            	//document.getElementById(id).innerHTML=id + ' URL: ' + myurl + " :" + XMLHttpRequest.status + para2 + para2;
@@ -106,7 +106,7 @@ function crossSiteRequest(id,data,statusImg){
 				alert(XMLHttpRequest.status);
 			}
 			*/
-            divItem = addContentElement(data,statusImg.passed);
+            divItem = addContentElement(rawData,statusImg.passed);
 			document.getElementById(id).appendChild(divItem);
             return 0;
         },
@@ -124,14 +124,14 @@ function internalUlrRequest(id,rawData,statusImg){
 		dataType: rawData.type,//"html",
 		success: function(result){
 			//alert(data.status);
-			alert('inter success data:' + result);
+			alert(rawData.name + ' inter success data:' + result);
 			divItem = addContentElement(rawData,statusImg.failed);
 			document.getElementById(id).appendChild(divItem);
             return 1;
         },
-        error: function(XMLHttpRequest){
+        error: function(result,XMLHttpRequest){
 			//alert('fail');
-            alert('inter fail http code: ' + XMLHttpRequest.status);
+            alert(rawData.name + ' inter fail http code: ' + XMLHttpRequest.status);
             if (XMLHttpRequest.status == 403) {
            	//document.getElementById(id).innerHTML=id + ' URL: ' + myurl + " :" + XMLHttpRequest.status + para2 + para2;
 			divItem = addContentElement(rawData,statusImg.passed);
