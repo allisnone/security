@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml" >
+ <head>
+     <title>Untitled Page</title>
+     <link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+     <link href="../static/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+      <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script src="../static/js/aswg.js"></script>
+      <script type="text/javascript">
+     jQuery(document).ready(function(){
+    	 /*
+        $.ajax({
+             type: "get",
+             //async: false,
+             async: true,
+             //url: "https://api.douban.com/v2/book/search?q=javascript&count=1",
+             url: "http://jira.skyguardmis1.com/browse/EI-1055",
+             dataType: "jsonp",
+             jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+             jsonpCallback:"flightHandler",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+             success: function(json,textStatus){
+                 alert(json.total);
+                 alert(textStatus);
+             },
+             error: function(XMLHttpRequest, textStatus, errorThrown){
+                 alert('fail');
+                 alert(XMLHttpRequest.status);
+                 if (XMLHttpRequest.status == 404) {
+                	 document.getElementById("p1").innerHTML= 'P1: '  + XMLHttpRequest.status;
+                 }
+             }
+         });
+    	 */
+        
+        //var url1 = "http://jira.skyguardmis.com/browse/EI-10555";
+    	var url1 = "get_classes.html"; 
+    	var url2 = "https://api.douban.com/v2/book/search?q=javascript&count=1";
+        var para1 = "a";
+        var para2 = "b";
+        var div1 = "p1";
+        var div2 = "p2";
+        alert(div1);
+        //$.ajax(internal_request(div1,url1,para1,para1));
+        //$.ajax(cross_site_request(div1,url1,para1,para1));
+        //$.ajax(cross_site_request(div2,url2,para2,para2));
+        var url3 = "add_classes.html";
+        var data = {ips:"192.168.7.1",ports:"100",contacts:"xiaoxie"};
+        var div3 = "p3";
+        //$.ajax(internal_request_post(div3,url3,data,para1));
+        var elementId = 'p1';
+        aswgSecurityCheck(elementId);
+        
+     });
+    
+     </script>
+     </head>
+  <body>
+  
+  <div id="p1" class="container"> </div>
+  <div><p id='p4'></p></div>
+  <div><p id='p2'></p></div>
+  <div><p id='p3'></p></div>
+  <div id="accessAll" class="container">
+  <div id='div10'> </div>
+  </body>
+ </html>

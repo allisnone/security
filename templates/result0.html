@@ -1,0 +1,220 @@
+
+<div id="loadResultDiv" class="container" style="padding:0;">
+  <div id="threatPrevention" class="container" style="display:block;padding:0;">
+    <div style="font-size: 21px; font-weight:500; margin-bottom:10px;">Security Assessment</div>
+    <div style="display:flex;">
+    <div id="threatPreventionClick" style="display:flex; cursor:pointer; width:32%; color:#009CDA;">
+      <div id="threatPreventionGlyphicon" class="fa fa-chevron-down" style="padding:4px; padding-right: 8px;"></div>
+      <div  style="font-size: 17px; font-weight:500;">Threat Prevention</div>
+    </div>
+
+    <div id="threatPreventionResult" style="display:none; width:50%; ">
+      <div style="display:flex;">
+        <img src="../static/images/fail.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="threatPreventionFailCount">0</span> Failed Tests
+        </p>
+      </div>
+      <div style="display:flex; margin-left:3%;">
+        <img src="../static/images/pass.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="threatPreventionPassCount">0</span> Passed Tests
+        </p>
+      </div>
+    </div>
+    </div>
+
+  </div>
+  <div id="threatPreventionDivider" class="container" style="border-bottom: 1px solid #ccc; margin:15px auto; display:none;">
+  </div>
+
+  <div id="threatPreventionBlock">
+    <div id="threatPreventionLabels" style="display:none; padding: 16px 12px 8px 12px; color: #939393">
+    </div>
+    <div id="threatAll" class="container">
+    {% if data %}
+        <script type="text/javascript">$("#dataprotectionLabels").style("display","block")</script>
+    {% endif %}
+    <div class="row">
+		<div class="col-sm-1"> <p> STATUS </p></div>
+		<div class="col-sm-3"> <p> TEST NAME </p></div>
+		<div class="col-sm-1"> <p> ICON </p></div>
+		<div class="col-sm-6"> <p> TEST DETAILS </p></div>
+		<div class="col-sm-1">
+			<p> </p>
+		</div>
+	</div>
+    {% for data in data_threat %}
+        <div class="row">
+        	<div class="col-sm-1"> 
+        		<div> <img src="../static/images/fail.png" style="width:15px; height:15px; margin:5px;"> </div>
+        	</div>
+			<div class="col-sm-3">
+				<p> {{data.name}} </p>
+			</div>
+			<div class="col-sm-1">
+				<div> <img src="../static/images/fail.png" style="width:15px; height:15px; margin:5px;"> </div>
+			</div>
+			<div class="col-sm-6">
+				<p> {{data.detail}} </p>
+			</div>
+			<div class="col-sm-1">
+				<p> </p>
+			</div>
+        </div>
+    {% endfor %}
+    
+    </div>
+    <div id="threatFail"></div>
+    <div id="threatPass"></div>
+
+  </div>
+  <div id="threatPreventionClearfloat" style="min-height:18px"></div>
+
+  <div id="accessControl" class="container" style="display:block;padding:0;">
+    <div style="display:flex;">
+
+    <div id="accessControlClick" style="display:flex; cursor:pointer; width:32%; color:#009CDA;">
+      <div id="accessControlGlyphicon" class="fa fa-chevron-down" style="padding:4px; padding-right: 8px;"></div>
+      <div style="font-size: 17px; font-weight:500;">Access Control</div>
+    </div>
+
+
+
+    <div id="accessControlResult" style="display:none; width:48%;">
+      <div style="display:flex;">
+        <img src="../static/images/fail.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="accessControlFailCount">0</span> Failed Tests
+        </p>
+      </div>
+      <div style="display:flex; margin-left:3%;">
+        <img src="../static/images/pass.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="accessControlPassCount">0</span> Passed Tests
+        </p>
+      </div>
+    </div>
+    </div>
+
+  </div>
+  <div id="accessControlDivider" class="container" style="border-bottom: 1px solid #ccc; margin:15px auto; display:none;">
+  <!-- add access control divider here -->
+   </div>
+
+  <div id="accessControlBlock">
+  <div id="accessControlLabels" style="display:block; padding: 16px 12px 8px 12px; color: #939393">
+   </div>
+ 
+  <div id="accessAll" class="container">
+    {% if data %}
+        <script type="text/javascript">$("#dataprotectionLabels").style("display","block")</script>
+    {% endif %}
+    <div class="row">
+		<div class="col-sm-1"> <p> STATUS </p></div>
+		<div class="col-sm-3"> <p> TEST NAME </p></div>
+		<div class="col-sm-1"> <p> ICON </p></div>
+		<div class="col-sm-6"> <p> TEST DETAILS </p></div>
+		<div class="col-sm-1">
+			<p> </p>
+		</div>
+	</div>
+    {% for data in data_access %}
+        <div class="row">
+        	<div class="col-sm-1"> 
+        		<div> <img src="../static/images/fail.png" style="width:15px; height:15px; margin:5px;"> </div>
+        	</div>
+			<div class="col-sm-3">
+				<p> {{data.name}} </p>
+			</div>
+			<div class="col-sm-1">
+				<div> <img src="../static/images/fail.png" style="width:15px; height:15px; margin:5px;"> </div>
+			</div>
+			<div class="col-sm-6">
+				<p> {{data.detail}} </p>
+			</div>
+			<div class="col-sm-1">
+				<p> </p>
+			</div>
+        </div>
+    {% endfor %}
+  
+    </div>
+  
+  </div>
+  <div id="accessFail"></div>
+  <div id="accessPass"></div>
+  </div>
+
+  <div id="accessControlClearfloat" style="min-height:18px"></div>
+
+
+  <div id="dataProtection" class="container" style="display:block;padding:0;">
+    <div style="font-size: 21px; font-weight:500; margin-bottom:10px;">Data Protection Assessment</div>
+    <div style="display:flex;">
+    <div id="dataProtectionClick" style="display:flex; cursor:pointer; width:32%; color:#009CDA;">
+      <div id="dataProtectionGlyphicon" class="fa fa-chevron-down" style="padding:4px; padding-right: 8px;"></div>
+      <div style="font-size: 17px; font-weight:500;">Data Protection</div>
+    </div>
+
+    <div id="dataProtectionResult" style="display:none; width:48%;">
+      <div style="display:flex;">
+        <img src="../static/images/fail.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="dataProtectionFailCount">0</span> Failed Tests
+        </p>
+      </div>
+      <div style="display:flex; margin-left:3%;">
+        <img src="../static/images/pass.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="dataProtectionPassCount">0</span> Passed Tests
+        </p>
+      </div>
+    </div>
+    </div>
+
+  </div>
+
+  <div id="dataprotectionBlock">
+ <div id="dataprotectionLabels"  style="display:none; padding: 16px 12px 8px 12px; color: #939393;" >
+ 
+ </div>
+    <div id="dataAll" class="container">
+    {% if data %}
+        <script type="text/javascript">$("#dataprotectionLabels").style("display","block")</script>
+    {% endif %}
+    <div class="row">
+		<div class="col-sm-1"> <p> STATUS </p></div>
+		<div class="col-sm-3"> <p> TEST NAME </p></div>
+		<div class="col-sm-1"> <p> ICON </p></div>
+		<div class="col-sm-6"> <p> TEST DETAILS </p></div>
+		<div class="col-sm-1">
+			<p> </p>
+		</div>
+	</div>
+    {% for data in data_protection %}
+        <div class="row">
+        	<div class="col-sm-1"> 
+        		<div> <img src="../static/images/pass.png" style="width:15px; height:15px; margin:5px;"> </div>
+        	</div>
+			<div class="col-sm-3">
+				<p> {{data.name}} </p>
+			</div>
+			<div class="col-sm-1">
+				<div> <img src="../static/images/fail.png" style="width:15px; height:15px; margin:5px;"> </div>
+			</div>
+			<div class="col-sm-6">
+				<p> {{data.detail}} </p>
+			</div>
+			<div class="col-sm-1">
+				<p> </p>
+			</div>
+        </div>
+    {% endfor %}
+  
+    </div>
+</div>
+  <div id="dataFail"></div>
+  <div id="dataPass"></div>
+  </div>
+</div>

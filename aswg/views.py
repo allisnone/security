@@ -9,6 +9,8 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 #from django.views.decorators import csrf
 from django.views.decorators.csrf import csrf_exempt
+
+from django.core import serializers
 # Create your views here.
 
 def base(request):
@@ -24,20 +26,20 @@ def add_classes(request):
     if request.method == "GET":
         return render(request, 'add_classes.html')
     elif request.method == 'POST':
-        print(request.POST)
+        #print(request.POST)
         ips = request.POST.get('ips')
         ports=request.POST.get('ports')
         contacts=request.POST.get('contacts')
-        print(ips)
-        print(contacts)
-        models.chkportinfo.objects.create(IPs=ips,ports=ports,contact=contacts)
+        #print(ips)
+        #print(contacts)
+        models.chkportinfo.objects.create(ips=ips,ports=ports,contact=contacts)
         return redirect('get_classes.html')
     
 def post_classes(request):
     ips = request.POST.get('ips')
     ports = request.POST.get('ports')
     contacts = request.POST.get('contacts')
-    models.chkportinfo.objects.create(IPs=ips,ports=ports,contact=contacts)
+    models.chkportinfo.objects.create(ips=ips,ports=ports,contact=contacts)
     return HttpResponse()
  
 def del_classes(request):
@@ -55,7 +57,7 @@ def edit_classes(request):
         ips = request.POST.get('ips')
         ports = request.POST.get('ports')
         contacts=request.POST.get('contacts')
-        models.chkportinfo.objects.filter(id=id).update(IPs=ips,ports=ports,contact=contacts)
+        models.chkportinfo.objects.filter(id=id).update(ips=ips,ports=ports,contact=contacts)
         return redirect('get_classes.html')
 
 def login(request):
@@ -151,7 +153,21 @@ def ajax_post(req):
     return HttpResponse('ajax_post')
 
 
-
+@csrf_exempt
 def ajax_jsonp(request):
-    return render(request,'ajax_cross_success.html')
+    data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
+    data_access = SECURITY_CONFIG['Security Assessment']['Access Control']
+    data_protection = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
+    #print('data_threat',data_threat)
+    #data_threat = json.load(data_threat)#serializers('json',data_threat)
+    #data_access = json.load(data_access)#serializers('json',data_access)
+    #data_protection = json.load(data_protection)#serializers('json',data_protection)
+    
+    data_dict = {'data_threat':json.dumps(data_threat),'data_access':json.dumps(data_access),'data_protection':json.dumps(data_protection)}
+    #raw_data = json.load(data_dict)
+    #json_data = json.dumps(data_dict)#({'rawData':data_dict})
+    #print('data=',data)
+    return  render(request,'ajax_cross_success.html',data_dict)
+    #return render(request,'ajax_cross_success.html')
+    #return render(request,'ajax_cross_success.html')
     #return render(request,'ajax_cross.html')
