@@ -9,7 +9,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 #from django.views.decorators import csrf
 from django.views.decorators.csrf import csrf_exempt
-
+import os
 from django.core import serializers
 # Create your views here.
 
@@ -171,3 +171,19 @@ def ajax_jsonp(request):
     #return render(request,'ajax_cross_success.html')
     #return render(request,'ajax_cross_success.html')
     #return render(request,'ajax_cross.html')
+    
+def params_post(request):
+    BASE_DIR = 'D:/upload/'
+    if request.method=='GET':
+        return render(request,'post.html')
+    else:
+        myFile = request.FILES.get("file", None)
+        if myFile:
+            destination = open(os.path.join(BASE_DIR, myFile.name), 'wb+')  # 打开特定的文件进行二进制的写操作
+            for chunk in myFile.chunks():  # 分块写入文件
+                destination.write(chunk)
+            destination.close()
+            return HttpResponse('file='+myFile)
+        content=request.POST.get('content','')
+        #password=request.POST.get('password','')
+        return HttpResponse('content='+content)#+"&password="+password)

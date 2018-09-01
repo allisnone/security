@@ -3,15 +3,19 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>HTTP Post Data</title>
+<title>菜鸟教程(runoob.com)</title>
 </head>
 <body>
-   
+    <form action="/search-post" method="post">
+        {% csrf_token %}
+        <input type="text" name="q">
+        <input type="submit" value="Submit">
+    </form>
+     <p>{{ rlt }}</p>
+     
  	<div class="page">
 
-	<form action="/post" method="post" name="check_order" id="check_order" enctype="multipart/form-data">
-	{% csrf_token %}
-	<p></p>
+	<form action="/ajax_post" method="post" name="check_order" id="check_order" enctype="multipart/form-data">
     <p>
         <span style="font-weight:bold;font-size:14px;">　</span>内容：</span>
         <textarea name="content" cols="20" rows="6"></textarea>

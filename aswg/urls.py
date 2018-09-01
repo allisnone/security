@@ -44,5 +44,6 @@ urlpatterns = [
     url(r'^ajax_get$',views.ajax_get),
     url(r'^ajax_post$',views.ajax_post),
     url(r'jsonp$',views.ajax_jsonp),
+    url(r'post$',views.params_post),
     
 ]
