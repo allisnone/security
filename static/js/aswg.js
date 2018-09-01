@@ -115,11 +115,15 @@ function crossSiteRequest(id,rawData,statusImg){
 
 
 function internalUlrRequest(id,rawData,statusImg){
+	dataPara = {};
+	if (rawData.method=='post' | rawData.method=='POST') {
+		dataPara = {content:rawData.para};
+	}
 	return {
 		type:rawData.method,
 		url: rawData.urls,
 		//async: false,
-		data: rawData.para,
+		data: dataPara,
 		//timeout:30000,//30秒
 		dataType: rawData.type,//"html",
 		success: function(result){

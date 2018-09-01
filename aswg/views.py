@@ -171,7 +171,7 @@ def ajax_jsonp(request):
     #return render(request,'ajax_cross_success.html')
     #return render(request,'ajax_cross_success.html')
     #return render(request,'ajax_cross.html')
-    
+@csrf_exempt    
 def params_post(request):
     BASE_DIR = 'D:/upload/'
     if request.method=='GET':
@@ -183,7 +183,8 @@ def params_post(request):
             for chunk in myFile.chunks():  # 分块写入文件
                 destination.write(chunk)
             destination.close()
-            return HttpResponse('file='+myFile)
+            return HttpResponse('file='+myFile.name)
         content=request.POST.get('content','')
+        print('content=',content)
         #password=request.POST.get('password','')
         return HttpResponse('content='+content)#+"&password="+password)

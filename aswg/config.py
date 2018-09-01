@@ -5,7 +5,7 @@ from aswg.source_urls import EXE_URLS, MALICIOUS_WEBSITES, PHISHING_ATTACK,\
     OLDER_KNOWN_VIRUSES, VIRUS_HIDDEN_IN_ZIP,\
     COMMON_VIRUS_FROM_KNOWN_MALICIOUS_SITE, ANONYMIZING_WEBSITES,\
     EMBARGOED_COUNTRIE, ADULT_WEBSITES, CREDIT_CARD, SOCIAL_SECURITY_NUMBER,\
-    SOURCE_CODE,INTERAL_URL
+    SOURCE_CODE,INTERAL_URL,INTERAL_POST_URL
 
 SECURITY_CONFIG = {
     'Security Assessment': {
@@ -111,52 +111,52 @@ SECURITY_CONFIG = {
             #'Block credit card exfiltration': 
                 {
                 'name':'个人隐私信息保护',
-                'urls': INTERAL_URL,#CREDIT_CARD,
+                'urls': INTERAL_POST_URL,#CREDIT_CARD,
                 'method': 'POST',
                 'detail':'验证是否可以外发保护个人隐私信息',
                 'description':'个人隐私信息包括信用卡号，手机号、中国护照号',
                 'icon': '../static/images/fail.png',
                 'cross': '0',
                 'type': 'html',
-                'para': {'ips':"192.168.7.1",'ports':"100",'contacts':"xiaoxie"}
+                'para': '13922119451'
                 },
                             
             #'Block Social Security number exfiltration': 
                 {
                 'name':'企业机密保护',
-                'urls': INTERAL_URL,
+                'urls': INTERAL_POST_URL,
                 'method': 'POST',
                 'detail':'企业薪酬福利，财务报表',
                 'description':'待完善',
                 'icon': '../static/images/fail.png',
                 'cross': '0',
                 'type': 'html',
-                'para': {'ips':"192.168.7.1",'ports':"100",'contacts':"xiaoxie"}
+                'para': '资产负债率'
                 },
         
             #'Block source code exfiltration': 
                 {
                 'name':'不正当言论',
-                'urls': INTERAL_URL,
+                'urls': INTERAL_POST_URL,
                 'method': 'POST',
                 'detail':'淫秽文字，暴力武器，反党反政府，压缩凡是发送 ',
                 'description':'待完善',
                 'icon': '../static/images/fail.png',
                 'cross': '0',
                 'type': 'html',
-                'para': {'ips':"192.168.7.1",'ports':"100",'contacts':"xiaoxie"}
+                'para': '法轮功'
                 },
             #'Block source code exfiltration': 
                 {
                 'name':'行业特点信息保护',
-                'urls': INTERAL_URL,
+                'urls': INTERAL_POST_URL,
                 'method': 'POST',
                 'detail':'住院信息，健康病症，理赔记录，AutoCAD图纸 ',
                 'description':'待完善',
                 'icon': '../static/images/fail.png',
                 'cross': '0',
                 'type': 'html',
-                'para': {'ips':"192.168.7.1",'ports':"100",'contacts':"xiaoxie"}
+                'para': '病例'
                 }
             ]
         }
