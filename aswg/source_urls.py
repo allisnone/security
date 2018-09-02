@@ -19,7 +19,6 @@ ADULT_WEBSITES ='http://the-nightmare.com/work/m.rar'
 
 #Data Protection Assessment
 #Data Protection
-
 CREDIT_CARD = 'http://www.sogaoqing.com/upload/securypreview_credit_card.txt'
 SOCIAL_SECURITY_NUMBER = 'http://www.sogaoqing.com/upload/securypreview_credit_card.txt'
 SOURCE_CODE = 'https://github.com/allisnone/rename/blob/master/batch_rename.py'
