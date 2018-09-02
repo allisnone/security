@@ -68,11 +68,16 @@ function aswgSecurityCheck(elementId,dataObj){
 }
 
 function crossSiteRequest(id,rawData,statusImg){
+	dataPara = {};
+	if (rawData.method=='post' | rawData.method=='POST') {
+		dataPara = {content:rawData.para};
+	}v
 	return {
 		type: rawData.method,
         //async: false,
         async: true,
         url: rawData.urls,
+        data: dataPara,
         //url: "http://jira.skyguardmis1.com/browse/EI-1055",
         dataType: "jsonp",
         jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
