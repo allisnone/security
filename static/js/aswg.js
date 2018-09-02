@@ -71,7 +71,7 @@ function crossSiteRequest(id,rawData,statusImg){
 	dataPara = {};
 	if (rawData.method=='post' | rawData.method=='POST') {
 		dataPara = {content:rawData.para};
-	}v
+	}
 	return {
 		type: rawData.method,
         //async: false,
