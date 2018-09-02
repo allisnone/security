@@ -11,6 +11,7 @@ from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_exempt
 import os
 from django.core import serializers
+from django.template import RequestContext
 # Create your views here.
 
 def base(request):
@@ -155,6 +156,7 @@ def ajax_post(req):
 
 @csrf_exempt
 def ajax_jsonp(request):
+    #print(request.protocol)
     data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
     data_access = SECURITY_CONFIG['Security Assessment']['Access Control']
     data_protection = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
@@ -167,10 +169,21 @@ def ajax_jsonp(request):
     #raw_data = json.load(data_dict)
     #json_data = json.dumps(data_dict)#({'rawData':data_dict})
     #print('data=',data)
+    #Access-Control-Allow-Headers:x-requested-with
+    #response = render_to_response('ajax_cross_success.html',data_dict,context_instance=RequestContext(request))
+    #response["Access-Control-Allow-Headers"] = "*"
     return  render(request,'ajax_cross_success.html',data_dict)
     #return render(request,'ajax_cross_success.html')
     #return render(request,'ajax_cross_success.html')
     #return render(request,'ajax_cross.html')
+    
+    #response = HttpResponse(json.dumps({"key": "value", "key2": "value"}))
+    #response["Access-Control-Allow-Origin"] = "*"
+    #response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+    #response["Access-Control-Max-Age"] = "1000"
+    #response["Access-Control-Allow-Headers"] = "*"
+    
+    
 @csrf_exempt    
 def params_post(request):
     BASE_DIR = 'D:/upload/'

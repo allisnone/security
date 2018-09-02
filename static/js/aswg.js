@@ -57,6 +57,10 @@ function aswgSecurityCheck(elementId,dataObj){
 			$.ajax(crossSiteRequest(elementId,data,statusImg));
 			alert('cross site complete: ' + dataObj[i].urls);
 		}
+		else if (Number(dataObj[i].cross)==2)
+		{
+			xmlhttp(dataObj[i].urls,dataObj[i].para);
+		}
 		else
 		{
 			$.ajax(internalUlrRequest(elementId,data,statusImg));
@@ -118,6 +122,10 @@ function crossSiteRequest(id,rawData,statusImg){
     };
 }
 
+function flightHandler(callback){
+	alert('callback='+callback);
+	
+}
 
 function internalUlrRequest(id,rawData,statusImg){
 	dataPara = {};
@@ -183,7 +191,7 @@ function addContentElement(data,statusImg){
 }
 
 
- function formHeadElement(){
+function formHeadElement(){
 	var headDiv = document.createElement("div");
 	headDiv.setAttribute("class","row");
 	var h = '<div class="col-sm-1"> <p> STATUS </p></div>' +
@@ -193,4 +201,40 @@ function addContentElement(data,statusImg){
 		'<div class="col-sm-1"> <p> </p></div>';
 	headDiv.innerHTML = h;
 	return headDiv;
+}
+
+
+function getHttpObj(){
+    var httpobj = null;
+    try {
+        httpobj = new ActiveXObject("Msxml2.XMLHTTP");
+    }
+    catch (e) {
+        try {
+            httpobj = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        catch (e1) {
+            httpobj = new XMLHttpRequest();
+        }
+    }
+    return httpobj;
  }
+
+function xmlhttp(url,content) {
+//    var xhr = new XMLHttpRequest();
+    var xhr = getHttpObj();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type","Access-Control-Allow-Origin", "application/x-www-form-urlencoded;");//缺少这句，后台无法获取参数
+    xhr.onreadystatechange = function() {
+        console.log(xhr.responseText);
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.responseText);
+        }
+    };
+    var para = "content=" + content;
+    xhr.send(para);
+}
+ 
+ 
+ 
+ 

@@ -5,7 +5,7 @@ from aswg.source_urls import EXE_URLS, MALICIOUS_WEBSITES, PHISHING_ATTACK,\
     OLDER_KNOWN_VIRUSES, VIRUS_HIDDEN_IN_ZIP,\
     COMMON_VIRUS_FROM_KNOWN_MALICIOUS_SITE, ANONYMIZING_WEBSITES,\
     EMBARGOED_COUNTRIE, ADULT_WEBSITES, CREDIT_CARD, SOCIAL_SECURITY_NUMBER,\
-    SOURCE_CODE,INTERAL_URL,INTERAL_POST_URL
+    SOURCE_CODE,INTERAL_URL,INTERAL_POST_URL,CROSS_POST_URL
 
 SECURITY_CONFIG = {
     'Security Assessment': {
@@ -111,12 +111,12 @@ SECURITY_CONFIG = {
             #'Block credit card exfiltration': 
                 {
                 'name':'个人隐私信息保护',
-                'urls': INTERAL_POST_URL,#CREDIT_CARD,
+                'urls': CROSS_POST_URL,#CREDIT_CARD,
                 'method': 'POST',
                 'detail':'验证是否可以外发保护个人隐私信息',
                 'description':'个人隐私信息包括信用卡号，手机号、中国护照号',
                 'icon': '../static/images/fail.png',
-                'cross': '1',
+                'cross': '2',
                 'type': 'html',
                 'para': '13922119451'
                 },
@@ -124,13 +124,13 @@ SECURITY_CONFIG = {
             #'Block Social Security number exfiltration': 
                 {
                 'name':'企业机密保护',
-                'urls': INTERAL_POST_URL,
+                'urls': CROSS_POST_URL,
                 'method': 'POST',
                 'detail':'企业薪酬福利，财务报表',
                 'description':'待完善',
                 'icon': '../static/images/fail.png',
-                'cross': '1',
-                'type': 'html',
+                'cross': '2',
+                'type': 'json',
                 'para': '资产负债率'
                 },
         
@@ -142,8 +142,8 @@ SECURITY_CONFIG = {
                 'detail':'淫秽文字，暴力武器，反党反政府，压缩凡是发送 ',
                 'description':'待完善',
                 'icon': '../static/images/fail.png',
-                'cross': '1',
-                'type': 'html',
+                'cross': '0',
+                'type': 'text',
                 'para': '法轮功'
                 },
             #'Block source code exfiltration': 
@@ -154,8 +154,8 @@ SECURITY_CONFIG = {
                 'detail':'住院信息，健康病症，理赔记录，AutoCAD图纸 ',
                 'description':'待完善',
                 'icon': '../static/images/fail.png',
-                'cross': '1',
-                'type': 'html',
+                'cross': '0',
+                'type': 'text',
                 'para': '病例'
                 }
             ]

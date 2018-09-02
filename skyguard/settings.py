@@ -25,7 +25,7 @@ SECRET_KEY = 'tz-8!d)v_9vd$_+9&#df84dbjkf__he+z2-53q3ddy_1xw-d+j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 #https://github.com/ottoyiu/django-cors-headers
 CORS_ORIGIN_ALLOW_ALL = True
