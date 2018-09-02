@@ -151,7 +151,21 @@ def ajax_post(req):
         print(req.POST)
     else:
         print(req.GET)
-    return HttpResponse('ajax_post')
+    data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
+    data_access = SECURITY_CONFIG['Security Assessment']['Access Control']
+    data_protection = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
+    #print('data_threat',data_threat)
+    #data_threat = json.load(data_threat)#serializers('json',data_threat)
+    #data_access = json.load(data_access)#serializers('json',data_access)
+    #data_protection = json.load(data_protection)#serializers('json',data_protection)
+    
+    data_dict = {'data_threat':json.dumps(data_threat),'data_access':json.dumps(data_access),'data_protection':json.dumps(data_protection)}
+    response = HttpResponse(data_dict)
+    response["Access-Control-Allow-Origin"] = "*"
+    response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+    response["Access-Control-Max-Age"] = "1000"
+    response["Access-Control-Allow-Headers"] = "*"
+    return response
 
 
 @csrf_exempt
@@ -172,6 +186,14 @@ def ajax_jsonp(request):
     #Access-Control-Allow-Headers:x-requested-with
     #response = render_to_response('ajax_cross_success.html',data_dict,context_instance=RequestContext(request))
     #response["Access-Control-Allow-Headers"] = "*"
+    print(request.method)
+    if request.method=='GET':
+        response = HttpResponse(data_dict)
+        response["Access-Control-Allow-Origin"] = "*"
+        response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+        response["Access-Control-Max-Age"] = "1000"
+        response["Access-Control-Allow-Headers"] = "*"
+        return response
     return  render(request,'ajax_cross_success.html',data_dict)
     #return render(request,'ajax_cross_success.html')
     #return render(request,'ajax_cross_success.html')
