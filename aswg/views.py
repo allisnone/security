@@ -156,7 +156,7 @@ def ajax_post(req):
 
 @csrf_exempt
 def ajax_jsonp(request):
-    #print(request.protocol)
+    print(request.META)
     data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
     data_access = SECURITY_CONFIG['Security Assessment']['Access Control']
     data_protection = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
