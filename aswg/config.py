@@ -116,7 +116,7 @@ SECURITY_CONFIG = {
                 'detail':'验证是否可以外发保护个人隐私信息',
                 'description':'个人隐私信息包括信用卡号，手机号、中国护照号',
                 'icon': '../static/images/fail.png',
-                'cross': '0',
+                'cross': '1',
                 'type': 'html',
                 'para': '13922119451'
                 },
@@ -129,7 +129,7 @@ SECURITY_CONFIG = {
                 'detail':'企业薪酬福利，财务报表',
                 'description':'待完善',
                 'icon': '../static/images/fail.png',
-                'cross': '0',
+                'cross': '1',
                 'type': 'html',
                 'para': '资产负债率'
                 },
@@ -142,7 +142,7 @@ SECURITY_CONFIG = {
                 'detail':'淫秽文字，暴力武器，反党反政府，压缩凡是发送 ',
                 'description':'待完善',
                 'icon': '../static/images/fail.png',
-                'cross': '0',
+                'cross': '1',
                 'type': 'html',
                 'para': '法轮功'
                 },
@@ -154,7 +154,7 @@ SECURITY_CONFIG = {
                 'detail':'住院信息，健康病症，理赔记录，AutoCAD图纸 ',
                 'description':'待完善',
                 'icon': '../static/images/fail.png',
-                'cross': '0',
+                'cross': '1',
                 'type': 'html',
                 'para': '病例'
                 }

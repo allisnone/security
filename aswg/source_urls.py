@@ -25,4 +25,5 @@ SOCIAL_SECURITY_NUMBER = 'http://www.sogaoqing.com/upload/securypreview_credit_c
 SOURCE_CODE = 'https://github.com/allisnone/rename/blob/master/batch_rename.py'
 
 INTERAL_URL = 'add_classes.html'
-INTERAL_POST_URL = 'post'
+INTERAL_POST_URL = 'http://www.sogaoqing.com/post.php'
+#INTERAL_POST_URL = 'post'
