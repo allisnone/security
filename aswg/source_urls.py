@@ -25,4 +25,4 @@ SOURCE_CODE = 'https://github.com/allisnone/rename/blob/master/batch_rename.py'
 
 INTERAL_URL = 'add_classes.html'
 CROSS_POST_URL = 'http://www.sogaoqing.com/post.php'
-INTERAL_POST_URL = 'post'
+INTERAL_POST_URL = 'http://114.116.87.228:8001/post'
