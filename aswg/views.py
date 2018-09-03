@@ -188,6 +188,8 @@ def ajax_jsonp(request):
     #response["Access-Control-Allow-Headers"] = "*"
     print(request.method)
     if request.method=='GET':
+        return  render(request,'ajax_cross_success.html',data_dict)
+    elif request.method=='OPTIONS':
         response = HttpResponse(data_dict)
         response["Access-Control-Allow-Origin"] = "*"
         response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
