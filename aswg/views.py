@@ -187,7 +187,7 @@ def ajax_jsonp(request):
     #response = render_to_response('ajax_cross_success.html',data_dict,context_instance=RequestContext(request))
     #response["Access-Control-Allow-Headers"] = "*"
     print(request.method)
-    print('META.REMOTE_HOST:',request.META.REMOTE_HOST)
+    print('META.REMOTE_HOST:',request.META['REMOTE_HOST'])
     if request.method=='GET':
         return  render(request,'ajax_cross_success.html',data_dict)
     elif request.method=='OPTIONS' or request.method=='POST':
