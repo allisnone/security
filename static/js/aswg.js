@@ -224,7 +224,7 @@ function xmlhttp(url,content) {
 //    var xhr = new XMLHttpRequest();
     var xhr = getHttpObj();
     xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-Type","Access-Control-Allow-Origin", "application/x-www-form-urlencoded;");//缺少这句，后台无法获取参数
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");//缺少这句，后台无法获取参数
     xhr.onreadystatechange = function() {
         console.log(xhr.responseText);
         if (xhr.readyState == 4 && xhr.status == 200) {
