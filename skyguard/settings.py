@@ -38,6 +38,26 @@ CORS_ORIGIN_WHITELIST = (
     )
 """
 
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
+
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
 #SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 #LOGIN_REDIRECT_URL = '/dashboard/?siteid=Guangzhou'
