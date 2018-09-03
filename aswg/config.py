@@ -138,24 +138,24 @@ SECURITY_CONFIG = {
             #'Block source code exfiltration': 
                 {
                 'name':'不正当言论',
-                'urls': INTERAL_POST_URL,
+                'urls': CROSS_POST_URL,
                 'method': 'POST',
                 'detail':'淫秽文字，暴力武器，反党反政府，压缩凡是发送 ',
                 'description':'待完善',
                 'icon': '../static/images/fail.png',
-                'cross': '0',
+                'cross': '2',
                 'type': 'text',
                 'para': '法轮功'
                 },
             #'Block source code exfiltration': 
                 {
                 'name':'行业特点信息保护',
-                'urls': INTERAL_POST_URL,
+                'urls': CROSS_POST_URL,
                 'method': 'POST',
                 'detail':'住院信息，健康病症，理赔记录，AutoCAD图纸 ',
                 'description':'待完善',
                 'icon': '../static/images/fail.png',
-                'cross': '0',
+                'cross': '2',
                 'type': 'text',
                 'para': '病例'
                 }

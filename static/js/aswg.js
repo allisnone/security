@@ -227,6 +227,8 @@ function xmlhttp(id,rawData,statusImg) {
     //alert(url+'--test: ' + content);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//缺少这句，后台无法获取参数
     //alert(url+'--test2: ' + content);
+    var para = "content=" + rawData.para;
+    xhr.send(para);
     xhr.onreadystatechange = function() {
         alert(rawData.urls +"--test199 : " + "http status: " +xhr.status + xhr.responseText + "ready status: " + xhr.readyStatus);
         if (xhr.readyState == 4 && xhr.status == 200) {
@@ -243,8 +245,7 @@ function xmlhttp(id,rawData,statusImg) {
         	alert(xhr.status);
         }
     };
-    var para = "content=" + rawData.para;
-    xhr.send(para);
+    
 }
  
  
