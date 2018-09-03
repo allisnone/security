@@ -228,7 +228,7 @@ function xmlhttp(id,rawData,statusImg) {
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//缺少这句，后台无法获取参数
     //alert(url+'--test2: ' + content);
     xhr.onreadystatechange = function() {
-        console.log(rawData.urls +"--test199 : " +xhr.responseText);
+        alert(rawData.urls +"--test199 : " + "http status: " +xhr.status + xhr.responseText + "ready status: " + xhr.readyStatus);
         if (xhr.readyState == 4 && xhr.status == 200) {
         	//alert(url+'--test200: ' + content);
             //console.log("ready: " + xhr.responseText);
