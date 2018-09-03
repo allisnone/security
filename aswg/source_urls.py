@@ -17,6 +17,7 @@ EMBARGOED_COUNTRIE = ''
 ANONYMIZING_WEBSITES = 'http://the-nightmare.com/work/m.rar'
 ADULT_WEBSITES ='http://the-nightmare.com/work/m.rar'
 
+
 #Data Protection Assessment
 #Data Protection
 CREDIT_CARD = 'http://www.sogaoqing.com/upload/securypreview_credit_card.txt'
