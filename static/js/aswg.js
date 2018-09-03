@@ -225,12 +225,14 @@ function xmlhttp(id,rawData,statusImg) {
     var xhr = getHttpObj();
     xhr.open("POST", rawData.urls, true);
     //alert(url+'--test: ' + content);
+    xhr.responseType = "text"; //json,document, arraybuffer
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//缺少这句，后台无法获取参数
     //alert(url+'--test2: ' + content);
     var para = "content=" + rawData.para;
     xhr.send(para);
-    xhr.onreadystatechange = function() {
-        alert(rawData.urls +"--test199 : " + "http status: " +xhr.status + xhr.responseText + "ready status: " + xhr.readyStatus);
+    xhr.onreadystatechange = function(result) {
+    	alert("result: " + result)
+        alert(rawData.urls +"--test199 : " + "http status: " +xhr.status+ "text: " + xhr.responseText + "ready status: " + xhr.readyState);
         if (xhr.readyState == 4 && xhr.status == 200) {
         	//alert(url+'--test200: ' + content);
             //console.log("ready: " + xhr.responseText);
