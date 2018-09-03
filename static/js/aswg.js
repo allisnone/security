@@ -59,7 +59,7 @@ function aswgSecurityCheck(elementId,dataObj){
 		}
 		else if (Number(dataObj[i].cross)==2)
 		{
-			xmlhttp(dataObj[i].urls,dataObj[i].para);
+			xmlhttp(elementId,data,statusImg);//(dataObj[i].urls,dataObj[i].para);
 		}
 		else
 		{
@@ -220,18 +220,30 @@ function getHttpObj(){
     return httpobj;
  }
 
-function xmlhttp(url,content) {
+function xmlhttp(id,rawData,statusImg) {
 //    var xhr = new XMLHttpRequest();
     var xhr = getHttpObj();
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");//缺少这句，后台无法获取参数
+    xhr.open("POST", rawData.urls, true);
+    //alert(url+'--test: ' + content);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//缺少这句，后台无法获取参数
+    //alert(url+'--test2: ' + content);
     xhr.onreadystatechange = function() {
-        console.log(xhr.responseText);
+        console.log(rawData.urls +"--test199 : " +xhr.responseText);
         if (xhr.readyState == 4 && xhr.status == 200) {
-            console.log(xhr.responseText);
+        	//alert(url+'--test200: ' + content);
+            //console.log("ready: " + xhr.responseText);
+            divItem = addContentElement(rawData,statusImg.failed);
+			document.getElementById(id).appendChild(divItem);
+        }
+        else if (xhr.readyState == 4 && xhr.status == 403){
+        	divItem = addContentElement(rawData,statusImg.passed);
+			document.getElementById(id).appendChild(divItem);
+        }
+        else{
+        	alert(xhr.status);
         }
     };
-    var para = "content=" + content;
+    var para = "content=" + rawData.para;
     xhr.send(para);
 }
  
