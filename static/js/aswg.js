@@ -229,7 +229,7 @@ function xmlhttp(id,rawData,statusImg) {
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//缺少这句，后台无法获取参数
     //alert(url+'--test2: ' + content);
     var para = "content=" + rawData.para;
-    xhr.send(para);
+    
     xhr.onreadystatechange = function(result) {
     	alert("result: " + result)
         alert(rawData.urls +"--test199 : " + "http status: " +xhr.status+ "text: " + xhr.responseText + "ready status: " + xhr.readyState);
@@ -247,6 +247,8 @@ function xmlhttp(id,rawData,statusImg) {
         	alert(xhr.status);
         }
     };
+    xhr.send(para);
+    
     
 }
  
