@@ -116,7 +116,7 @@ SECURITY_CONFIG = {
                 'detail':'验证是否可以外发保护个人隐私信息',
                 'description':'个人隐私信息包括信用卡号，手机号、中国护照号',
                 'icon': '../static/images/fail.png',
-                'cross': '2',
+                'cross': '0',
                 'type': 'html',
                 'para': '13922119451'
                 },
@@ -129,7 +129,7 @@ SECURITY_CONFIG = {
                 'detail':'企业薪酬福利，财务报表',
                 'description':'待完善',
                 'icon': '../static/images/fail.png',
-                'cross': '2',
+                'cross': '0',
                 'type': 'json',
                 'para': '资产负债率'
                 },
