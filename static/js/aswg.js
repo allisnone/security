@@ -228,7 +228,7 @@ function xmlhttp(id,rawData,statusImg) {
     xhr.responseType = "text"; //json,document, arraybuffer
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//缺少这句，后台无法获取参数
     //alert(url+'--test2: ' + content);
-    var para = "content=" + rawData.para;
+    
     
     xhr.onreadystatechange = function(result) {
     	alert("result: " + result)
@@ -247,9 +247,9 @@ function xmlhttp(id,rawData,statusImg) {
         	alert(xhr.status);
         }
     };
+    var para = {content: rawData.para};
     xhr.send(para);
-    
-    
+      
 }
  
  
