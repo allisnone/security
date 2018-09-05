@@ -243,12 +243,12 @@ function xmlhttp(id,rawData,statusImg) {
         else if (xhr.readyState == 4 && xhr.status == 403){
         	divItem = addContentElement(rawData,statusImg.passed);
 			document.getElementById(id).appendChild(divItem);
-			alert(rawData.urls +"--test403 : " + "http status: " +
-					xhr.status + "ready status4403: " + xhr.readyState + "para: " + rawData.para);
+			alert(rawData.urls +"--test403 : " + "http status4403: " +
+					xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
         }
         else{
         	alert(rawData.urls +"--testother : " + "http status: " +
-					xhr.status + "ready status4403: " + xhr.readyState + "para: " + rawData.para);
+					xhr.status + "ready status-other: " + xhr.readyState + "para: " + rawData.para);
         }
     };
     var para = {content: rawData.para};
