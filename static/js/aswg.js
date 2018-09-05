@@ -255,7 +255,17 @@ function xmlhttp(id,rawData,statusImg) {
     jspa = JSON.stringify(para);
     try
     {
+    	
+    	window.onerror = function(errorMessage, scriptURI, lineNumber) {
+    		 reportError({
+    		 message: errorMessage,
+    		 script: scriptURI,
+    		 line: lineNumber
+    		 });
+    	}
     	xhr.send(jspa);
+
+    	
     }
     catch(err)
     {
