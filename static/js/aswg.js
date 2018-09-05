@@ -231,19 +231,24 @@ function xmlhttp(id,rawData,statusImg) {
     //alert(url+'--test2: ' + content);
     xhr.onreadystatechange = function(result) {
     	alert("result: " + result)
-        alert(rawData.urls +"--test199 : " + "http status: " +xhr.status+ "text: " + xhr.responseText + "ready status: " + xhr.readyState);
+        
         if (xhr.readyState == 4 && xhr.status == 200) {
         	//alert(url+'--test200: ' + content);
             //console.log("ready: " + xhr.responseText);
             divItem = addContentElement(rawData,statusImg.failed);
 			document.getElementById(id).appendChild(divItem);
+			alert(rawData.urls +"--test200 : " + "http status4200: " +
+					xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
         }
         else if (xhr.readyState == 4 && xhr.status == 403){
         	divItem = addContentElement(rawData,statusImg.passed);
 			document.getElementById(id).appendChild(divItem);
+			alert(rawData.urls +"--test403 : " + "http status: " +
+					xhr.status + "ready status4403: " + xhr.readyState + "para: " + rawData.para);
         }
         else{
-        	alert(xhr.status);
+        	alert(rawData.urls +"--testother : " + "http status: " +
+					xhr.status + "ready status4403: " + xhr.readyState + "para: " + rawData.para);
         }
     };
     var para = {content: rawData.para};
@@ -253,7 +258,7 @@ function xmlhttp(id,rawData,statusImg) {
     }
     catch(err)
     {
-    	txt = rawData.urls + 'error: \n\n' + err.message;
+    	txt = rawData.urls + 'error: \n\n' + err;
     	alert(txt);
     }
     //xhr.send(para);
