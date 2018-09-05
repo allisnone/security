@@ -252,9 +252,10 @@ function xmlhttp(id,rawData,statusImg) {
         }
     };
     var para = {content: rawData.para};
+    jspa = JSON.stringify(para);
     try
     {
-    	xhr.send(JSON.stringify(para));
+    	xhr.send(jspa);
     }
     catch(err)
     {
