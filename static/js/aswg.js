@@ -247,7 +247,15 @@ function xmlhttp(id,rawData,statusImg) {
         }
     };
     var para = {content: rawData.para};
-    xhr.send(JSON.stringify(para));
+    try
+    {
+    	xhr.send(JSON.stringify(para));
+    }
+    catch(err)
+    {
+    	txt = rawData.urls + 'error: \n\n' + err.message;
+    	alert(txt);
+    }
     //xhr.send(para);
       
 }
