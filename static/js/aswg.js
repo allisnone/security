@@ -240,7 +240,7 @@ function xmlhttp(id,rawData,statusImg) {
 			alert(rawData.urls +"--test200 : " + "http status4200: " +
 					xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
         }
-        else if (xhr.readyState == 4 && xhr.status == 403){
+        else if (xhr.readyState == 4 && xhr.status == 0){
         	divItem = addContentElement(rawData,statusImg.passed);
 			document.getElementById(id).appendChild(divItem);
 			alert(rawData.urls +"--test403 : " + "http status4403: " +
