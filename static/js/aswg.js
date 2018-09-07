@@ -76,7 +76,7 @@ function aswgSecurityCheck(elementId,dataObj){
 
 function crossSiteRequest(id,rawData,statusImg){
 	dataPara = {};
-	if (rawData.method=='post' | rawData.method=='POST') {
+	if (rawData.method=='post' || rawData.method=='POST') {
 		dataPara = {content:rawData.para};
 	}
 	return {
@@ -132,7 +132,7 @@ function flightHandler(callback){
 
 function internalUlrRequest(id,rawData,statusImg){
 	dataPara = {};
-	if (rawData.method=='post' | rawData.method=='POST') {
+	if (rawData.method=='post' || rawData.method=='POST') {
 		dataPara = {content:rawData.para};
 	}
 	return {
@@ -289,7 +289,7 @@ function xmlhttp(id,rawData,statusImg) {
   //xhr.open("POST", rawData.urls, true);
   xhr.open(rawData.method, rawData.urls, true);
   //alert(url+'--test: ' + content);
-  if (rawData.method =="post" | rawData.method =="POST"){
+  if (rawData.method =="post" || rawData.method =="POST"){
 	  xhr.responseType = "text"; //json,document, arraybuffer
 	  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//缺少这句，后台无法获取参;
 	  alert("rawData.method="+"POST");
@@ -320,7 +320,7 @@ function xmlhttp(id,rawData,statusImg) {
       }
   };
   
-  if (rawData.method =="post" | rawData.method =="POST"){
+  if (rawData.method =="post" || rawData.method =="POST"){
 	  var para = {content: rawData.para};
 	  jspa = JSON.stringify(para);
 	  alert("rawData.method="+"POST" +jspa);
