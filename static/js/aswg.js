@@ -220,7 +220,7 @@ function getHttpObj(){
     return httpobj;
  }
 
-function xmlhttp(id,rawData,statusImg) {
+function xmlhttp0(id,rawData,statusImg) {
 //    var xhr = new XMLHttpRequest();
     var xhr = getHttpObj();
     xhr.open("POST", rawData.urls, true);
@@ -276,6 +276,53 @@ function xmlhttp(id,rawData,statusImg) {
     }
     //xhr.send(para);
       
+}
+
+
+function xmlhttp(id,rawData,statusImg) {
+//  var xhr = new XMLHttpRequest();
+  var xhr = getHttpObj();
+  //xhr.open("POST", rawData.urls, true);
+  xhr.open(rawData.method, rawData.urls, true);
+  //alert(url+'--test: ' + content);
+  if (rawData.method =="post" or rawData.method =="POST"){
+	  xhr.responseType = "text"; //json,document, arraybuffer
+	  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//缺少这句，后台无法获取参数
+  }
+  
+  //xhr.setRequestHeader('Content-Type','application/json');
+  //alert(url+'--test2: ' + content);
+  xhr.onreadystatechange = function(result) {
+  	alert("result: " + result)
+      
+      if (xhr.readyState == 4 && xhr.status == 200) {
+      	//alert(url+'--test200: ' + content);
+          //console.log("ready: " + xhr.responseText);
+          divItem = addContentElement(rawData,statusImg.failed);
+			document.getElementById(id).appendChild(divItem);
+			alert(rawData.urls +"--test200 : " + "http status4200: " +
+					xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
+      }
+      else if (xhr.readyState == 4 && xhr.status == 0){
+      	divItem = addContentElement(rawData,statusImg.passed);
+			document.getElementById(id).appendChild(divItem);
+			alert(rawData.urls +"--test403 : " + "http status4403: " +
+					xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
+      }
+      else{
+      	alert(rawData.urls +"--testother : " + "http status: " +
+					xhr.status + "ready status-other: " + xhr.readyState + "para: " + rawData.para);
+      }
+  };
+  var para = {content: rawData.para};
+  jspa = JSON.stringify(para);
+  if (rawData.method =="post" or rawData.method =="POST"){
+	  xhr.send(para);
+  }
+  else{
+	  xhr.send();
+  }
+    
 }
  
  
