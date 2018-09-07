@@ -40,11 +40,12 @@
 		//alert('protection: ' + protection);
 		
         var elementId = 'threatAll';
-        aswgSecurityCheck(elementId,threat);
+        successBlockCountThreat = aswgSecurityCheck(elementId,threat);
         var elementId1 = 'accessAll';
-        aswgSecurityCheck(elementId1,access);
+        successBlockCountAccess = aswgSecurityCheck(elementId1,access);
         var elementId2 = 'dataAll';
-        aswgSecurityCheck(elementId2,protection);
+        successBlockCountData = aswgSecurityCheck(elementId2,protection);
+        alert("successBlockCountData="+successBlockCountData);
         
      });
     

@@ -42,6 +42,7 @@ function aswgSecurityCheck(elementId,dataObj){
 		document.getElementById(elementId).appendChild(headDiv);
 		
 	}
+	var successBlockCount = 0;
 	
 	for (i=0;i<dataObj.length;i++)
 	{
@@ -59,7 +60,10 @@ function aswgSecurityCheck(elementId,dataObj){
 		}
 		else if (Number(dataObj[i].cross)==2)
 		{
-			xmlhttp(elementId,data,statusImg);//(dataObj[i].urls,dataObj[i].para);
+			var http_result = 0;
+			http_result = xmlhttp(elementId,data,statusImg);//(dataObj[i].urls,dataObj[i].para);
+			alert("http_result="+http_result);
+			successBlockCount = successBlockCount + http_result;
 		}
 		else
 		{
@@ -67,7 +71,7 @@ function aswgSecurityCheck(elementId,dataObj){
 			alert('inter site complete: ' + dataObj[i].urls);
 		}
 	}
-	return;
+	return successBlockCount;
 	
 }
 
@@ -281,11 +285,12 @@ function xmlhttp0(id,rawData,statusImg) {
 
 function xmlhttp(id,rawData,statusImg) {
 //  var xhr = new XMLHttpRequest();
+  var result = 0;
   var xhr = getHttpObj();
   //xhr.open("POST", rawData.urls, true);
   xhr.open(rawData.method, rawData.urls, true);
   //alert(url+'--test: ' + content);
-  if (rawData.method =="post" or rawData.method =="POST"){
+  if (rawData.method =="post" | rawData.method =="POST"){
 	  xhr.responseType = "text"; //json,document, arraybuffer
 	  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//缺少这句，后台无法获取参数
   }
@@ -299,14 +304,15 @@ function xmlhttp(id,rawData,statusImg) {
       	//alert(url+'--test200: ' + content);
           //console.log("ready: " + xhr.responseText);
           divItem = addContentElement(rawData,statusImg.failed);
-			document.getElementById(id).appendChild(divItem);
-			alert(rawData.urls +"--test200 : " + "http status4200: " +
+		  document.getElementById(id).appendChild(divItem);
+		  alert(rawData.urls +"--test200 : " + "http status4200: " +
 					xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
       }
       else if (xhr.readyState == 4 && xhr.status == 0){
-      	divItem = addContentElement(rawData,statusImg.passed);
-			document.getElementById(id).appendChild(divItem);
-			alert(rawData.urls +"--test403 : " + "http status4403: " +
+    	  divItem = addContentElement(rawData,statusImg.passed);
+		  document.getElementById(id).appendChild(divItem);
+		  result = 1;
+		  alert(rawData.urls +"--test403 : " + "http status4403: " +
 					xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
       }
       else{
@@ -316,12 +322,14 @@ function xmlhttp(id,rawData,statusImg) {
   };
   var para = {content: rawData.para};
   jspa = JSON.stringify(para);
-  if (rawData.method =="post" or rawData.method =="POST"){
+  if (rawData.method =="post" | rawData.method =="POST"){
 	  xhr.send(para);
   }
   else{
 	  xhr.send();
   }
+  
+  return result;
     
 }
  
