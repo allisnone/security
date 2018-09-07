@@ -285,7 +285,7 @@ function xmlhttp0(id,rawData,statusImg) {
 
 function xmlhttp(id,rawData,statusImg) {
 //  var xhr = new XMLHttpRequest();
-  var result = 0;
+  var resultStatus = 1;
   var xhr = getHttpObj();
   //xhr.open("POST", rawData.urls, true);
   xhr.open(rawData.method, rawData.urls, true);
@@ -311,7 +311,7 @@ function xmlhttp(id,rawData,statusImg) {
       else if (xhr.readyState == 4 && xhr.status == 0){
     	  divItem = addContentElement(rawData,statusImg.passed);
 		  document.getElementById(id).appendChild(divItem);
-		  result = 1;
+		  resultStatus = 1;
 		  alert(rawData.urls +"--test403 : " + "http status4403: " +
 					xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
       }
@@ -324,12 +324,14 @@ function xmlhttp(id,rawData,statusImg) {
   jspa = JSON.stringify(para);
   if (rawData.method =="post" | rawData.method =="POST"){
 	  xhr.send(para);
+	  resultStatus = 0;
   }
   else{
 	  xhr.send();
+	  resultStatus =0;
   }
   
-  return result;
+  return resultStatus;
     
 }
  
