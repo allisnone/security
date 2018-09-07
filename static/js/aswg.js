@@ -291,7 +291,7 @@ function xmlhttp(id,rawData,statusImg) {
   
   //alert(url+'--test: ' + content);
   if (rawData.method =="post" || rawData.method =="POST"){
-	  xhr.responseType = "text"; //json,document, arraybuffer
+	  //xhr.responseType = "text"; //json,document, arraybuffer
 	  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//缺少这句，后台无法获取参;
 	  alert("rawData.method="+"POST");
   }
@@ -325,11 +325,52 @@ function xmlhttp(id,rawData,statusImg) {
 	  var para = {content: rawData.para};
 	  jspa = JSON.stringify(para);
 	  alert("rawData.method="+"POST" +jspa);
-	  xhr.send(jspa);
+	  
+	  try
+	    {
+	    	window.onerror = function(errorMessage, scriptURI, lineNumber) {
+	    		/*
+	    		 reportError({
+	    		 message: errorMessage,
+	    		 script: scriptURI,
+	    		 line: lineNumber
+	    		 });
+	    		 */
+	    		alert("onerror: " + errorMessage + errorMessage);
+	    	};
+	    	xhr.send(jspa);
+	    	
+	    }
+	    catch(err)
+	    {
+	    	txt = rawData.urls + "error: \n\n" + err;
+	    	alert(txt);
+	    }
 	  resultStatus = 0;
   }
   else{
-	  xhr.send();
+	  
+	  try
+	    {
+	    	window.onerror = function(errorMessage, scriptURI, lineNumber) {
+	    		/*
+	    		 reportError({
+	    		 message: errorMessage,
+	    		 script: scriptURI,
+	    		 line: lineNumber
+	    		 });
+	    		 */
+	    		alert("onerror: " + errorMessage + errorMessage);
+	    	};
+	    	xhr.send();
+	    	
+	    }
+	    catch(err)
+	    {
+	    	txt = rawData.urls + "error: \n\n" + err;
+	    	alert(txt);
+	    }
+	  //xhr.send();
 	  resultStatus =0;
 	  
   }
