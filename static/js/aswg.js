@@ -294,7 +294,6 @@ function xmlhttp(id,rawData,statusImg) {
 	  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//缺少这句，后台无法获取参;
 	  alert("rawData.method="+"POST");
   }
-  
   //xhr.setRequestHeader('Content-Type','application/json');
   //alert(url+'--test2: ' + content);
   xhr.onreadystatechange = function(result) {
