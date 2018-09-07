@@ -18,9 +18,9 @@ SECURITY_CONFIG = {
                 'description':'This test tries to download an executable file from a website with a good reputation that uses a Content Distribution Network (CDN) like Akamai or AWS. It tests whether your security infrastructure can block the executable, limiting the possible introduction of malware and other threats.',
                 'method': 'get',
                 'icon': '../static/images/fail.png',
-                'cross': '1',
+                'cross': '2',
                 'type': 'jsonp',
-                'para': '',
+                'para': 'securypreview_exe.exe',
                 
                 },
                               

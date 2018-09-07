@@ -2,7 +2,7 @@
 
 #Security Assessment
 #Threat Prevention
-EXE_URLS = 'http://www.sogaoqing.com/upload/securypreview_exe.exe'#['http://www.sogaoqing.com/upload/securypreview_exe.exe','http://www.sogaoqing.com/upload/wmplayer.exe']
+EXE_URLS = 'http://www.sogaoqing.com/upload/nymaim.exe'#['http://www.sogaoqing.com/upload/securypreview_exe.exe','http://www.sogaoqing.com/upload/wmplayer.exe']
 MALICIOUS_WEBSITES = 'http://the-nightmare.com/work/m.rar'#'http://stockpickssystem.com/pZkove/','http://d2ogssay9or4s.com/login.php']
 PHISHING_ATTACK = 'http://the-nightmare.com/work/m.rar'#'http://belakey.com/xt/admiral/adm.php','http://belakey.com/pony/admin.php','http://sommis.ga/Secured/nsw/data/Adobe.htm']
 SESSION_HIJACKING = ''
