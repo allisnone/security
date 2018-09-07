@@ -60,7 +60,7 @@ function aswgSecurityCheck(elementId,dataObj){
 		else if (Number(dataObj[i].cross)==2)
 		{
 			var http_result = 0;
-			http_result = xmlhttp(elementId,data,statusImg);//(dataObj[i].urls,dataObj[i].para);
+			http_result = xmlhttp0(elementId,data,statusImg);//(dataObj[i].urls,dataObj[i].para);
 			alert("http_result="+http_result);
 			successBlockCount = successBlockCount + http_result;
 		}
@@ -233,7 +233,7 @@ function xmlhttp0(id,rawData,statusImg) {
     //xhr.setRequestHeader('Content-Type','application/json');
     //alert(url+'--test2: ' + content);
     xhr.onreadystatechange = function(result) {
-    	alert("result: " + result)
+    	alert("result: " + result);
         
         if (xhr.readyState == 4 && xhr.status == 200) {
         	//alert(url+'--test200: ' + content);
@@ -297,7 +297,7 @@ function xmlhttp(id,rawData,statusImg) {
   //xhr.setRequestHeader('Content-Type','application/json');
   //alert(url+'--test2: ' + content);
   xhr.onreadystatechange = function(result) {
-  	alert("result: " + result)
+  	  alert("result: " + result);
       
       if (xhr.readyState == 4 && xhr.status == 200) {
       	//alert(url+'--test200: ' + content);
