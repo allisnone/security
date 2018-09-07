@@ -291,7 +291,8 @@ function xmlhttp(id,rawData,statusImg) {
   //alert(url+'--test: ' + content);
   if (rawData.method =="post" | rawData.method =="POST"){
 	  xhr.responseType = "text"; //json,document, arraybuffer
-	  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//缺少这句，后台无法获取参数
+	  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//缺少这句，后台无法获取参;
+	  alert("rawData.method="+"POST");
   }
   
   //xhr.setRequestHeader('Content-Type','application/json');
@@ -319,10 +320,12 @@ function xmlhttp(id,rawData,statusImg) {
 					xhr.status + "ready status-other: " + xhr.readyState + "para: " + rawData.para);
       }
   };
-  var para = {content: rawData.para};
-  jspa = JSON.stringify(para);
+  
   if (rawData.method =="post" | rawData.method =="POST"){
-	  xhr.send(para);
+	  var para = {content: rawData.para};
+	  jspa = JSON.stringify(para);
+	  alert("rawData.method="+"POST" +jspa);
+	  xhr.send(jspa);
 	  resultStatus = 0;
   }
   else{
