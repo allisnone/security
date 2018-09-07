@@ -287,7 +287,7 @@ function xmlhttp(id,rawData,statusImg) {
   var resultStatus = 1;
   var xhr = getHttpObj();
   //xhr.open("POST", rawData.urls, true);
-  xhr.open(rawData.method, rawData.urls, false);
+  xhr.open(rawData.method, rawData.urls, true);
   
   //alert(url+'--test: ' + content);
   if (rawData.method =="post" || rawData.method =="POST"){
