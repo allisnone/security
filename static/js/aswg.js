@@ -257,14 +257,16 @@ function xmlhttp(id,rawData,statusImg) {
     {
     	
     	window.onerror = function(errorMessage, scriptURI, lineNumber) {
+    		/*
     		 reportError({
     		 message: errorMessage,
     		 script: scriptURI,
     		 line: lineNumber
     		 });
+    		 */
+    		alert("onerror: " + errorMessage + errorMessage);
     	}
     	xhr.send(jspa);
-
     	
     }
     catch(err)
