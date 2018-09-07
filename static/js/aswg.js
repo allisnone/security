@@ -40,7 +40,6 @@ function aswgSecurityCheck(elementId,dataObj){
 	else {
 		headDiv = formHeadElement();
 		document.getElementById(elementId).appendChild(headDiv);
-		
 	}
 	var successBlockCount = 0;
 	
