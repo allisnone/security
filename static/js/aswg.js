@@ -329,6 +329,7 @@ function xmlhttp(id,rawData,statusImg) {
   else{
 	  xhr.send();
 	  resultStatus =0;
+	  
   }
   
   return resultStatus;
