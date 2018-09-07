@@ -247,6 +247,7 @@ function xmlhttp(id,rawData,statusImg) {
 					xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
         }
         else{
+        	
         	alert(rawData.urls +"--testother : " + "http status: " +
 					xhr.status + "ready status-other: " + xhr.readyState + "para: " + rawData.para);
         }
