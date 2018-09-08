@@ -53,7 +53,7 @@
      </head>
   <body>
   <div class="container" >
-        <h1>Skyguard Security Preview</h1>
+        <h1>天空卫士上网环境安全检查</h1>
         <nav class="navbar navbar-inverse" style="display:none;">
         <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header" >
@@ -82,10 +82,10 @@
     
     <div class="container" style="display:flex; padding: 35px 0px 15px 0px;">
   <div  style="width:33%; text-align:left; font-size: 18px; color: #2A2C30; font-weight:500;">
-    Summary
+    <h3>上网环境总结报告</h3>
   </div>
   <div style="width:34%; text-align:center;font-size: 13px; color:#2A2C30"><span>
-    Aug 19, 2018  04:43 am UTC
+    {{ now_time | safe}}
   </span>
   </div>
   <div id="showTestFilter" style="width:33%; text-align:right;  margin-top:-8px; display:none;" >
@@ -99,7 +99,7 @@
   <div id="row"><div class="test-result-div col-xs-12 col-sm-12 col-md-4 col-lg-4" style="display:flex; background-color:#ffffff;"><div class="horizontal-align" style="width:255px;">
     <div style="width:100%; text-align:center;">
       <span style="font-size:16px; color: #2A2C30; font-weight:400;">
-        Security Assessment
+       <h4>安全评估</h4>
       </span>
       <div class="horizontal-align" style="margin: 10px 12px;">
       <div style="display:flex;">
@@ -127,7 +127,7 @@
   <div class="horizontal-align" style="width:255px;">
     <div style="width:100%; text-align:center;">
       <span style="font-size:16px; color: #2A2C30; font-weight:400;">
-        Data Protection
+        <h4>数据保护</h4>
       </span>
       <div class="horizontal-align" style="margin: 10px 12px;">
       <div style="display:flex;">
@@ -185,11 +185,15 @@
 
 <div id="loadResultDiv" class="container" style="padding:0;">
   <div id="threatPrevention" class="container" style="display:block;padding:0;">
-    <div style="font-size: 21px; font-weight:500; margin-bottom:10px;">Security Assessment</div>
+    <div style="font-size: 21px; font-weight:500; margin-bottom:10px;">
+          <h3>安全防护</h3>
+    </div>
     <div style="display:flex;">
     <div id="threatPreventionClick" style="display:flex; cursor:pointer; width:32%; color:#009CDA;">
       <div id="threatPreventionGlyphicon" class="fa fa-chevron-down" style="padding:4px; padding-right: 8px;"></div>
-      <div  style="font-size: 17px; font-weight:500;">Threat Prevention</div>
+      <div  style="font-size: 17px; font-weight:500;">
+      <h4>威胁防护</h4>
+      </div>
     </div>
 
     <div id="threatPreventionResult" style="display:none; width:50%; ">
@@ -229,7 +233,9 @@
 
     <div id="accessControlClick" style="display:flex; cursor:pointer; width:32%; color:#009CDA;">
       <div id="accessControlGlyphicon" class="fa fa-chevron-down" style="padding:4px; padding-right: 8px;"></div>
-      <div style="font-size: 17px; font-weight:500;">Access Control</div>
+      <div style="font-size: 17px; font-weight:500;">
+	  <h4>访问控制</h4>
+	  </div>
     </div>
 
 
@@ -272,11 +278,14 @@
 
 
   <div id="dataProtection" class="container" style="display:block;padding:0;">
-    <div style="font-size: 21px; font-weight:500; margin-bottom:10px;">Data Protection Assessment</div>
+    <div style="font-size: 21px; font-weight:500; margin-bottom:10px;">
+    <h3>数据防泄漏</h3>
+    </div>
     <div style="display:flex;">
     <div id="dataProtectionClick" style="display:flex; cursor:pointer; width:32%; color:#009CDA;">
       <div id="dataProtectionGlyphicon" class="fa fa-chevron-down" style="padding:4px; padding-right: 8px;"></div>
-      <div style="font-size: 17px; font-weight:500;">Data Protection</div>
+      <div style="font-size: 17px; font-weight:500;">
+      <h4>数据保护</h4></div>
     </div>
 
     <div id="dataProtectionResult" style="display:none; width:48%;">

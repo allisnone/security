@@ -4,6 +4,7 @@ from . import models
 from aiohttp.client import request
 from aswg.config import SECURITY_CONFIG,URL_MAPPING,PROXIES,IMAGE_STATUS
 import json
+import datetime
 
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -205,11 +206,13 @@ def ajax_jsonp(request):
     data_access = SECURITY_CONFIG['Security Assessment']['Access Control']
     data_protection = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
     #print('data_threat',data_threat)
+    now_time = datetime.datetime.now().strftime('%A %Y-%m-%d %H:%M:%S %p')
     #data_threat = json.load(data_threat)#serializers('json',data_threat)
     #data_access = json.load(data_access)#serializers('json',data_access)
     #data_protection = json.load(data_protection)#serializers('json',data_protection)
     
-    data_dict = {'data_threat':json.dumps(data_threat),'data_access':json.dumps(data_access),'data_protection':json.dumps(data_protection)}
+    data_dict = {'data_threat':json.dumps(data_threat),'data_access':json.dumps(data_access),
+                 'data_protection':json.dumps(data_protection),'now_time':now_time}
     #raw_data = json.load(data_dict)
     #json_data = json.dumps(data_dict)#({'rawData':data_dict})
     #print('data=',data)
