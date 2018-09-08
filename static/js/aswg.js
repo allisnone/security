@@ -406,7 +406,7 @@ function updateTestCountResult(PassCountDataId){
 	//var PassCountDataId = "PassCountData";
 	var dv = 0;
 	dv = document.getElementById(PassCountDataId).innerText;
-	alert("dv=" + dv);
+	//alert("dv=" + dv);
 	document.getElementById(PassCountDataId).innerHTML = Number(dv)+1;
 	return Number(dv)+1;
 }
@@ -416,18 +416,23 @@ function updateProgressBar(totalCount){
 	var loaderInfoId = "loader-info";
 	var count = 0;
 	var elementIds = ["PassCountData","PassCountSecurity", "FailCountData","FailCountSecurity"];
-	for (var i;i< elementIds.length;i++){
-		alert(elementIds[i]);
+	for (var i=0;i< elementIds.length;i++){
+		//alert(elementIds[i]);
 		var currentCount = document.getElementById(elementIds[i]).innerText;
-		alert("currentCount=" + currentCount);
+		//alert("currentCount=" + currentCount);
 		count = count + Number(currentCount);
 	}
-	alert("count="+count);
-	percentage = count/totalCount*100;
-	alert(percentage);
-	//document.getElementById(loaderBarId).innerHTML = percentage;
-	//document.getElementById(loaderInfoId).innerHTML = percentage;
-	return percentage;
+	//alert("count="+count);
+	var percentage = Number(count/totalCount*100).toFixed(0);
+	var pc = percentage + "%";
+	//alert(pc);
+	var styleStr = "width:" + pc +  ";background-color: #009CDA; height:5px";
+	//alert('styleStr='+styleStr);
+	//"width:0%;background-color: #009CDA; height:5px"
+	var loaderBar = document.getElementById(loaderBarId);
+	loaderBar.setAttribute("style", styleStr);
+	document.getElementById(loaderInfoId).innerHTML = pc;
+	return pc;
 }
  
  
