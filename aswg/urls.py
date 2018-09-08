@@ -27,6 +27,7 @@ urlpatterns = [
 
 urlpatterns = [
     #url(r'^admin/', include(admin.site.urls)),
+    #url(r'^$', views.ajax_jsonp, name='jsonp'),
     url(r'^$', views.home, name='home'),
     url(r'aswg/login', views.login),
     url(r'aswg/index', views.index),
