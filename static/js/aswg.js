@@ -384,8 +384,10 @@ function xmlhttp(id,rawData,statusImg) {
  
 function addPassCountData(PassCountDataId){
 	//var PassCountDataId = "PassCountData";
-	var dv = document.getElementById(PassCountDataId).value;
-	document.getElementById(PassCountDataId).interHTML = Number(dv)+1;
+	var dv = 0;
+	dv = document.getElementById(PassCountDataId).innerText;
+	alert("dv=" + dv);
+	document.getElementById(PassCountDataId).innerHTML = Number(dv)+1;
 	
 }
  
