@@ -79,6 +79,7 @@
            </div>
         </nav>
     </div>
+ <div id="loadResult" style="background-color:#EFEFF0; display:flex; min-height:85vh;">
     <div class="container" style="display:flex; padding: 35px 0px 15px 0px;">
   <div  style="width:33%; text-align:left; font-size: 18px; color: #2A2C30; font-weight:500;">
     
@@ -158,7 +159,7 @@
 
 
   </div><div id="loadingBlock" class="test-result-div col-xs-12 col-sm-12 col-md-4 col-lg-4" style="border-left: 24px solid #EFEFF0; background-color:#ffffff;"><p id="loading" style="margin: 10px 7%; font-size:13px; color:#4C4F54;">Loading...</p>
-    <div style="margin: 0 7%; top:50%; position:absolute; width:100%; display:flex;">
+    <div style="margin: 0 7%; top:50%; position:absolute; width:100%; display:block;">
       <div id="progress">
 
         <div id="loader-bar" style="width:0%;background-color: #009CDA; height:5px"></div>
@@ -166,18 +167,21 @@
       </div>
       <div id="loader-info" style="margin: -12px 20px; font-size:20px; color:#009CDA;">0%</div>
     </div>
-  </div><div id="emailBlock" class="test-result-div  col-xs-12 col-sm-12 col-md-4 col-lg-4" style="border-left: 24px solid #EFEFF0; display:none; background-color:#ffffff;"><div style="display:flex; margin: 0 auto; width:360px; margin-bottom:10px; font-size:13px; margin-top:3px;">
+  </div>
+  <div id="emailBlock" class="test-result-div  col-xs-12 col-sm-12 col-md-4 col-lg-4" style="border-left: 24px solid #EFEFF0; display:None; background-color:#ffffff;">
+  
+  <div style="display:flex; margin: 0 auto; width:360px; margin-bottom:10px; font-size:13px; margin-top:3px;">
       <img src="../static/images/thumbnail_report.png" style="height:92px; width:70px; margin-left:56px; margin-right:16px">
       <div style="text-align: left; margin-top:3px">
-        <div style="height:22px;"><i class="fa fa-check" aria-hidden="true" style="color:#399C1D; margin-right:8px;"></i>Full test results</div>
-        <div style="height:22px;"><i class="fa fa-check" aria-hidden="true" style="color:#399C1D; margin-right:8px;"></i>Assessment details</div>
-        <div style="height:22px;"><i class="fa fa-check" aria-hidden="true" style="color:#399C1D; margin-right:8px;"></i>Security recommendations</div>
-        <div style="height:22px;"><button id="sampleReport" type="button" class="btn btn-link" style="font-size:13px; padding:0; margin-left:20px; color:#009CDA; text-decoration: none" data-toggle="modal" data-target="#sampleReportModal">See Sample Report</button></div>
+        <div style="height:22px;"><i class="fa fa-check" aria-hidden="true" style="color:#399C1D; margin-right:8px;"></i>完成全部测试</div>
+        <div style="height:22px;"><i class="fa fa-check" aria-hidden="true" style="color:#399C1D; margin-right:8px;"></i>完成安全评估</div>
+        <div style="height:22px;"><i class="fa fa-check" aria-hidden="true" style="color:#399C1D; margin-right:8px;"></i>安全顾问专家建议</div>
+        <div style="height:22px;"><button id="sampleReport" type="button" class="btn btn-link" style="font-size:13px; padding:0; margin-left:20px; color:#009CDA; text-decoration: none" data-toggle="modal" data-target="#sampleReportModal">安全报告样例</button></div>
       </div>
 
     </div>
 
-    <input type="button" class="btn" style="font-weight:300; color:#ffffff; background-color:#009CDA; height: 36px; font-size:16px;" value="Get Recommendation Report" onclick="openEmailModal('report','zscaler','Request the Complete Report','We hope this preview is helpful. To get additional details, provide us the following information. We will email you the full assessment, along with actions you can take to improve your security posture.')">
+    <input type="button" class="btn" style="font-weight:300; color:#ffffff; background-color:#009CDA; height: 36px; font-size:16px;" value="获取安全顾问报告" onclick="openEmailModal('report','zscaler','Request the Complete Report','We hope this preview is helpful. To get additional details, provide us the following information. We will email you the full assessment, along with actions you can take to improve your security posture.')">
     <div id="emailInfo" style="display:none; padding:7px; font-size:11px;">Your report has been sent to <span id="emailSentTo" rel="comments" data-content='<div style="font-size:11px;min-width:120px"><div><span style="color: #939393; display:inline-block; width:65px;">First Name:</span><span id="fnamePopover" style="color:#2A2C30"></span></div><div><span style="color: #939393; display:inline-block; width:65px;">Last Name:</span><span id="lnamePopover" style="color:#2A2C30"></span></div><div><span style="color: #939393; display:inline-block; width:65px;">Country:</span><span id="countryPopover" style="color:#2A2C30"></span></div><div><span style="color: #939393; display:inline-block; width:65px;">Company:</span><span id="companyPopover" style="color:#2A2C30"></span></div></div>' style="color:#009CDA"></span></div>
 
   </div>
@@ -320,11 +324,13 @@
   <div id="dataFail"></div>
   <div id="dataPass"></div>
   </div>
+  
   <form id='cosform' action='/cosform' method='post' onsubmit='return checkForm()' style="display:None">
     <input type='text' name='url' value=''/>
     <!-- input type='password' name='pwd' value ='' -->
     <button type='submit'>提交<button/>
   <form/>
+</div>
 </div>
 
 

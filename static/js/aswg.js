@@ -174,6 +174,7 @@ function internalUlrRequest(id,rawData,statusImg){
 function addContentElement(data,statusImg){
 	var rowDiv = document.createElement("div");
     rowDiv.setAttribute("class","row");
+    rowDiv.setAttribute("style","display:flex; background-color:#ffffff;");
     var html = '<div class="col-sm-1">' +
 	'<div> <img src="' + statusImg + '" style="width:15px; height:15px; margin:5px;"> </div>' +
 	'</div>' +
@@ -432,6 +433,11 @@ function updateProgressBar(totalCount){
 	var loaderBar = document.getElementById(loaderBarId);
 	loaderBar.setAttribute("style", styleStr);
 	document.getElementById(loaderInfoId).innerHTML = pc;
+	if (percentage==100){
+		document.getElementById('loadingBlock').setAttribute("style","display:None");
+		var showEmailBlock="border-left: 24px solid #EFEFF0; display:block; background-color:#ffffff;"
+		document.getElementById('emailBlock').setAttribute("style",showEmailBlock);
+	}
 	return pc;
 }
  
