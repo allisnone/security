@@ -101,7 +101,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'html',
                 'para': '',
-                'id':'6',
+                'id':'21',
                 },
                           
             #'Block access to adult websites': 
@@ -115,7 +115,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'html',
                 'para': '',
-                'id':'7',
+                'id':'22',
                 },
             
             ]
@@ -133,7 +133,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'html',
                 'para': '13922119451',
-                'id':'8',
+                'id':'31',
                 },
             #'Block credit card exfiltration': 
                 {
@@ -146,7 +146,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'html',
                 'para': '13922119451',
-                'id':'8',
+                'id':'32',
                 },
             #'Block credit card exfiltration': 
                 {
@@ -159,7 +159,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'html',
                 'para': '13922119451',
-                'id':'8',
+                'id':'33',
                 },
                             
                             
@@ -174,7 +174,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'json',
                 'para': '资产负债率',
-                'id':'9',
+                'id':'34',
                 },
             #'Block Social Security number exfiltration': 
                 {
@@ -187,7 +187,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'json',
                 'para': '资产负债率',
-                'id':'9',
+                'id':'35',
                 },
             #'Block Social Security number exfiltration': 
                 {
@@ -200,7 +200,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'json',
                 'para': '资产负债率',
-                'id':'9',
+                'id':'36',
                 },
             #'Block Social Security number exfiltration': 
                 {
@@ -213,7 +213,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'json',
                 'para': '资产负债率',
-                'id':'9',
+                'id':'37',
                 },
         
             #'Block source code exfiltration': 
@@ -227,7 +227,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'text',
                 'para': '法轮功',
-                'id':'10',
+                'id':'38',
                 },
             #'Block source code exfiltration': 
                 {
@@ -240,7 +240,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'text',
                 'para': '病例',
-                'id':'11',
+                'id':'39',
                 },
             #'Block source code exfiltration': 
                 {
@@ -253,7 +253,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'text',
                 'para': '病例',
-                'id':'11',
+                'id':'40',
                 },
             #'Block source code exfiltration': 
                 {
@@ -266,7 +266,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'text',
                 'para': '病例',
-                'id':'11',
+                'id':'41',
                 },
             #'Block source code exfiltration': 
                 {
@@ -279,7 +279,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'text',
                 'para': '病例',
-                'id':'11',
+                'id':'42',
                 },
             #'Block source code exfiltration': 
                 {
@@ -292,7 +292,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'text',
                 'para': '病例',
-                'id':'11',
+                'id':'43',
                 },
             #'Block source code exfiltration': 
                 {
@@ -305,7 +305,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'text',
                 'para': '病例',
-                'id':'11',
+                'id':'44',
                 }
             ]
         }

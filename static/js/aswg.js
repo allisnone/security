@@ -406,7 +406,11 @@ function updateTestCountResult(PassCountDataId){
 	alert("dv=" + dv);
 	document.getElementById(PassCountDataId).innerHTML = Number(dv)+1;
 	return Number(dv)+1;
-	
+}
+
+function updateProgressBar(){
+	var loaderBarId = "loader-bar";
+	var loaderInfoId = "loader-info";
 }
  
  
