@@ -1,6 +1,6 @@
 
 
-function aswgSecurityCheck(elementId,dataObj){
+function aswgSecurityCheck(elementId,dataObj,totalCount){
 	/*
 	class_para = {ips:"192.168.7.1",ports:"100",contacts:"xiaoxie"};
 	dataObj = [
@@ -60,7 +60,7 @@ function aswgSecurityCheck(elementId,dataObj){
 		else if (Number(dataObj[i].cross)==2)
 		{
 			var http_result = 0;
-			http_result = xmlhttp(elementId,data,statusImg);//(dataObj[i].urls,dataObj[i].para);
+			http_result = xmlhttp(elementId,data,statusImg,totalCount);//(dataObj[i].urls,dataObj[i].para);
 			//alert("http_result="+http_result);
 			successBlockCount = successBlockCount + http_result;
 		}
@@ -282,7 +282,7 @@ function xmlhttp0(id,rawData,statusImg) {
 }
 
 
-function xmlhttp(id,rawData,statusImg) {
+function xmlhttp(id,rawData,statusImg,totalCount) {
 //  var xhr = new XMLHttpRequest();
   var resultStatus = 1;
   var xhr = getHttpObj();
@@ -292,7 +292,7 @@ function xmlhttp(id,rawData,statusImg) {
   var FailCountSecurityId = "FailCountSecurity";
   //xhr.open("POST", rawData.urls, true);
   xhr.open(rawData.method, rawData.urls, true);
-  var totalCount = 21;
+  //var totalCount = 21;
   
   //alert(url+'--test: ' + content);
   if (rawData.method =="post" || rawData.method =="POST"){

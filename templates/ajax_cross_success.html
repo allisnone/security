@@ -38,13 +38,13 @@
 		
 		var protection = {{data_protection | safe}};
 		//alert('protection: ' + protection);
-		
+		var totalCount = threat.length + access.length + protection.length;
         var elementId = 'threatAll';
-        var successBlockCountThreat = aswgSecurityCheck(elementId,threat);
+        var successBlockCountThreat = aswgSecurityCheck(elementId,threat,totalCount);
         var elementId1 = 'accessAll';
-        var successBlockCountAccess = aswgSecurityCheck(elementId1,access);
+        var successBlockCountAccess = aswgSecurityCheck(elementId1,access,totalCount);
         var elementId2 = 'dataAll';
-        var successBlockCountData = aswgSecurityCheck(elementId2,protection);
+        var successBlockCountData = aswgSecurityCheck(elementId2,protection,totalCount);
         
         var PassCountSecurityId = "PassCountSecurity";
         var PassCountDataId = "PassCountData";
@@ -85,7 +85,7 @@
     
     <div class="container" style="display:flex; padding: 35px 0px 15px 0px;">
   <div  style="width:33%; text-align:left; font-size: 18px; color: #2A2C30; font-weight:500;">
-    <h3>上网环境总结报告</h3>
+    <h3>综合评估</h3>
   </div>
   <div style="width:34%; text-align:center;font-size: 13px; color:#2A2C30"><span>
     {{ now_time | safe}}
@@ -119,7 +119,7 @@
         </div>
       </div>
       </div>
-      <span style="display:block;">
+      <span style="display:None;">
         <p style="font-size: 11px; color:#77797C;" class="text-center">Apply to Threat Prevention and Access Control test</p>
       </span>
     </div>
@@ -147,7 +147,7 @@
         </div>
       </div>
       </div>
-      <span style="display:block;">
+      <span style="display:None;">
         <p style="font-size: 11px; color:#77797C;" class="text-center">Apply to Data Protection test</p>
       </span>
     </div>
