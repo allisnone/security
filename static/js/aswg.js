@@ -310,7 +310,7 @@ function xmlhttp(id,rawData,statusImg) {
           //console.log("ready: " + xhr.responseText);
           divItem = addContentElement(rawData,statusImg.failed);
 		  document.getElementById(id).appendChild(divItem);
-		  if (rawData.id>=30){
+		  if (Number(rawData.id)>=30){
 			  updateTestCountResult(FailCountDataId);
 		  }
 		  else {
@@ -326,7 +326,7 @@ function xmlhttp(id,rawData,statusImg) {
 		  resultStatus = 1;
 		  //var PassCountDataId ="PassCountData";
 		  //var PassCountSecurityId = "PassCountSecurity";
-		  if (rawData.id>=30){
+		  if (Number(rawData.id)>=30){
 			  updateTestCountResult(PassCountDataId);
 		  }
 		  else {
