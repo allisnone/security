@@ -286,6 +286,10 @@ function xmlhttp(id,rawData,statusImg) {
 //  var xhr = new XMLHttpRequest();
   var resultStatus = 1;
   var xhr = getHttpObj();
+  var PassCountDataId ="PassCountData";
+  var PassCountSecurityId = "PassCountSecurity";
+  var FailCountDataId = "FailCountData";
+  var FailCountSecurityId = "FailCountSecurity";
   //xhr.open("POST", rawData.urls, true);
   xhr.open(rawData.method, rawData.urls, true);
   
@@ -305,6 +309,12 @@ function xmlhttp(id,rawData,statusImg) {
           //console.log("ready: " + xhr.responseText);
           divItem = addContentElement(rawData,statusImg.failed);
 		  document.getElementById(id).appendChild(divItem);
+		  if (rawData.id>=30){
+			  updateTestCountResult(FailCountDataId);
+		  }
+		  else {
+			  updateTestCountResult(FailCountSecurityId);
+		  }
 		  //alert(rawData.urls +"--test200 : " + "http status4200: " +
 					//xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
       }
@@ -312,8 +322,15 @@ function xmlhttp(id,rawData,statusImg) {
     	  divItem = addContentElement(rawData,statusImg.passed);
 		  document.getElementById(id).appendChild(divItem);
 		  resultStatus = 1;
-		  PassCountDataId ="PassCountData";
-		  addPassCountData(PassCountDataId);
+		  //var PassCountDataId ="PassCountData";
+		  //var PassCountSecurityId = "PassCountSecurity";
+		  if (rawData.id>=30){
+			  updateTestCountResult(PassCountDataId);
+		  }
+		  else {
+			  updateTestCountResult(PassCountSecurityId);
+		  }
+		  
 		  //alert(rawData.urls +"--test403 : " + "http status4403: " +
 			//		xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
       }
@@ -382,12 +399,13 @@ function xmlhttp(id,rawData,statusImg) {
     
 }
  
-function addPassCountData(PassCountDataId){
+function updateTestCountResult(PassCountDataId){
 	//var PassCountDataId = "PassCountData";
 	var dv = 0;
 	dv = document.getElementById(PassCountDataId).innerText;
 	alert("dv=" + dv);
 	document.getElementById(PassCountDataId).innerHTML = Number(dv)+1;
+	return Number(dv)+1;
 	
 }
  
