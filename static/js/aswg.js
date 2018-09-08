@@ -292,6 +292,7 @@ function xmlhttp(id,rawData,statusImg) {
   var FailCountSecurityId = "FailCountSecurity";
   //xhr.open("POST", rawData.urls, true);
   xhr.open(rawData.method, rawData.urls, true);
+  var totalCount = 21;
   
   //alert(url+'--test: ' + content);
   if (rawData.method =="post" || rawData.method =="POST"){
@@ -315,6 +316,7 @@ function xmlhttp(id,rawData,statusImg) {
 		  else {
 			  updateTestCountResult(FailCountSecurityId);
 		  }
+		  updateProgressBar(totalCount);
 		  //alert(rawData.urls +"--test200 : " + "http status4200: " +
 					//xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
       }
@@ -330,6 +332,7 @@ function xmlhttp(id,rawData,statusImg) {
 		  else {
 			  updateTestCountResult(PassCountSecurityId);
 		  }
+		  updateProgressBar(totalCount);
 		  
 		  //alert(rawData.urls +"--test403 : " + "http status4403: " +
 			//		xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
@@ -408,9 +411,23 @@ function updateTestCountResult(PassCountDataId){
 	return Number(dv)+1;
 }
 
-function updateProgressBar(){
+function updateProgressBar(totalCount){
 	var loaderBarId = "loader-bar";
 	var loaderInfoId = "loader-info";
+	var count = 0;
+	var elementIds = ["PassCountData","PassCountSecurity", "FailCountData","FailCountSecurity"];
+	for (var i;i< elementIds.length;i++){
+		alert(elementIds[i]);
+		var currentCount = document.getElementById(elementIds[i]).innerText;
+		alert("currentCount=" + currentCount);
+		count = count + Number(currentCount);
+	}
+	alert("count="+count);
+	percentage = count/totalCount*100;
+	alert(percentage);
+	//document.getElementById(loaderBarId).innerHTML = percentage;
+	//document.getElementById(loaderInfoId).innerHTML = percentage;
+	return percentage;
 }
  
  
