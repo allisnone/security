@@ -69,6 +69,7 @@ function aswgSecurityCheck(elementId,dataObj,totalCount){
 			$.ajax(internalUlrRequest(elementId,data,statusImg));
 			//alert('inter site complete: ' + dataObj[i].urls);
 		}
+		//sleep(1000);
 	}
 	return successBlockCount;
 	
@@ -439,6 +440,17 @@ function updateProgressBar(totalCount){
 		document.getElementById('emailBlock').setAttribute("style",showEmailBlock);
 	}
 	return pc;
+	
+}
+
+function sleep(numberMillis) {
+	var now = new Date();
+	var exitTime = now.getTime() + numberMillis;
+	while (true) {
+		now = new Date();
+		if (now.getTime() > exitTime)
+		return;
+	    }
 }
  
  
