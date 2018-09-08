@@ -1,11 +1,11 @@
 # -*- coding:utf-8 -*-
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,reverse
 from . import models
 from aiohttp.client import request
-from aswg.config import SECURITY_CONFIG
+from aswg.config import SECURITY_CONFIG,URL_MAPPING,PROXIES,IMAGE_STATUS
 import json
 
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render_to_response
 #from django.views.decorators import csrf
 from django.views.decorators.csrf import csrf_exempt
@@ -13,6 +13,36 @@ import os
 from django.core import serializers
 from django.template import RequestContext
 # Create your views here.
+
+from aswg.url_request import get_request,post_request,http_request
+
+def home(request):
+    return render(request, 'home.html')
+
+def crosshttp(request,method_id):
+    print(request.META['HTTP_ORIGIN'])
+    if '49.4.84.41' not in request.META['HTTP_ORIGIN']:
+        PROXIES = ''
+    data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
+    print(type(data_threat))
+    data_access = SECURITY_CONFIG['Security Assessment']['Access Control']
+    data_protection = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
+    print('method_id=',URL_MAPPING[method_id])
+    url_data = URL_MAPPING[method_id]
+    result = http_request(url_data['urls'],type=url_data['method'],uri='',data={'content':url_data['para']},headers={},proxy=PROXIES)
+    #return HttpResponse('content=')
+    print('result=',result)
+    formid ='urlform%s'%method_id
+    status_imge = IMAGE_STATUS['fail']
+    print(type(result[2]))
+    if result[2]==403:
+        status_imge = IMAGE_STATUS['pass']
+    data = {'result':result[3],'icon':URL_MAPPING[method_id]['icon'],'status_img':status_imge}
+    data_dict = {formid:json.dumps(result)}
+    return HttpResponse(data_dict)#'content='+url_data['para'])
+    #return HttpResponseRedirect('/load',data_dict)#reverse('index'))
+    
+    #render_to_response("index.html", locals(),context_instance=RequestContext(request))
 
 def base(request):
     return render(request,'index.html')
@@ -64,7 +94,7 @@ def edit_classes(request):
 def login(request):
     return redirect('login.html')
 
-
+@csrf_exempt
 def loading(request):
     data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
     data_access = SECURITY_CONFIG['Security Assessment']['Access Control']

@@ -27,6 +27,7 @@ urlpatterns = [
 
 urlpatterns = [
     #url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', views.home, name='home'),
     url(r'aswg/login', views.login),
     url(r'aswg/index', views.index),
     url(r'get_classes.html$', views.get_classes),
@@ -45,5 +46,11 @@ urlpatterns = [
     url(r'^ajax_post$',views.ajax_post),
     url(r'jsonp$',views.ajax_jsonp),
     url(r'post$',views.params_post),
+    #url(r'crosshttp$',views.crosshttp,name='crosshttp'),
+    #url(r'crosshttp/(?P<method_id>.*)/(?P<dest_url>.*)',views.crosshttp,name='crosshttp'),
+    #url(r'crosshttp/(?P<method_id>[0-9A-Fa-f-]+)/(?P<dest_url>.*/)',views.crosshttp,name='crosshttp'),
+    url(r'crosshttp/(\w+)$',views.crosshttp,name='crosshttp'),
+    
+    
     
 ]

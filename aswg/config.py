@@ -12,6 +12,7 @@ URL_BLOCK_INFO = '本次访问违反了公司的网络安全策略'
 DLP_BLOCK_INFO = '本次访问违反了公司的数据防泄漏策略'
 #PROXIES = {'http': 'http://172.18.200.240:8080'}
 PROXIES = {'http': 'http://49.4.84.41:8066'}
+IMAGE_STATUS = {'pass':'../static/images/pass.png','fail':'../static/images/fail.png'}
 
 SECURITY_CONFIG = {
     'Security Assessment': {
@@ -27,6 +28,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'jsonp',
                 'para': 'securypreview_exe.exe',
+                'id':'1',
                 
                 },
                               
@@ -42,6 +44,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'jsonp',
                 'para': '',
+                'id':'2',
                 
                 },
                               
@@ -56,6 +59,7 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'jsonp',
                 'para': '',
+                'id':'3',
                 },
             #'Block a virus hidden in a zip file': 
                 {
@@ -68,12 +72,13 @@ SECURITY_CONFIG = {
                 'cross': '2',
                 'type': 'jsonp',
                 'para': '',
+                'id':'4',
                 },
                               
             #'Prevent a common virus from a known malicious site': 
                 {
                 'name':'普通病毒',
-                'urls': COMMON_VIRUS_FROM_KNOWN_MALICIOUS_SITE,
+                'urls': OLDER_KNOWN_VIRUSES,
                 'detail':' 该测试验证您已知病毒，来源权威病毒网站-卡饭',
                 'description':'待描述',
                 'method': 'get',
@@ -81,6 +86,7 @@ SECURITY_CONFIG = {
                 'cross': '1',
                 'type': 'jsonp',
                 'para': '',
+                'id':'5',
                 }
             ],
         'Access Control':[
@@ -95,6 +101,7 @@ SECURITY_CONFIG = {
                 'cross': '1',
                 'type': 'jsonp',
                 'para': '',
+                'id':'6',
                 },
                           
             #'Block access to adult websites': 
@@ -108,6 +115,7 @@ SECURITY_CONFIG = {
                 'cross': '1',
                 'type': 'jsonp',
                 'para': '',
+                'id':'7',
                 },
             
             ]
@@ -124,7 +132,34 @@ SECURITY_CONFIG = {
                 'icon': '../static/images/fail.png',
                 'cross': '2',
                 'type': 'html',
-                'para': '13922119451'
+                'para': '13922119451',
+                'id':'8',
+                },
+            #'Block credit card exfiltration': 
+                {
+                'name':'个人隐私信息保护',
+                'urls': CROSS_POST_URL,#CREDIT_CARD,
+                'method': 'POST',
+                'detail':'隐私信息图片外发',
+                'description':'隐私信息图片外发',
+                'icon': '../static/images/fail.png',
+                'cross': '2',
+                'type': 'html',
+                'para': '13922119451',
+                'id':'8',
+                },
+            #'Block credit card exfiltration': 
+                {
+                'name':'个人隐私信息保护',
+                'urls': CROSS_POST_URL,#CREDIT_CARD,
+                'method': 'POST',
+                'detail':'隐私信息Word,Excel外发',
+                'description':'隐私信息Word,Excel外发',
+                'icon': '../static/images/fail.png',
+                'cross': '2',
+                'type': 'html',
+                'para': '13922119451',
+                'id':'8',
                 },
                             
                             
@@ -133,12 +168,52 @@ SECURITY_CONFIG = {
                 'name':'企业机密保护',
                 'urls': CROSS_POST_URL,
                 'method': 'POST',
-                'detail':'企业薪酬福利，财务报表',
+                'detail':'标准合同，财务报表',
                 'description':'待完善',
                 'icon': '../static/images/fail.png',
                 'cross': '2',
                 'type': 'json',
-                'para': '资产负债率'
+                'para': '资产负债率',
+                'id':'9',
+                },
+            #'Block Social Security number exfiltration': 
+                {
+                'name':'企业机密保护',
+                'urls': CROSS_POST_URL,
+                'method': 'POST',
+                'detail':'源代码',
+                'description':'待完善',
+                'icon': '../static/images/fail.png',
+                'cross': '2',
+                'type': 'json',
+                'para': '资产负债率',
+                'id':'9',
+                },
+            #'Block Social Security number exfiltration': 
+                {
+                'name':'企业机密保护',
+                'urls': CROSS_POST_URL,
+                'method': 'POST',
+                'detail':'企业薪酬福利信息',
+                'description':'待完善',
+                'icon': '../static/images/fail.png',
+                'cross': '2',
+                'type': 'json',
+                'para': '资产负债率',
+                'id':'9',
+                },
+            #'Block Social Security number exfiltration': 
+                {
+                'name':'企业机密保护',
+                'urls': CROSS_POST_URL,
+                'method': 'POST',
+                'detail':'网络拓扑图，Password/Shadow文件上传',
+                'description':'待完善',
+                'icon': '../static/images/fail.png',
+                'cross': '2',
+                'type': 'json',
+                'para': '资产负债率',
+                'id':'9',
                 },
         
             #'Block source code exfiltration': 
@@ -146,27 +221,110 @@ SECURITY_CONFIG = {
                 'name':'不正当言论',
                 'urls': CROSS_POST_URL,
                 'method': 'POST',
-                'detail':'淫秽文字，暴力武器，反党反政府，压缩凡是发送 ',
+                'detail':'淫秽文字',
                 'description':'待完善',
                 'icon': '../static/images/fail.png',
                 'cross': '2',
                 'type': 'text',
-                'para': '法轮功'
+                'para': '法轮功',
+                'id':'10',
+                },
+            #'Block source code exfiltration': 
+                {
+                'name':'不正当言论',
+                'urls': CROSS_POST_URL,
+                'method': 'POST',
+                'detail':'暴力武器 ',
+                'description':'待完善',
+                'icon': '../static/images/fail.png',
+                'cross': '2',
+                'type': 'text',
+                'para': '病例',
+                'id':'11',
+                },
+            #'Block source code exfiltration': 
+                {
+                'name':'不正当言论',
+                'urls': CROSS_POST_URL,
+                'method': 'POST',
+                'detail':'反党反政府言论 ',
+                'description':'待完善',
+                'icon': '../static/images/fail.png',
+                'cross': '2',
+                'type': 'text',
+                'para': '病例',
+                'id':'11',
                 },
             #'Block source code exfiltration': 
                 {
                 'name':'行业特点信息保护',
                 'urls': CROSS_POST_URL,
                 'method': 'POST',
-                'detail':'住院信息，健康病症，理赔记录，AutoCAD图纸 ',
+                'detail':'住院信息',
                 'description':'待完善',
                 'icon': '../static/images/fail.png',
                 'cross': '2',
                 'type': 'text',
-                'para': '病例'
+                'para': '病例',
+                'id':'11',
+                },
+            #'Block source code exfiltration': 
+                {
+                'name':'行业特点信息保护',
+                'urls': CROSS_POST_URL,
+                'method': 'POST',
+                'detail':'健康病症 ',
+                'description':'待完善',
+                'icon': '../static/images/fail.png',
+                'cross': '2',
+                'type': 'text',
+                'para': '病例',
+                'id':'11',
+                },
+            #'Block source code exfiltration': 
+                {
+                'name':'行业特点信息保护',
+                'urls': CROSS_POST_URL,
+                'method': 'POST',
+                'detail':'理赔记录',
+                'description':'待完善',
+                'icon': '../static/images/fail.png',
+                'cross': '2',
+                'type': 'text',
+                'para': '病例',
+                'id':'11',
+                },
+            #'Block source code exfiltration': 
+                {
+                'name':'行业特点信息保护',
+                'urls': CROSS_POST_URL,
+                'method': 'POST',
+                'detail':'AutoCAD图纸 ',
+                'description':'待完善',
+                'icon': '../static/images/fail.png',
+                'cross': '2',
+                'type': 'text',
+                'para': '病例',
+                'id':'11',
                 }
             ]
         }
     }
 
+def get_url_mapping():
+    data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
+    data_access = SECURITY_CONFIG['Security Assessment']['Access Control']
+    data_protection = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
+    result= {}
+    for li in data_threat:
+        result[li['id']]=li
+        
+    for li in data_access:
+        result[li['id']]=li
+    
+    for li in data_protection:
+        result[li['id']]=li    
+    return result
+
+URL_MAPPING = get_url_mapping()
 #print(SECURITY_CONFIG)

@@ -8,8 +8,8 @@ PHISHING_ATTACK = 'http://the-nightmare.com/work/m.rar'#'http://belakey.com/xt/a
 SESSION_HIJACKING = ''
 BOTNET_CALLBACK = ''
 CROSS_SITE_SCRIPTING = ''
-OLDER_KNOWN_VIRUSES = 'http://www.sogaoqing.com/upload/VirusSamples/virus2206'
-VIRUS_HIDDEN_IN_ZIP = 'http://the-nightmare.com/work/m.rar'
+OLDER_KNOWN_VIRUSES = 'http://www.sogaoqing.com/upload/VirusSamples/virus1'
+VIRUS_HIDDEN_IN_ZIP = 'http://www.sogaoqing.com/upload/virus.zip'
 COMMON_VIRUS_FROM_KNOWN_MALICIOUS_SITE = '' 
 
 #Access Control

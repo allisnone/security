@@ -121,7 +121,6 @@
 		</div>
 	</div>
     {% for data in data_access %}
-    	
         <div class="row">
         	<div class="col-sm-1"> 
         		<div> <img src="../static/images/fail.png" style="width:15px; height:15px; margin:5px;"> </div>
@@ -195,18 +194,12 @@
 		</div>
 	</div>
     {% for data in data_protection %}
-    	
-    	<form id="urlform{{data.id}}" action="{% url 'crosshttp' data.id %}" method="post" name="check_order" id="check_order" enctype="multipart/form-data">
-		{% csrf_token %}
-		<input name="send_msg" type="submit"  id="send_msg" value="提交" />
-		<input name="reset" type="reset"  id="reset_msg" value="重置" />
-		</form>
         <div class="row">
         	<div class="col-sm-1"> 
         		<div> <img src="../static/images/pass.png" style="width:15px; height:15px; margin:5px;"> </div>
         	</div>
 			<div class="col-sm-3">
-				<p> {{data.name}} </p> 
+				<p> {{data.name}} </p>
 			</div>
 			<div class="col-sm-1">
 				<div> <img src="../static/images/fail.png" style="width:15px; height:15px; margin:5px;"> </div>

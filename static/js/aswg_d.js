@@ -55,19 +55,19 @@ function aswgSecurityCheck(elementId,dataObj){
 		if (Number(dataObj[i].cross)==1)	//跨站访问
 		{
 			$.ajax(crossSiteRequest(elementId,data,statusImg));
-			//alert('cross site complete: ' + dataObj[i].urls);
+			alert('cross site complete: ' + dataObj[i].urls);
 		}
 		else if (Number(dataObj[i].cross)==2)
 		{
 			var http_result = 0;
 			http_result = xmlhttp(elementId,data,statusImg);//(dataObj[i].urls,dataObj[i].para);
-			//alert("http_result="+http_result);
+			alert("http_result="+http_result);
 			successBlockCount = successBlockCount + http_result;
 		}
 		else
 		{
 			$.ajax(internalUlrRequest(elementId,data,statusImg));
-			//alert('inter site complete: ' + dataObj[i].urls);
+			alert('inter site complete: ' + dataObj[i].urls);
 		}
 	}
 	return successBlockCount;
@@ -91,7 +91,7 @@ function crossSiteRequest(id,rawData,statusImg){
         jsonpCallback:"flightHandler",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
         success: function(json,textStatus){
 			//alert(XMLHttpRequest.status);
-            //alert(rawData.name + ' success state cross-site:'+textStatus);
+            alert(rawData.name + ' success state cross-site:'+textStatus);
             //if (textStatus == "success") {  //200 ok
               	//document.getElementById(id).innerHTML= id + ' URL: ' + myurl + " :" + 'success' + para1 + para1;
 			//	addContentElement(rawData,statusImg)
@@ -102,7 +102,7 @@ function crossSiteRequest(id,rawData,statusImg){
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
             //alert('fail');
-            //alert(rawData.name + ' cross fail http code: ' + XMLHttpRequest.status);
+            alert(rawData.name + ' cross fail http code: ' + XMLHttpRequest.status);
             /*
             if (XMLHttpRequest.status == 403) {
            	//document.getElementById(id).innerHTML=id + ' URL: ' + myurl + " :" + XMLHttpRequest.status + para2 + para2;
@@ -144,14 +144,14 @@ function internalUlrRequest(id,rawData,statusImg){
 		dataType: rawData.type,//"html",
 		success: function(result){
 			//alert(data.status);
-			//alert(rawData.name + ' inter success data:' + result);
+			alert(rawData.name + ' inter success data:' + result);
 			divItem = addContentElement(rawData,statusImg.failed);
 			document.getElementById(id).appendChild(divItem);
             return 1;
         },
         error: function(result,XMLHttpRequest){
 			//alert('fail');
-            //alert(rawData.name + ' inter fail http code: ' + XMLHttpRequest.status);
+            alert(rawData.name + ' inter fail http code: ' + XMLHttpRequest.status);
             if (XMLHttpRequest.status == 403) {
            	//document.getElementById(id).innerHTML=id + ' URL: ' + myurl + " :" + XMLHttpRequest.status + para2 + para2;
 			divItem = addContentElement(rawData,statusImg.passed);
@@ -163,7 +163,7 @@ function internalUlrRequest(id,rawData,statusImg){
 			document.getElementById(id).appendChild(divItem);
             }
 			else {
-				//alert(XMLHttpRequest.status);
+				alert(XMLHttpRequest.status);
 			}
             return 0; 
 		},
@@ -293,38 +293,38 @@ function xmlhttp(id,rawData,statusImg) {
   if (rawData.method =="post" || rawData.method =="POST"){
 	  //xhr.responseType = "text"; //json,document, arraybuffer
 	  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//缺少这句，后台无法获取参;
-	  //alert("rawData.method="+"POST");
+	  alert("rawData.method="+"POST");
   }
   //xhr.setRequestHeader('Content-Type','application/json');
   //alert(url+'--test2: ' + content);
   xhr.onreadystatechange = function(result) {
-  	  //alert("result: " + result);
+  	  alert("result: " + result);
       
       if (xhr.readyState == 4 && xhr.status == 200) {
       	//alert(url+'--test200: ' + content);
           //console.log("ready: " + xhr.responseText);
           divItem = addContentElement(rawData,statusImg.failed);
 		  document.getElementById(id).appendChild(divItem);
-		  //alert(rawData.urls +"--test200 : " + "http status4200: " +
-					//xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
+		  alert(rawData.urls +"--test200 : " + "http status4200: " +
+					xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
       }
       else if (xhr.readyState == 4 && xhr.status == 0){
     	  divItem = addContentElement(rawData,statusImg.passed);
 		  document.getElementById(id).appendChild(divItem);
 		  resultStatus = 1;
-		  //alert(rawData.urls +"--test403 : " + "http status4403: " +
-			//		xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
+		  alert(rawData.urls +"--test403 : " + "http status4403: " +
+					xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
       }
       else{
-      	//alert(rawData.urls +"--testother : " + "http status: " +
-					//xhr.status + "ready status-other: " + xhr.readyState + "para: " + rawData.para);
+      	alert(rawData.urls +"--testother : " + "http status: " +
+					xhr.status + "ready status-other: " + xhr.readyState + "para: " + rawData.para);
       }
   };
   
   if (rawData.method =="post" || rawData.method =="POST"){
 	  var para = {content: rawData.para};
 	  jspa = JSON.stringify(para);
-	  //alert("rawData.method="+"POST" +jspa);
+	  alert("rawData.method="+"POST" +jspa);
 	  
 	  try
 	    {
@@ -336,7 +336,7 @@ function xmlhttp(id,rawData,statusImg) {
 	    		 line: lineNumber
 	    		 });
 	    		 */
-	    		//alert("onerror: " + errorMessage + errorMessage);
+	    		alert("onerror: " + errorMessage + errorMessage);
 	    	};
 	    	xhr.send(jspa);
 	    	
@@ -344,7 +344,7 @@ function xmlhttp(id,rawData,statusImg) {
 	    catch(err)
 	    {
 	    	txt = rawData.urls + "error: \n\n" + err;
-	    	//alert(txt);
+	    	alert(txt);
 	    }
 	  resultStatus = 0;
   }
@@ -360,8 +360,7 @@ function xmlhttp(id,rawData,statusImg) {
 	    		 line: lineNumber
 	    		 });
 	    		 */
-	    		var a=1;
-	    		//alert("onerror: " + errorMessage + errorMessage);
+	    		alert("onerror: " + errorMessage + errorMessage);
 	    	};
 	    	xhr.send();
 	    	
@@ -369,7 +368,7 @@ function xmlhttp(id,rawData,statusImg) {
 	    catch(err)
 	    {
 	    	txt = rawData.urls + "error: \n\n" + err;
-	    	//alert(txt);
+	    	alert(txt);
 	    }
 	  //xhr.send();
 	  resultStatus =0;

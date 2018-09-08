@@ -6,6 +6,7 @@ import string
 import requests
 from urllib.parse import quote
 from aswg.config import VIRUS_BLOCK_INFO,URL_BLOCK_INFO,DLP_BLOCK_INFO,PROXIES
+#from aswg.config import SECURITY_CONFIG
 
 def encodeURL(url):
     """
@@ -57,8 +58,39 @@ def get_request(url,proxy=PROXIES):
 def post_request(url,uri='',data={},headers={},proxy=PROXIES):
     return http_request(url,type='post',uri=uri,data=data,headers=headers,proxy=PROXIES)
 
+def get_url_mapping(SECURITY_CONFIG):
+    data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
+    data_access = SECURITY_CONFIG['Security Assessment']['Access Control']
+    data_protection = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
+    result= {}
+    for li in data_threat:
+        result[li['id']]=li
+        
+    for li in data_access:
+        result[li['id']]=li
+    
+    for li in data_protection:
+        result[li['id']]=li    
+    return result
+        
+        
+#print(get_url_mapping())    
+#print(len(get_url_mapping()))  
+    
+"""
 if __name__ == '__main__':
     url = 'http://www.sogaoqing.com/upload/nymaim.exe'
+    result = http_request(url,type='get',proxy=PROXIES)
+    print('result=',result)
+    url = 'http://www.sogaoqing.com/upload/VirusSamples/virus1'
+    result = http_request(url,type='get',proxy=PROXIES)
+    print('result=',result)
+    
+    url = 'http://www.sogaoqing.com/upload/11.zip'
+    result = http_request(url,type='get',proxy=PROXIES)
+    print('result=',result)
+    
+    url = 'http://www.sogaoqing.com/upload/virus.zip'
     result = http_request(url,type='get',proxy=PROXIES)
     print('result=',result)
     
@@ -68,4 +100,4 @@ if __name__ == '__main__':
     headers = {"User-Agent":"test request headers"}
     post_reponse = http_request(post_url,type='post',uri=uri,data=data,headers=headers,proxy=PROXIES)
     print('post_reponse=',post_reponse)
-    
+"""
