@@ -312,6 +312,8 @@ function xmlhttp(id,rawData,statusImg) {
     	  divItem = addContentElement(rawData,statusImg.passed);
 		  document.getElementById(id).appendChild(divItem);
 		  resultStatus = 1;
+		  PassCountDataId ="PassCountData";
+		  addPassCountData(PassCountDataId);
 		  //alert(rawData.urls +"--test403 : " + "http status4403: " +
 			//		xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
       }
@@ -380,6 +382,12 @@ function xmlhttp(id,rawData,statusImg) {
     
 }
  
+function addPassCountData(PassCountDataId){
+	//var PassCountDataId = "PassCountData";
+	var dv = document.getElementById(PassCountDataId).value;
+	document.getElementById(PassCountDataId).interHTML = Number(dv)+1;
+	
+}
  
  
  
