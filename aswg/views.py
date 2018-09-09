@@ -4,7 +4,7 @@ from . import models
 from aiohttp.client import request
 from aswg.config import SECURITY_CONFIG,URL_MAPPING,PROXIES,IMAGE_STATUS
 import json
-import datetime
+import datetime,time
 
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -221,6 +221,7 @@ def ajax_jsonp(request):
     #response["Access-Control-Allow-Headers"] = "*"
     print(request.method)
     #print('META.REMOTE_HOST:',request.META['REMOTE_HOST'])
+    time.sleep(2);
     if request.method=='GET':
         return  render(request,'ajax_cross_success.html',data_dict)
     elif request.method=='OPTIONS':
