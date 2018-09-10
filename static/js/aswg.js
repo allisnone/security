@@ -346,8 +346,11 @@ function xmlhttp(id,rawData,statusImg,totalCount) {
   };
   
   if (rawData.method =="post" || rawData.method =="POST"){
-	  var para = {content: rawData.para};
-	  jspa = JSON.stringify(para);
+	  var para = {content:" "};
+	  if (Number(rawData.id)>=30){ //DLP post
+		  para = {content: rawData.para};
+	  }
+	  var jspa = JSON.stringify(para);
 	  //alert("rawData.method="+"POST" +jspa);
 	  
 	  try
@@ -371,6 +374,38 @@ function xmlhttp(id,rawData,statusImg,totalCount) {
 	    	//alert(txt);
 	    }
 	  resultStatus = 0;
+  }
+else if (rawData.method =="get" || rawData.method =="GET"){
+	  var para = {content:" "};
+	  var text = "www.sogaoqing.com";
+	  if (Number(rawData.id)<30 && text.indexOf("sogaoqing")>0){
+		  para = {upload:rawData.para};
+	  }
+	  var jspa = JSON.stringify(para);
+	  try
+	    {
+	    	window.onerror = function(errorMessage, scriptURI, lineNumber) {
+	    		/*
+	    		 reportError({
+	    		 message: errorMessage,
+	    		 script: scriptURI,
+	    		 line: lineNumber
+	    		 });
+	    		 */
+	    		var a=1;
+	    		//alert("onerror: " + errorMessage + errorMessage);
+	    	};
+	    	xhr.send();
+	    	
+	    }
+	    catch(err)
+	    {
+	    	txt = rawData.urls + "error: \n\n" + err;
+	    	//alert(txt);
+	    }
+	  //xhr.send();
+	  resultStatus =0;
+	  
   }
   else{
 	  
