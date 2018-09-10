@@ -7,6 +7,7 @@ import requests
 from urllib.parse import quote
 from aswg.config import VIRUS_BLOCK_INFO,URL_BLOCK_INFO,DLP_BLOCK_INFO,PROXIES
 #from aswg.config import SECURITY_CONFIG
+import datetime
 
 def encodeURL(url):
     """
@@ -26,7 +27,7 @@ def get_block_info(response_text):
     else:
         return 'OTHER_BLOCK'
 
-def http_request(url,type,uri='',data={},headers={},proxy=PROXIES):
+def http_request(url,uri='',params={},type='get',headers={},proxy=PROXIES):
     """
     下载文件，分析是否被SWG阻断
     :param url:
@@ -34,16 +35,19 @@ def http_request(url,type,uri='',data={},headers={},proxy=PROXIES):
     """
     try:
         r = None
-        if type.lower()=='get':
-            r = requests.get(encodeURL(url), proxies=proxy, verify=False)
-        elif type.lower()=='post':
+        if uri:
             url = ''.join([url,uri])
-            r = requests.post(url,data=data,headers=headers,proxies=proxy,verify=False)
+        if type.lower()=='get':
+            print('get_url=',url)
+            r = requests.get(encodeURL(url), params=params, proxies=proxy, verify=False)
+        elif type.lower()=='post':
+            r = requests.post(encodeURL(url),params=params,headers=headers,proxies=proxy,verify=False)
         else:
             return []
-        print(url, r.status_code)
+        r.encoding = 'utf-8'
+        print(url, r.text)
         if r.status_code == 403:
-            r.encoding = 'utf-8'
+            
             block_info = get_block_info(r.text)
             return [url, url.split('/')[-1], r.status_code, block_info]
         else:
@@ -52,11 +56,11 @@ def http_request(url,type,uri='',data={},headers={},proxy=PROXIES):
         print('ERROR=',e)
         return [url, url.split('/')[-1], 0, e]
     
-def get_request(url,proxy=PROXIES):
+def get_request(url,params={},proxy=PROXIES):
     return http_request(url,type='get',proxy=PROXIES)
 
-def post_request(url,uri='',data={},headers={},proxy=PROXIES):
-    return http_request(url,type='post',uri=uri,data=data,headers=headers,proxy=PROXIES)
+def post_request(url,uri='',params={},headers={},proxy=PROXIES):
+    return http_request(url,uri=uri,params=params,type='post',headers=headers,proxy=PROXIES)
 
 def get_url_mapping(SECURITY_CONFIG):
     data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
@@ -73,9 +77,26 @@ def get_url_mapping(SECURITY_CONFIG):
         result[li['id']]=li    
     return result
         
-        
+def get_all_http_result(proxy=PROXIES,config={}):
+    data_threat = config['Security Assessment']['Threat Prevention']
+    print('您的公网IP是： %s' % get_my_public_ip())
+    for data in data_threat:
+        pass
+    return    
+
+def get_my_public_ip():#from ip138
+    url = 'http://%s.ip138.com/ic.asp' % datetime.datetime.now().year
+    r = requests.get(encodeURL(url),verify=False)
+    r.encoding = 'gb2312'
+    pattern = re.compile(r'(2(5[0-5]{1}|[0-4]\d{1})|[0-1]?\d{1,2})(\.(2(5[0-5]{1}|[0-4]\d{1})|[0-1]?\d{1,2})){3}')
+    #str = re.findall(pattern, r.text)
+    return pattern.search(r.text).group()
+get_all_http_result()
+#print(get_my_public_ip())
 #print(get_url_mapping())    
 #print(len(get_url_mapping()))  
+
+
     
 """
 if __name__ == '__main__':
@@ -98,6 +119,9 @@ if __name__ == '__main__':
     uri = 'post.php'
     data = {'content':'13922119451'}
     headers = {"User-Agent":"test request headers"}
-    post_reponse = http_request(post_url,type='post',uri=uri,data=data,headers=headers,proxy=PROXIES)
+    post_reponse = http_request(post_url,type='post',uri=uri,params=data,headers=headers,proxy=PROXIES)
     print('post_reponse=',post_reponse)
+    
+    
+    
 """
