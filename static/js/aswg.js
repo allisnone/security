@@ -334,7 +334,7 @@ function xmlhttp(id,rawData,statusImg,totalCount) {
 		  //alert(rawData.urls +"--test200 : " + "http status4200: " +
 					//xhr.status + "ready status: " + xhr.readyState + "para: " + rawData.para);
       }
-      else if (xhr.readyState == 4 && xhr.status == 0){
+      else if (xhr.readyState == 4 && (xhr.status == 0 || xhr.status == 403) ){
     	  divItem = addContentElement(rawData,statusImg.passed);
 		  document.getElementById(id).appendChild(divItem);
 		  resultStatus = 1;

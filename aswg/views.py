@@ -6,7 +6,7 @@ from aswg.config import SECURITY_CONFIG,URL_MAPPING,PROXIES,IMAGE_STATUS
 import json
 import datetime,time
 
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse,HttpResponseRedirect,HttpResponseForbidden
 from django.shortcuts import render_to_response
 #from django.views.decorators import csrf
 from django.views.decorators.csrf import csrf_exempt
@@ -28,24 +28,28 @@ def crosshttp(request,method_id):
             proxy = ''
     except:
         pass
+    print('proxy=',proxy)
     data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
-    print(type(data_threat))
     data_access = SECURITY_CONFIG['Security Assessment']['Access Control']
     data_protection = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
     print('method_id=',URL_MAPPING[method_id])
     url_data = URL_MAPPING[method_id]
     #result = http_request(url_data['urls'],type=url_data['method'],uri='',data={'content':url_data['para']},headers={},proxy=PROXIES)
-    result = get_request(url_data['urls'],proxy=proxy)
+    #result = get_request(url_data['urls'],proxy=proxy)
+    result = http_request(url_data['urls'],params=url_data['para'],type=url_data['method'],headers={},proxy=proxy)
     #return HttpResponse('content=')
     print('result=',result)
     formid ='urlform%s'%method_id
     status_imge = IMAGE_STATUS['fail']
-    print(type(result[2]))
+    #print(type(result[2]))
     if result[2]==403:
         status_imge = IMAGE_STATUS['pass']
+        data = {'result':result[3],'icon':URL_MAPPING[method_id]['icon'],'status_img':status_imge}
+        data_dict = {formid:json.dumps(result)}
+        return HttpResponseForbidden()
     data = {'result':result[3],'icon':URL_MAPPING[method_id]['icon'],'status_img':status_imge}
     data_dict = {formid:json.dumps(result)}
-    return HttpResponse(data_dict)#'content='+url_data['para'])
+    return HttpResponse()#'content='+url_data['para'])
     #return HttpResponseRedirect('/load',data_dict)#reverse('index'))
     
     #render_to_response("index.html", locals(),context_instance=RequestContext(request))
