@@ -34,6 +34,7 @@ def crosshttp(request,method_id):
     print("remote_addr:",remote_addr)
     print(request.META['REMOTE_ADDR'])
     print('proxy=',proxy)
+    
     data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
     data_access = SECURITY_CONFIG['Security Assessment']['Access Control']
     data_protection = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
