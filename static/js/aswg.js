@@ -298,6 +298,10 @@ function xmlhttp(id,rawData,statusImg,totalCount) {
 	  var nowTime = new Date().getTime();//获取当前时间作为随机数
       var url= url + "?time=" +nowTime;
       
+      if (rawData.id in [1,2,3,4]) { //解决跨域不可控网站，如恶链/成人/暴力武器/钓鱼网站
+    	  url = "/post";
+      }
+      
   }
   xhr.open(rawData.method, url, true);
   //var totalCount = 21;
@@ -388,6 +392,7 @@ else if (rawData.method =="get" || rawData.method =="GET"){
 		  para = {upload:rawData.para};
 	  }
 	  var jspa = JSON.stringify(para);
+	  
 	  try
 	    {
 	    	window.onerror = function(errorMessage, scriptURI, lineNumber) {

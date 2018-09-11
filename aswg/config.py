@@ -4,7 +4,7 @@ from aswg.source_urls import EXE_URLS, MALICIOUS_WEBSITES, PHISHING_ATTACK,\
     SESSION_HIJACKING, BOTNET_CALLBACK, CROSS_SITE_SCRIPTING,\
     OLDER_KNOWN_VIRUSES, VIRUS_HIDDEN_IN_ZIP,\
     COMMON_VIRUS_FROM_KNOWN_MALICIOUS_SITE, ANONYMIZING_WEBSITES,\
-    EMBARGOED_COUNTRIE, ADULT_WEBSITES, CREDIT_CARD, SOCIAL_SECURITY_NUMBER,\
+    VOILENCE_WEAPON, ADULT_WEBSITES, CREDIT_CARD, SOCIAL_SECURITY_NUMBER,\
     SOURCE_CODE,INTERAL_URL,INTERAL_POST_URL,CROSS_POST_URL
 
 VIRUS_BLOCK_INFO = "访问的URL中含有安全风险"
@@ -93,7 +93,7 @@ SECURITY_CONFIG = {
             #'Block websites in embargoed countrie': 
                 {
                 'name':'暴力武器网站访问',
-                'urls': EMBARGOED_COUNTRIE,
+                'urls': VOILENCE_WEAPON,
                 'detail':'该测试验证您是否可以访问宣扬暴力的网站',
                 'description':'This test tries to connect to websites in countries under embargo by the Unites States and European Union, such as North Korea. Most companies want to prevent users from connecting to websites in countries that are under embargo in order to comply with trade laws. Additionally, compromised websites are often hosted in countries that are hostile to the United States and the European Union, and they place a low priority on Internet security. ',
                 'method': 'get',
