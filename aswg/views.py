@@ -21,16 +21,21 @@ def home(request):
     return render(request, 'home.html')
 
 def crosshttp(request,method_id):
-    print(request.META['HTTP_ORIGIN'])
-    if '49.4.84.41' not in request.META['HTTP_ORIGIN']:
-        PROXIES = ''
+    proxy = {'http': 'http://49.4.84.41:8066'}
+    try:
+        print(request.META['HTTP_ORIGIN'])
+        if '49.4.84.41' not in request.META['HTTP_ORIGIN']:
+            proxy = ''
+    except:
+        pass
     data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
     print(type(data_threat))
     data_access = SECURITY_CONFIG['Security Assessment']['Access Control']
     data_protection = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
     print('method_id=',URL_MAPPING[method_id])
     url_data = URL_MAPPING[method_id]
-    result = http_request(url_data['urls'],type=url_data['method'],uri='',data={'content':url_data['para']},headers={},proxy=PROXIES)
+    #result = http_request(url_data['urls'],type=url_data['method'],uri='',data={'content':url_data['para']},headers={},proxy=PROXIES)
+    result = get_request(url_data['urls'],proxy=proxy)
     #return HttpResponse('content=')
     print('result=',result)
     formid ='urlform%s'%method_id

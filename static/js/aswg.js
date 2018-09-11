@@ -294,13 +294,13 @@ function xmlhttp(id,rawData,statusImg,totalCount) {
   //xhr.open("POST", rawData.urls, true);
   var url = rawData.urls;
   if (rawData.method =="get" || rawData.method =="GET") {
-	  var nowTime = new Date().getTime();//获取当前时间作为随机数
-      var url= url + "?time=" +nowTime;
-      
-      if (rawData.id in [1,2,3,4]) { //解决跨域不可控网站，如恶链/成人/暴力武器/钓鱼网站
+      if (Number(rawData.id) in [2,3,21,22]) { //解决跨域不可控网站，如恶链/成人/暴力武器/钓鱼网站
     	  //url = "/post";
-    	  var a = 1;
+    	  alert(url + "id=" + rawData.id);
+    	  var url = "crosshttp/" + rawData.id;
       }
+      var nowTime = new Date().getTime();//获取当前时间作为随机数
+      var url= url + "?time=" +nowTime;
       
   }
   xhr.open(rawData.method, url, true);
