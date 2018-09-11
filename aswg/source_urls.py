@@ -14,6 +14,7 @@ VIRUS_HIDDEN_IN_ZIP = 'http://www.sogaoqing.com/upload/virus.zip'
 COMMON_VIRUS_FROM_KNOWN_MALICIOUS_SITE = '' 
 
 #Access Control
+
 #VOILENCE_WEAPON = 'http://www.tiexue.net/pictopic-358-1.html'
 VOILENCE_WEAPON = 'https://www.mcafee.com/zh-cn/index.html'
 ANONYMIZING_WEBSITES = 'http://the-nightmare.com/work/m.rar'
