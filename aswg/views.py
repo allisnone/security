@@ -25,7 +25,9 @@ def crosshttp(request,method_id):
     remote_addr =''
     try:
         print(request.META['HTTP_ORIGIN'])
-        remote_addr = request.META['REMOTE_ADDR']
+        print(type(request.META['REMOTE_ADDR']))
+        remote_addr = str(request.META['REMOTE_ADDR'])
+        
         if '49.4.84.41' in remote_addr:
             proxy = {'http': 'http://49.4.84.41:8066'}
     except:
