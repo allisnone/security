@@ -45,7 +45,6 @@ def crosshttp(request,method_id):
     if method_id==2 or method_id==22:
         #dest_url = 'http://www.sogaoqing.com/upload/virus.zip'
         pass
-    
     #result = http_request(url_data['urls'],type=url_data['method'],uri='',data={'content':url_data['para']},headers={},proxy=PROXIES)
     #result = get_request(url_data['urls'],proxy=proxy)
     result = http_request(dest_url,params=url_data['para'],type=url_data['method'],headers={},proxy=proxy)
