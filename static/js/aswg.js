@@ -281,6 +281,7 @@ function xmlhttp0(id,rawData,statusImg) {
     }
     //xhr.send(para);
       
+    
 }
 
 function xmlhttp(id,rawData,statusImg,totalCount) {
