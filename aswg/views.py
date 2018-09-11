@@ -28,6 +28,8 @@ def crosshttp(request,method_id):
             proxy = {'http': 'http://49.4.84.41:8066'}
     except:
         pass
+    print("remote_addr:")
+    print(request.META['REMOTE_ADDR'])
     print('proxy=',proxy)
     data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
     data_access = SECURITY_CONFIG['Security Assessment']['Access Control']
@@ -38,7 +40,7 @@ def crosshttp(request,method_id):
     #result = get_request(url_data['urls'],proxy=proxy)
     result = http_request(url_data['urls'],params=url_data['para'],type=url_data['method'],headers={},proxy=proxy)
     #return HttpResponse('content=')
-    print('result=',result)
+    print('result=',result,'proxy=', proxy)
     formid ='urlform%s'%method_id
     status_imge = IMAGE_STATUS['fail']
     #print(type(result[2]))
