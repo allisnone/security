@@ -299,7 +299,8 @@ function xmlhttp(id,rawData,statusImg,totalCount) {
       var url= url + "?time=" +nowTime;
       
       if (rawData.id in [1,2,3,4]) { //解决跨域不可控网站，如恶链/成人/暴力武器/钓鱼网站
-    	  url = "/post";
+    	  //url = "/post";
+    	  var a = 1;
       }
       
   }
