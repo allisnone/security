@@ -94,7 +94,9 @@ def get_my_public_ip():#from ip138
 #get_all_http_result()
 #print(get_my_public_ip())
 #print(get_url_mapping())    
+
 #print(len(get_url_mapping()))  
+#print("您的公网IP地址是： ",get_my_public_ip())
 
 
     

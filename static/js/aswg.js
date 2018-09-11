@@ -293,7 +293,13 @@ function xmlhttp(id,rawData,statusImg,totalCount) {
   var FailCountDataId = "FailCountData";
   var FailCountSecurityId = "FailCountSecurity";
   //xhr.open("POST", rawData.urls, true);
-  xhr.open(rawData.method, rawData.urls, true);
+  var url = rawData.urls;
+  if (rawData.method =="get" || rawData.method =="GET") {
+	  var nowTime = new Date().getTime();//获取当前时间作为随机数
+      var url= url + "?time=" +nowTime;
+      //xhr.setRequestHeader("Cache-Control","no-cache");
+  }
+  xhr.open(rawData.method, url, true);
   //var totalCount = 21;
   
   //alert(url+'--test: ' + content);
