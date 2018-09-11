@@ -24,7 +24,7 @@ def crosshttp(request,method_id):
     proxy = {}
     remote_addr =''
     try:
-        print(request.META['HTTP_ORIGIN'])
+        #print(request.META['HTTP_ORIGIN'])
         print(type(request.META['REMOTE_ADDR']))
         remote_addr = str(request.META['REMOTE_ADDR'])
         
