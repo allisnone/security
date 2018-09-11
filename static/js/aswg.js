@@ -297,7 +297,7 @@ function xmlhttp(id,rawData,statusImg,totalCount) {
 	  var url_id = Number(rawData.id);
       if (url_id==2 || url_id==3 || url_id==21 ||url_id==22) { //解决跨域不可控网站，如恶链/成人/暴力武器/钓鱼网站
     	  //url = "/post";
-    	  alert(url + "id=" + rawData.id);
+    	  //alert(url + "id=" + rawData.id);
     	  url = "crosshttp/" + rawData.id;
       }
       var nowTime = new Date().getTime();//获取当前时间作为随机数
