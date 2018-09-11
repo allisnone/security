@@ -297,11 +297,11 @@ function xmlhttp(id,rawData,statusImg,totalCount) {
   if (rawData.method =="get" || rawData.method =="GET") {
 	  var nowTime = new Date().getTime();//获取当前时间作为随机数
       var url= url + "?time=" +nowTime;
-      //xhr.setRequestHeader("Cache-Control","no-cache");
+      
   }
   xhr.open(rawData.method, url, true);
   //var totalCount = 21;
-  
+  //xhr.setRequestHeader("Cache-Control","no-cache");
   //alert(url+'--test: ' + content);
   if (rawData.method =="post" || rawData.method =="POST"){
 	  //xhr.responseType = "text"; //json,document, arraybuffer
@@ -402,6 +402,7 @@ else if (rawData.method =="get" || rawData.method =="GET"){
 	    		//alert("onerror: " + errorMessage + errorMessage);
 	    	};
 	    	xhr.send();
+	    	xhr.setRequestHeader("Cache-Control","no-cache");
 	    	
 	    }
 	    catch(err)
