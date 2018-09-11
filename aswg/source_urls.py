@@ -18,8 +18,8 @@ COMMON_VIRUS_FROM_KNOWN_MALICIOUS_SITE = ''
 #VOILENCE_WEAPON = 'http://www.tiexue.net/pictopic-358-1.html'
 VOILENCE_WEAPON = 'http://www.reviewgun.com'
 ANONYMIZING_WEBSITES = 'http://the-nightmare.com/work/m.rar'
-#ADULT_WEBSITES ='https://www.xmeise.com/brands/'
-ADULT_WEBSITES = 'https://www.barracuda.com/'
+ADULT_WEBSITES ='https://www.xmeise.com/brands'
+#ADULT_WEBSITES = 'https://www.barracuda.com/'
 
 #Data Protection Assessment
 #Data Protection

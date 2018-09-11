@@ -21,11 +21,11 @@ def home(request):
     return render(request, 'home.html')
 
 def crosshttp(request,method_id):
-    proxy = {'http': 'http://49.4.84.41:8066'}
+    proxy = {}
     try:
         print(request.META['HTTP_ORIGIN'])
-        if '49.4.84.41' not in request.META['HTTP_ORIGIN']:
-            proxy = ''
+        if '49.4.84.41' == request.META['REMOTE_ADDR']:
+            proxy = {'http': 'http://49.4.84.41:8066'}
     except:
         pass
     print('proxy=',proxy)
