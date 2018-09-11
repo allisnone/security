@@ -6,6 +6,7 @@ EXE_URLS = 'http://www.sogaoqing.com/upload/nymaim.exe'#['http://www.sogaoqing.c
 #MALICIOUS_WEBSITES = 'http://the-nightmare.com/work/m.rar'#'http://stockpickssystem.com/pZkove/','http://d2ogssay9or4s.com/login.php']
 MALICIOUS_WEBSITES = "https://www.forcepoint.com/zh-hans"
 PHISHING_ATTACK = 'http://www.goodaiai.com/category16'#'http://belakey.com/xt/admiral/adm.php','http://belakey.com/pony/admin.php','http://sommis.ga/Secured/nsw/data/Adobe.htm']
+MALICIOUS_WEBSITES = PHISHING_ATTACK
 SESSION_HIJACKING = ''
 BOTNET_CALLBACK = ''
 CROSS_SITE_SCRIPTING = ''
@@ -19,6 +20,7 @@ COMMON_VIRUS_FROM_KNOWN_MALICIOUS_SITE = ''
 VOILENCE_WEAPON = 'http://www.reviewgun.com'
 ANONYMIZING_WEBSITES = 'http://the-nightmare.com/work/m.rar'
 ADULT_WEBSITES ='https://www.xmeise.com/brands'
+ADULT_WEBSITES = VOILENCE_WEAPON
 #ADULT_WEBSITES = 'https://www.barracuda.com/'
 
 #Data Protection Assessment
