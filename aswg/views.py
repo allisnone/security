@@ -22,13 +22,16 @@ def home(request):
 
 def crosshttp(request,method_id):
     proxy = {}
+    remote_addr =''
     try:
         print(request.META['HTTP_ORIGIN'])
-        if '49.4.84.41' == request.META['REMOTE_ADDR']:
+        remote_addr = request.META['REMOTE_ADDR']
+        if '49.4.84.41' in remote_addr:
             proxy = {'http': 'http://49.4.84.41:8066'}
     except:
         pass
-    print("remote_addr:")
+        print('remote_addr --- except')
+    print("remote_addr:",remote_addr)
     print(request.META['REMOTE_ADDR'])
     print('proxy=',proxy)
     data_threat = SECURITY_CONFIG['Security Assessment']['Threat Prevention']
