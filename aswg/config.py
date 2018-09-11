@@ -45,7 +45,6 @@ SECURITY_CONFIG = {
                 'type': 'html',
                 'para': '',
                 'id':'2',
-                
                 },
                               
             #'Detect a phishing attack': 
