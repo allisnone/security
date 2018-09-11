@@ -489,7 +489,6 @@ function updateProgressBar(totalCount){
 		document.getElementById('emailBlock').setAttribute("style",showEmailBlock);
 	}
 	return pc;
-	
 }
 
 function sleep(numberMillis) {
