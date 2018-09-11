@@ -45,7 +45,7 @@ def http_request(url,uri='',params={},type='get',headers={},proxy=PROXIES):
         else:
             return []
         r.encoding = 'utf-8'
-        print(url, r.text)
+        #print(url, r.text)
         if r.status_code == 403:
             
             block_info = get_block_info(r.text)
@@ -91,7 +91,7 @@ def get_my_public_ip():#from ip138
     pattern = re.compile(r'(2(5[0-5]{1}|[0-4]\d{1})|[0-1]?\d{1,2})(\.(2(5[0-5]{1}|[0-4]\d{1})|[0-1]?\d{1,2})){3}')
     #str = re.findall(pattern, r.text)
     return pattern.search(r.text).group()
-get_all_http_result()
+#get_all_http_result()
 #print(get_my_public_ip())
 #print(get_url_mapping())    
 #print(len(get_url_mapping()))  
@@ -100,6 +100,7 @@ get_all_http_result()
     
 """
 if __name__ == '__main__':
+    print("您的公网IP地址是： ",get_my_public_ip())
     url = 'http://www.sogaoqing.com/upload/nymaim.exe'
     result = http_request(url,type='get',proxy=PROXIES)
     print('result=',result)
