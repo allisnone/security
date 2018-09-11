@@ -501,6 +501,9 @@ function sleep(numberMillis) {
 		return;
 	    }
 }
- 
+
+function openEmailModal(repot,zscaler,reportType,content) {
+	
+}
  
  
