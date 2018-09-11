@@ -283,7 +283,6 @@ function xmlhttp0(id,rawData,statusImg) {
       
 }
 
-
 function xmlhttp(id,rawData,statusImg,totalCount) {
 //  var xhr = new XMLHttpRequest();
   var resultStatus = 1;
