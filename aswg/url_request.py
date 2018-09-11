@@ -98,7 +98,6 @@ def get_my_public_ip():#from ip138
 #print(len(get_url_mapping()))  
 #print("您的公网IP地址是： ",get_my_public_ip())
 
-
     
 """
 if __name__ == '__main__':
