@@ -503,7 +503,7 @@ function sleep(numberMillis) {
 }
 
 function openEmailModal(repot,zscaler,reportType,content) {
-	
+	var a =2;
 }
  
  
