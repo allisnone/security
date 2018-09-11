@@ -294,13 +294,14 @@ function xmlhttp(id,rawData,statusImg,totalCount) {
   //xhr.open("POST", rawData.urls, true);
   var url = rawData.urls;
   if (rawData.method =="get" || rawData.method =="GET") {
-      if (Number(rawData.id) in [2,3,21,22]) { //解决跨域不可控网站，如恶链/成人/暴力武器/钓鱼网站
+	  var url_id = Number(rawData.id);
+      if (url_id==2 || url_id==3 || url_id==21 ||url_id==22) { //解决跨域不可控网站，如恶链/成人/暴力武器/钓鱼网站
     	  //url = "/post";
     	  alert(url + "id=" + rawData.id);
-    	  var url = "crosshttp/" + rawData.id;
+    	  url = "crosshttp/" + rawData.id;
       }
       var nowTime = new Date().getTime();//获取当前时间作为随机数
-      var url= url + "?time=" +nowTime;
+      url= url + "?time=" +nowTime;
       
   }
   xhr.open(rawData.method, url, true);
