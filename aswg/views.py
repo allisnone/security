@@ -46,7 +46,7 @@ def crosshttp(request,method_id):
         dest_url = 'http://www.sogaoqing.com/upload/virus.zip'
     #result = http_request(url_data['urls'],type=url_data['method'],uri='',data={'content':url_data['para']},headers={},proxy=PROXIES)
     #result = get_request(url_data['urls'],proxy=proxy)
-    result = http_request(url_data['urls'],params=url_data['para'],type=url_data['method'],headers={},proxy=proxy)
+    result = http_request(dest_url,params=url_data['para'],type=url_data['method'],headers={},proxy=proxy)
     #return HttpResponse('content=')
     print('result=',result,'proxy=', proxy)
     formid ='urlform%s'%method_id
