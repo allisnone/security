@@ -41,7 +41,9 @@ def crosshttp(request,method_id):
     data_protection = SECURITY_CONFIG['Data Protection Assessment']['Data Protection']
     print('method_id=',URL_MAPPING[method_id])
     url_data = URL_MAPPING[method_id]
-    
+    dest_url = url_data['urls']
+    if method_id==2 or method_id==22:
+        dest_url = 'http://www.sogaoqing.com/upload/virus.zip'
     #result = http_request(url_data['urls'],type=url_data['method'],uri='',data={'content':url_data['para']},headers={},proxy=PROXIES)
     #result = get_request(url_data['urls'],proxy=proxy)
     result = http_request(url_data['urls'],params=url_data['para'],type=url_data['method'],headers={},proxy=proxy)
