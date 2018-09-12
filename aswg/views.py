@@ -56,10 +56,10 @@ def crosshttp(request,method_id):
     if result[2]==403:
         status_imge = IMAGE_STATUS['pass']
         data = {'result':result[3],'icon':URL_MAPPING[method_id]['icon'],'status_img':status_imge}
-        data_dict = {formid:json.dumps(result)}
+        #data_dict = {formid:json.dumps(result)}
         return HttpResponseForbidden()
     data = {'result':result[3],'icon':URL_MAPPING[method_id]['icon'],'status_img':status_imge}
-    data_dict = {formid:json.dumps(result)}
+    #data_dict = {formid:json.dumps(result)}
     return HttpResponse()#'content='+url_data['para'])
     #return HttpResponseRedirect('/load',data_dict)#reverse('index'))
     
