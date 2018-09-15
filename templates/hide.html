@@ -1,0 +1,67 @@
+<html>
+<head>
+
+<script type='text/javascript'>
+function showhidediv(e){
+    var nameArr=document.getElementsByName("msg_1");
+    var ageArr=document.getElementsByName("msg_2");
+                                                       
+    for(var i=0;i<ageArr.length;i++){
+        if (e == 'name') {
+           if (nameArr[i].style.display=='none') {
+       
+	   ageArr[i].style.display='none';
+                nameArr[i].style.display='block';
+           }
+        } else {
+           if (ageArr[i].style.display=='none') {
+                nameArr[i].style.display='none';
+                ageArr[i].style.display='block';
+           }
+        }
+    }
+                                                       
+    document.getElementById('d1').checked = (e=='name');
+    document.getElementById('d2').checked = (e!='name');
+}
+
+function show5hide7(hideId,showId){
+    //var hideId = "dataAll";
+	var hideElement = document.getElementById(hideId);
+	//var showId = "dataProtectionResult";
+	alert(showId)
+	var showElement = document.getElementById(showId);
+	alert(showElement);
+	//alert(showElement.style.display);
+	alert(showElement.style.display);
+	if (showElement.style.display=="none"){
+		showElement.style.display="flex";
+		hideElement.style.visibility="hidden";
+	}
+	else {
+		showElement.style.display="none";
+		hideElement.style.visibility="visible";
+	}
+	
+	document.getElementById('d1').checked = (hideId=='msg_3'&&showId=='msg_4');
+} 
+jQuery(document).ready(show5hide7("msg_3","msg_4"));
+</script>
+</head>
+<body>
+<input id="d1" type="radio" value="1" onClick='showhidediv("name")' />
+<input id="d2" type="radio" value="2" onClick='showhidediv("age")' />
+<div name="msg_1">111111</div>
+<div name="msg_2" style="display:none;">222222</div>
+<div name="msg_1">333333</div>
+<div name="msg_2" style="display:none;">444444</div>
+<div name="msg_1">555555</div>
+<div name="msg_2" style="display:none;">666666</div>
+
+<div name="msg_3" style="display:none;">555555</div>
+<div name="msg_4" style="display:block;">777777</div>
+
+<input type="button" value="Button" onClick=show5hide7("msg_3","msg_4") style="background-color: transparent; border: 0;"> 
+
+</body>
+</html>

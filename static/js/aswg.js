@@ -505,4 +505,31 @@ function openEmailModal(repot,zscaler,reportType,content) {
 	var a =2;
 }
  
+
+function showSubReport(){
+	var reportId = "dataProtectionClick";
+	var ele = document.getElementById(reportId);
+	ele.onclick = hideDetail();
+}
+
+function hideDetail(){
+	var hideId = "dataAll";
+	var hideElement = document.getElementById(hideId);
+	var showId = "dataProtectionResult";
+	var showElement = document.getElementById(showId);
+	//alert(showElement.style.display);
+	if (showElement.style.display=="none"){
+		showElement.style.display=="flex";
+		hideElement.style.visibility="hidden";
+	}
+	else {
+		showElement.style.display=="none";
+		hideElement.style.visibility="visible";
+		//hideElement.style.visibility="inline";
+	}
+	//hideElement.setAttribute("style", "display:None; width:48%;");
+	//var showElement = document.getElementById(showId);
+	//showElement.setAttribute("style", "display:flex; width:48%;");
+	
+}
  
