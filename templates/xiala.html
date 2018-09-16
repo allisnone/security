@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>Bootstrap 实例 - 基本的按钮下拉菜单</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="col-lg-5  pull-right">aaa</div>
+
+<div class="btn-group">
+	<button type="button" class="btn btn-default dropdown-toggle" 
+			data-toggle="dropdown">
+		默认 <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+		<li><a href="#">功能</a></li>
+		<li><a href="#">另一个功能</a></li>
+		<li><a href="#">其他</a></li>
+		<li class="divider"></li>
+		<li><a href="#">分离的链接</a></li>
+	</ul>
+	</div>
+<div class="btn-group">
+	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">原始 
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+		<li><a href="#">功能</a></li>
+		<li><a href="#">另一个功能</a></li>
+		<li><a href="#">其他</a></li>
+		<li class="divider"></li>
+		<li><a href="#">分离的链接</a></li>
+	</ul>
+</div>
+
+
+<button type="button" class="btn btn-default" title="Popover title"
+            data-container="body" data-toggle="popover" data-placement="bottom"
+            data-content="左侧的 Popover 中的一些内容">
+        左侧的 Popover
+</button>
+
+
+<div class="popover-options pull-right ">
+		<a href="#" type="button" class="btn btn-default" style="border:none"
+		   data-container="body" data-placement="bottom" data-toggle="popover" data-content="
+			<h5>Popover 中的一些内容 —— options 方法</h>">
+			<span class="caret" ></span>
+		</a>
+	</div>
+	
+	
+<span class='btn btn-more'>
+ <i class='fa fa-angle-down'></i>
+ <i class='fa fa-angle-up hidden'></i>
+ bbb
+</span>
+
+<script type="text/javascript">
+$(function () { $(".popover-options a").popover({html : true });});
+$('.btn-more').click(function(ev){
+	 
+	 $(this).children('.fa-angle-down').toggleClass('hidden');
+	 $(this).children('.fa-angle-up').toggleClass('hidden');
+	})
+</script>
+    
+</body>
+</html>

@@ -128,7 +128,7 @@ SECURITY_CONFIG = {
                 'method': 'POST',
                 'detail':'验证是否可以识别并保护个人隐私信息外泄',
                 'description':'个人隐私信息包括信用卡号，手机号、中国护照号',
-                'icon': '../static/images/fail.png',
+                'icon': '../static/images/icon1.bmp',
                 'cross': '2',
                 'type': 'html',
                 'para': '13922119451',

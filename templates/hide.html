@@ -63,5 +63,35 @@ jQuery(document).ready(show5hide7("msg_3","msg_4"));
 
 <input type="button" value="Button" onClick=show5hide7("msg_3","msg_4") style="background-color: transparent; border: 0;"> 
 
+
+<div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">默认
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li>
+            <a href="#">功能</a>
+        </li>
+        <li>
+            <a href="#">另一个功能</a>
+        </li>
+        <li>
+            <a href="#">其他</a>
+        </li>
+        <li class="divider"></li>
+        <li>
+            <a href="#">分离的链接</a>
+        </li>
+    </ul>
+</div>
+
+	<div class="popover-options pull-right ">
+		<a href="#" type="button" class="btn btn-default" title="<h4>Title</h4>"   style="border:none"
+		   data-container="body" data-placement="bottom" data-toggle="popover" data-content="
+			<h6>Popover 中的一些内容 —— options 方法</h6>">
+			<span class="caret" ></span>
+		</a>
+	</div>
+
 </body>
 </html>

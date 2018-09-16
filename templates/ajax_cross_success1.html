@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml" >
+ <head>
+     <title>SkyGuard 内部威胁防护领导者</title>
+     <link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+     <link href="../static/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+      <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+	 <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="../static/js/aswg.js"></script>
+      <script type="text/javascript">
+     jQuery(document).ready(function(){
+    	
+        //var url1 = "http://jira.skyguardmis.com/browse/EI-10555";
+    	var url1 = "get_classes.html"; 
+    	var url2 = "https://api.douban.com/v2/book/search?q=javascript&count=1";
+        var para1 = "a";
+        var para2 = "b";
+        var div1 = "p1";
+        var div2 = "p2";
+        //alert(div1);
+        //$.ajax(internal_request(div1,url1,para1,para1));
+        //$.ajax(cross_site_request(div1,url1,para1,para1));
+        //$.ajax(cross_site_request(div2,url2,para2,para2));
+        var url3 = "add_classes.html";
+        var data = {ips:"192.168.7.1",ports:"100",contacts:"xiaoxie"};
+        var div3 = "p3";
+        //$.ajax(internal_request_post(div3,url3,data,para1));
+        //{% csrf_token %}
+		var threat = {{data_threat | safe}};
+		//alert('threat: ' + threat[0].urls);
+		
+		for (var i=0;i<threat.length;i++){
+			//alert(threat[i]);
+			var a = 1;
+		}
+		
+		var access = {{data_access | safe}};
+		//alert('access: ' + access);
+		
+		var protection = {{data_protection | safe}};
+		//alert('protection: ' + protection);
+		var totalCount = threat.length + access.length + protection.length;
+        var elementId = 'threatAll';
+        var successBlockCountThreat = aswgSecurityCheck(elementId,threat,totalCount);
+        var elementId1 = 'accessAll';
+        var successBlockCountAccess = aswgSecurityCheck(elementId1,access,totalCount);
+        var elementId2 = 'dataAll';
+        var successBlockCountData = aswgSecurityCheck(elementId2,protection,totalCount);
+        
+        var PassCountSecurityId = "PassCountSecurity";
+        var PassCountDataId = "PassCountData";
+        //alert("successBlockCountData="+successBlockCountData);
+        //showSubReport();
+        
+     });
+     $(function () { $(".popover-options a").popover({html : true });});
+     //$("#dataProtectionClick").on("click",hideDetail());
+    
+     </script>
+     </head>
+  <body>
+  <div class="container" >
+        <h1>天空卫士上网环境安全检查</h1>
+        <nav class="navbar navbar-inverse" style="display:none;">
+        <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header" >
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
+           </div>
+           <div id="navbar-menu" class="collapse navbar-collapse">
+               <ul class="nav navbar-nav">
+                   <li class="active"><a href="#">安全预审查</a></li>
+                   <li><a href="#">恶链测试</a></li>
+                   <li><a href="#">病毒测试</a></li>
+                   <li><a href="#">邮件测试</a></li>
+                   <li><a href="#">其他批量测试</a></li>
+               </ul>
+           </div>
+        </nav>
+    </div>
+ <div id="loadResult" style="background-color:#EFEFF0; display:flex; min-height:85vh;">
+ <div class="container" style="display:flex; padding: 35px 0px 15px 0px;">
+  <div  style="width:33%; text-align:left; font-size: 18px; color: #2A2C30; font-weight:500;">
+    
+    
+  <div class="container" style="display:flex; padding: 35px 0px 15px 0px;">
+  <div  style="width:33%; text-align:left; font-size: 18px; color: #2A2C30; font-weight:500;">
+    <h3>综合评估</h3>
+  </div>
+  <div style="width:34%; text-align:center;font-size: 15px; color:#2A2C30; vertical-align: middle;">
+  <span> {{ now_time | safe}} </span>
+  </div>
+  <div id="showTestFilter" style="width:33%; text-align:right;  margin-top:-8px; display:none;" >
+  <button id="showAllTest" type="button" class="btn btn-link" style="font-size: 13px; color: #2A2C30; text-decoration: none" disabled>Show All Tests</button> |
+  <button id="showFailTest" type="button" class="btn btn-link" style="font-size: 13px; color: #009CDA; text-decoration: none" disabled>Show Failed Tests</button>
+  </div>
+  </div>
+
+<!--  Testresult -->
+<div class="container" style="padding:0; box-shadow: 0 0px 6px -1px rgb(226, 226, 226); border-radius: 5px;">
+  <div id="row">
+   <div class="test-result-div col-xs-12 col-sm-12 col-md-4 col-lg-4" style="display:flex; background-color:#ffffff;"><div class="horizontal-align" style="width:255px;">
+    <div style="width:100%; text-align:center;">
+      <span style="font-size:16px; color: #2A2C30; font-weight:400;">
+       <h4>安全评估</h4>
+      </span>
+      <div class="horizontal-align" style="margin: 10px 12px;">
+      <div style="display:flex;">
+        <img id="securityGradeLoader" src="../static/images/loader.png" style="width:60px; height:60px; margin:12px 0;">
+        <div style="margin: 0 0 0 8%; width: 35%;">
+          <img src="../static/images/fail.png" style="height:16px; width:16px; margin: 26px 6px 8px 0px;">
+          <p id="FailCountSecurity" style="color:#D82D24; font-size:20px; display:inline; top:13px; position:relative;">0</p>
+          <span style="display:block; color: #4C4F54; word-wrap: break-word;">Failed</span>
+        </div>
+        <div style="margin: 0 8% 0 0%; width:25%;">
+          <img src="../static/images/pass.png" style="height:16px; width:16px; margin: 26px 6px 8px 0px;">
+          <p id="PassCountSecurity" style="color:#399C1D; font-size:20px; display:inline; top:13px; position:relative;">0</p>
+          <span style="display:block; color: #4C4F54;">Passed</span>
+        </div>
+      </div>
+      </div>
+      <span style="display:None;">
+        <p style="font-size: 11px; color:#77797C;" class="text-center">Apply to Threat Prevention and Access Control test</p>
+      </span>
+    </div>
+
+
+    </div>
+  </div>
+  <div class="test-result-div col-xs-12 col-sm-12 col-md-4 col-lg-4" style="background-color:#ffffff;">
+  <div class="horizontal-align" style="width:255px;">
+    <div style="width:100%; text-align:center;">
+      <span style="font-size:16px; color: #2A2C30; font-weight:400;">
+        <h4>数据保护</h4>
+      </span>
+      <div class="horizontal-align" style="margin: 10px 12px;">
+      <div style="display:flex;">
+        <img id="dataProtectionLoader" src="../static/images/loader.png" style="width:60px; height:60px; margin:12px 0;">
+        <div style="margin: 0 0 0 8%; width: 35%;">
+          <img src="../static/images/fail.png" style="height:16px; width:16px; margin: 26px 6px 8px 0px;">
+          <p id="FailCountData" style="color:#D82D24; font-size:20px; display:inline; top:13px; position:relative;">0</p>
+          <span style="display:block; color: #4C4F54; word-wrap: break-word;">Failed</span>
+        </div>
+        <div style="margin: 0 8% 0 0%; width:25%;">
+          <img src="../static/images/pass.png" style="height:16px; width:16px; margin: 26px 6px 8px 0px;">
+          <p id="PassCountData" style="color:#399C1D; font-size:20px; display:inline; top:13px; position:relative;">0</p>
+          <span style="display:block; color: #4C4F54;">Passed</span>
+        </div>
+      </div>
+      </div>
+      <span style="display:None;">
+        <p style="font-size: 11px; color:#77797C;" class="text-center">Apply to Data Protection test</p>
+      </span>
+    </div>
+
+
+  </div>
+
+
+
+  </div>
+  <div id="loadingBlock" class="test-result-div col-xs-12 col-sm-12 col-md-4 col-lg-4" style="border-left: 24px solid #EFEFF0; background-color:#ffffff;">
+    <p id="loading" style="margin: 10px 7%; font-size:13px; color:#4C4F54;">Loading...</p>
+    <div style="margin: 0 7%; top:50%; position:absolute; width:100%; display:block;">
+      <div id="progress">
+        <div id="loader-bar" style="width:0%;background-color: #009CDA; height:5px"></div>
+      </div>
+      <div id="loader-info" style="margin: -12px 20px; font-size:20px; color:#009CDA;">0%</div>
+    </div>
+  </div>
+  <div id="emailBlock" class="test-result-div  col-xs-12 col-sm-12 col-md-4 col-lg-4" style="border-left: 24px solid #EFEFF0; display:None; background-color:#ffffff;">
+  
+  <div style="display:flex; margin: 0 auto; width:360px; margin-bottom:10px; font-size:13px; margin-top:3px;">
+      <img src="../static/images/thumbnail_report.png" style="height:92px; width:70px; margin-left:56px; margin-right:16px">
+      <div style="text-align: left; margin-top:3px">
+        <div style="height:22px;"><i class="fa fa-check" aria-hidden="true" style="color:#399C1D; margin-right:8px;"></i>完成全部测试</div>
+        <div style="height:22px;"><i class="fa fa-check" aria-hidden="true" style="color:#399C1D; margin-right:8px;"></i>完成安全评估</div>
+        <div style="height:22px;"><i class="fa fa-check" aria-hidden="true" style="color:#399C1D; margin-right:8px;"></i>安全顾问专家建议</div>
+        <div style="height:22px;">
+        <button id="sampleReport" type="button" class="btn btn-link" style="font-size:13px; padding:0; margin-left:20px; color:#009CDA; text-decoration: none" data-toggle="modal" data-target="#sampleReportModal">
+                     安全报告样例
+        </button>
+        </div>
+      </div>
+
+    </div>
+
+    <input type="button" class="btn" style="font-weight:300; color:#ffffff; background-color:#009CDA; height: 30px; font-size:16px;" value="获取安全顾问报告" onclick="openEmailModal('report','zscaler','Request the Complete Report','We hope this preview is helpful. To get additional details, provide us the following information. We will email you the full assessment, along with actions you can take to improve your security posture.')">
+    <div id="emailInfo" style="display:none; padding:7px; font-size:11px;">
+    	Your report has been sent to 
+    	<span id="emailSentTo" rel="comments" data-content='<div style="font-size:11px;min-width:120px"><div><span style="color: #939393; display:inline-block; width:65px;">First Name:</span><span id="fnamePopover" style="color:#2A2C30"></span></div><div><span style="color: #939393; display:inline-block; width:65px;">Last Name:</span><span id="lnamePopover" style="color:#2A2C30"></span></div><div><span style="color: #939393; display:inline-block; width:65px;">Country:</span><span id="countryPopover" style="color:#2A2C30"></span></div><div><span style="color: #939393; display:inline-block; width:65px;">Company:</span><span id="companyPopover" style="color:#2A2C30"></span></div></div>' style="color:#009CDA"></span>
+    </div>
+
+  </div>
+  </div>
+
+
+</div>
+
+<div id="loadResultDiv" class="container" style="padding:0;">
+  <div id="threatPrevention" class="container" style="display:block;padding:0;">
+    <div style="font-size: 21px; font-weight:500; margin-bottom:10px;">
+          <h3>安全防护</h3>
+    </div>
+    <div style="display:flex;">
+    <div id="threatPreventionClick" style="display:flex; cursor:pointer; width:32%; color:#009CDA;">
+      <div id="threatPreventionGlyphicon" class="fa fa-chevron-down" style="padding:4px; padding-right: 8px;"></div>
+      <div  style="font-size: 17px; font-weight:500;">
+      <h4>威胁防护</h4>
+      </div>
+    </div>
+
+    <div id="threatPreventionResult" style="display:none; width:50%; ">
+      <div style="display:flex;">
+        <img src="../static/images/fail.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="threatPreventionFailCount">0</span> Failed Tests
+        </p>
+      </div>
+      <div style="display:flex; margin-left:3%;">
+        <img src="../static/images/pass.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="threatPreventionPassCount">0</span> Passed Tests
+        </p>
+      </div>
+    </div>
+    </div>
+
+  </div>
+  <div id="threatPreventionDivider" class="container" style="border-bottom: 1px solid #ccc; margin:15px auto; display:none;">
+  </div>
+
+  <div id="threatPreventionBlock">
+    <div id="threatPreventionLabels" style="display:none; padding: 16px 12px 8px 12px; color: #939393">
+    </div>
+    <div id="threatAll" class="container">
+    
+    </div>
+    <div id="threatFail"></div>
+    <div id="threatPass"></div>
+
+  </div>
+  <div id="threatPreventionClearfloat" style="min-height:18px"></div>
+
+  <div id="accessControl" class="container" style="display:block;padding:0;">
+    <div style="display:flex;">
+
+    <div id="accessControlClick" style="display:flex; cursor:pointer; width:32%; color:#009CDA;">
+      <div id="accessControlGlyphicon" class="fa fa-chevron-down" style="padding:4px; padding-right: 8px;"></div>
+      <div style="font-size: 17px; font-weight:500;">
+	  <h4>访问控制</h4>
+	  </div>
+    </div>
+
+
+
+    <div id="accessControlResult" style="display:none; width:48%;">
+      <div style="display:flex;">
+        <img src="../static/images/fail.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="accessControlFailCount">0</span> Failed Tests
+        </p>
+      </div>
+      <div style="display:flex; margin-left:3%;">
+        <img src="../static/images/pass.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="accessControlPassCount">0</span> Passed Tests
+        </p>
+      </div>
+    </div>
+    </div>
+
+  </div>
+  <div id="accessControlDivider" class="container" style="border-bottom: 1px solid #ccc; margin:15px auto; display:none;">
+  <!-- add access control divider here -->
+   </div>
+
+  <div id="accessControlBlock">
+  <div id="accessControlLabels" style="display:block; padding: 16px 12px 8px 12px; color: #939393">
+   </div>
+ 
+  <div id="accessAll" class="container">
+   
+    </div>
+  
+  </div>
+  <div id="accessFail"></div>
+  <div id="accessPass"></div>
+  </div>
+
+  <div id="accessControlClearfloat" style="min-height:18px"></div>
+
+
+  <div id="dataProtection" class="container" style="display:block;padding:0;">
+    <div style="font-size: 21px; font-weight:500; margin-bottom:10px;">
+    <h3>数据防泄漏</h3>
+    </div>
+    <div style="display:flex;">
+    <div id="dataProtectionClick" style="display:flex; cursor:pointer; width:32%; color:#009CDA;">
+      <div id="dataProtectionGlyphicon" class="fa fa-chevron-down" style="padding:4px; padding-right: 8px;"></div>
+      <div style="font-size: 17px; font-weight:500;">
+      <h4>数据保护</h4></div>
+    </div>
+
+    <div id="dataProtectionResult" style="display:none; width:48%;">
+      <div style="display:flex;">
+        <img src="../static/images/fail.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="dataProtectionFailCount">0</span> Failed Tests
+        </p>
+      </div>
+      <div style="display:flex; margin-left:3%;">
+        <img src="../static/images/pass.png" style="width:15px; height:15px; margin:5px;">
+        <p style="color:#2A2C30;">
+          <span id="dataProtectionPassCount">0</span> Passed Tests
+        </p>
+      </div>
+    </div>
+    </div>
+
+  </div>
+
+  <div id="dataprotectionBlock">
+ <div id="dataprotectionLabels"  style="display:none; padding: 16px 12px 8px 12px; color: #939393;" >
+ 
+ </div>
+    <div id="dataAll" class="container">
+    
+    </div>
+</div>
+  <div id="dataFail"></div>
+  <div id="dataPass"></div>
+  </div>
+  
+  <form id='cosform' action='/cosform' method='post' onsubmit='return checkForm()' style="display:None">
+    <input type='text' name='url' value=''/>
+    <!-- input type='password' name='pwd' value ='' -->
+    <button type='submit'>提交<button/>
+  <form/>
+</div>
+</div>
+
+
+  </body>
+ </html>
